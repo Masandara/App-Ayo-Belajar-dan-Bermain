@@ -1,0 +1,146 @@
+<AlfabetScreen>:
+    canvas.before:
+        Color:
+            rgba: 0.65, 0.65, 0.65, 1.0
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    FloatLayout:
+        # Circular button with arrow-left for navigation
+        FloatLayout:
+            size_hint: None, None
+            size: 55, 55
+            pos_hint: {'x': 0.02, 'top': 0.98}
+
+            # Circle with dashed stroke
+            canvas.before:
+                Color:
+                    rgba: 0.502, 0.502, 0.502, 1.0  # Gray fill
+                Ellipse:
+                    pos: self.pos
+                    size: self.size
+                Color:
+                    rgba: 0, 0, 0, 1  # Black stroke
+                Line:
+                    width: 1.5
+                    circle: (self.center_x, self.center_y, 25)
+                    dash_length: 2
+                    dash_offset: 1
+
+            # Arrow image inside the circle
+            Image:
+                source: 'Image/arrow-left.png'
+                size_hint: None, None
+                size: 25, 25
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+            # Transparent button to detect touch and navigate back
+            Button:
+                background_color: 0, 0, 0, 0
+                size_hint: None, None
+                size: 80, 80
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                on_press: root.go_to_mempelajari()  # Navigate back to MempelajariScreen
+
+        # Alfabet label
+        Label:
+            text: 'ALFABET'
+            font_size: '32sp'
+            font_name: 'Mogra-Regular.ttf'
+            color: 0, 0, 0, 1
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'center_x': 0.5, 'top': 0.95}
+
+        # Question label: "Huruf apakah di bawah ini"
+        Label:
+            text: 'HURUF APAKAH DI BAWAH INI'
+            font_size: '28sp'
+            font_name: "PoetsenOne-Regular.ttf"
+            color: 0, 0, 0, 1
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'center_x': 0.5, 'top': 0.85}
+
+        # Letter to be identified (Aa)
+        Label:
+            text: 'Aa'
+            font_size: '60sp'
+            font_name: "PoetsenOne-Regular.ttf"
+            color: 0, 0, 0, 1
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'center_x': 0.5, 'top': 0.60}
+
+        # GridLayout for letter buttons (D, A, B, C, E)
+        GridLayout:
+            cols: 3
+            rows: 2
+            size_hint: None, None
+            size: 500, 150
+            pos_hint: {'center_x': 0.5, 'top': 0.45}
+            spacing: [50, 30]  # Horizontal and vertical spacing between buttons
+            padding: [10, 20, 10, 20]  # Padding: left, top, right, bottom
+
+            # Letter buttons
+            RoundedButtonWithStroke:
+                text: 'D'
+                background_color: 0, 0.5, 1, 1  # Light blue button
+                font_size: '32sp'
+                color: 0, 0, 0, 1
+
+            RoundedButtonWithStroke:
+                text: 'A'
+                background_color: 1, 0, 0, 1  # Red button
+                font_size: '32sp'
+                color: 0, 0, 0, 1
+
+            RoundedButtonWithStroke:
+                text: 'B'
+                background_color: 0.5, 1, 0, 1  # Green button
+                font_size: '32sp'
+                color: 0, 0, 0, 1
+
+            # RoundedButtonWithStroke:
+            #     text: 'E'
+            #     background_color: 1, 1, 0, 1  # Yellow button
+            #     font_size: '32sp'
+            #     color: 0, 0, 0, 1
+
+            # Label:
+            #     text: ''
+
+            # RoundedButtonWithStroke:
+            #     text: 'C'
+            #     background_color: 1, 0, 1, 1  # Purple button
+            #     font_size: '32sp'
+            #     color: 0, 0, 0, 1
+
+        GridLayout:
+            cols: 3
+            rows: 2
+            size_hint: None, None
+            size: 500, 150
+            pos_hint: {'center_x': 0.5, 'top': 0.45}
+            spacing: [50, 30]  # Horizontal and vertical spacing between buttons
+            padding: [10, 20, 10, 20]  # Padding: left, top, right, bottom
+
+            # Letter buttons
+            RoundedButtonWithStroke:
+                text: 'D'
+                background_color: 0, 0.5, 1, 1  # Light blue button
+                font_size: '32sp'
+                color: 0, 0, 0, 1
+
+            RoundedButtonWithStroke:
+                text: 'A'
+                background_color: 1, 0, 0, 1  # Red button
+                font_size: '32sp'
+                color: 0, 0, 0, 1
+
+            RoundedButtonWithStroke:
+                text: 'B'
+                background_color: 0.5, 1, 0, 1  # Green button
+                font_size: '32sp'
+                color: 0, 0, 0, 1
