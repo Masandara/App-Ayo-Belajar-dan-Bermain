@@ -14,7 +14,7 @@
                 text: 'Masukkan Nama Kamu'
                 font_size: '40sp'
                 color: 0.0, 0.0, 0.0, 1.0
-                font_name: "Mogra-Regular.ttf"
+                font_name: "Font/Eracake.ttf"
                 size_hint_y: None
                 height: 90
                 pos_hint: {'center_x': 0.5, 'top': 0.5}
@@ -66,8 +66,8 @@
         Label:
             id: welcome_label  # Label untuk menampilkan nama yang disimpan
             text: 'Selamat Datang!'
-            font_size: '27sp'
-            font_name: "PoetsenOne-Regular.ttf"
+            font_size: '30sp'
+            font_name: "Font/Eracake.ttf"
             color: 0.0, 0.0, 0.0, 1.0
             size_hint: None, None
             halign: 'center'
@@ -100,7 +100,7 @@
                     # source: 'Image/Mempelajari.png'
                     text: 'Image'
                     font_size: '23sp'
-                    font_name: "PoetsenOne-Regular.ttf"
+                    font_name: "Font/PoetsenOne-Regular.ttf"
                     color: 0.0, 0.0, 0.0, 1.0
                     size_hint: (None, None)
                     width: 285
@@ -126,7 +126,7 @@
                     # source: 'Image/Permainan.png'
                     text: 'Image'
                     font_size: '23sp'
-                    font_name: "PoetsenOne-Regular.ttf"
+                    font_name: "Font/PoetsenOne-Regular.ttf"
                     color: 0.0, 0.0, 0.0, 1.0
                     size_hint: (None, None)
                     width: 290
@@ -137,7 +137,7 @@
         Label:
             text: 'Mempelajari'
             font_size: '23sp'
-            font_name: "Mogra-Regular.ttf"
+            font_name: "Font/Mogra-Regular.ttf"
             color: 0.0, 0.0, 0.0, 1.0
             size_hint: None, None
             size: self.texture_size
@@ -146,7 +146,7 @@
         Label:
             text: 'Permainan'
             font_size: '23sp'
-            font_name: "Mogra-Regular.ttf"
+            font_name: "Font/Mogra-Regular.ttf"
             color: 0.0, 0.0, 0.0, 1.0
             size_hint: None, None
             size: self.texture_size
@@ -192,7 +192,7 @@
         FloatLayout:
             size_hint: None, None
             size: 55, 55
-            pos_hint: {'x': 0.02, 'top': 0.98}
+            pos_hint: {'x': 0.03, 'top': 0.96}
             canvas.before:
                 Color:
                     rgba: 0.502, 0.502, 0.502, 1.0 # 0, 0, 0, 1  # Black background
@@ -223,7 +223,7 @@
         Label:
             text: 'Mempelajari'
             font_size: '40sp'
-            font_name: "Mogra-Regular.ttf"
+            font_name: "Font/Mogra-Regular.ttf"
             color: 0.0, 0.0, 0.0, 1.0
             size_hint: None, None
             halign: 'center'
@@ -255,7 +255,7 @@
                     # source: 'Image/Alfabet.png'
                     text: 'Image1'
                     font_size: '23sp'
-                    font_name: "PoetsenOne-Regular.ttf"
+                    font_name: "Font/PoetsenOne-Regular.ttf"
                     color: 0.0, 0.0, 0.0, 1.0
                     size_hint: (2, 2)
                     width: 260
@@ -280,7 +280,7 @@
                     # source: 'Image/Mengenal-buah-sayur.png'
                     text: 'Image2'
                     font_size: '23sp'
-                    font_name: "PoetsenOne-Regular.ttf"
+                    font_name: "Font/PoetsenOne-Regular.ttf"
                     color: 0.0, 0.0, 0.0, 1.0
                     size_hint: (2, 2)
                     width: 260
@@ -304,7 +304,7 @@
                     # source: 'Image/Menyusun-suku-kata.png'
                     text: 'Image3'
                     font_size: '23sp'
-                    font_name: "PoetsenOne-Regular.ttf"
+                    font_name: "Font/PoetsenOne-Regular.ttf"
                     color: 0.0, 0.0, 0.0, 1.0
                     size_hint: (2, 2)
                     width: 260
@@ -314,7 +314,7 @@
         Label:
             text: 'Alfabet'
             font_size: '23sp'
-            font_name: "Mogra-Regular.ttf"
+            font_name: "Font/Mogra-Regular.ttf"
             color: 0.0, 0.0, 0.0, 1.0
             size_hint: None, None
             size: self.texture_size
@@ -323,7 +323,7 @@
         Label:
             text: 'Mengenal\nBuah & Sayur'
             font_size: '23sp'
-            font_name: "Mogra-Regular.ttf"
+            font_name: "Font/Mogra-Regular.ttf"
             color: 0.0, 0.0, 0.0, 1.0
             size_hint: None, None
             halign: 'center'  # Horizontal alignment
@@ -332,12 +332,137 @@
         Label:
             text: 'Menyusun\nSuku Kata'
             font_size: '23sp'
-            font_name: "Mogra-Regular.ttf"
+            font_name: "Font/Mogra-Regular.ttf"
             color: 0.0, 0.0, 0.0, 1.0
             size_hint: None, None
             size: self.texture_size
             halign: 'center'  # Horizontal alignment
             pos_hint: {'center_x': 0.83, 'top': 0.28}
+
+<MengenalBSScreen>:
+    canvas.before:
+        Color:
+            rgba: 0.65, 0.65, 0.65, 1.0 # 0.408, 0.992, 0.894, 1.0 => Warna aqua/turquoise
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    FloatLayout:
+        # Circular button with jagged edges and arrow image inside
+        FloatLayout:
+            size_hint: None, None
+            size: 55, 55
+            pos_hint: {'x': 0.03, 'top': 0.96}
+            canvas.before:
+                Color:
+                    rgba: 0.502, 0.502, 0.502, 1.0 # 0, 0, 0, 1  # Black background
+                Ellipse:
+                    pos: self.pos
+                    size: self.size
+                Color:
+                    rgba: 0, 0, 0, 1 # 1, 1, 1, 1  # White stroke
+                Line:
+                    width: 1.5  # Adjustable stroke thickness
+                    circle: (self.center_x, self.center_y, 25)  # Circle with radius 40
+                    dash_length: 2  # Jagged effect with dash
+                    dash_offset: 1
+
+            Image:
+                source: 'Image/arrow-left.png'  # Add your arrow image path
+                size_hint: None, None
+                size: 25, 25
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+            Button:
+                background_color: 0, 0, 0, 0  # Transparent button
+                size_hint: None, None
+                size: 80, 80
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                on_press: root.go_to_mempelajari()  # Navigate to LayarScreen
+    FloatLayout:
+        Label:
+            text: 'Mengenal\nBuah & Sayur'
+            font_size: '40sp'
+            font_name: "Font/Mogra-Regular.ttf"
+            color: 0.0, 0.0, 0.0, 1.0
+            size_hint: None, None
+            halign: 'center'
+            size: self.texture_size
+            pos_hint: {'center_x': 0.5, 'top': 0.85}
+
+        # Wadah lainnya sama seperti sebelumnya
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: (None, None)
+            size: (650, 300)
+            pos_hint: {'center_x': 0.47, 'top': 0.7}
+            spacing: 125
+            # BoxLayout 1
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: (None, None)
+                size: (290, 230)
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [20]
+                # Image:
+                Label:
+                    id: buah_image
+                    # source: 'Image/Alfabet.png'
+                    text: 'Image1'
+                    font_size: '23sp'
+                    font_name: "Font/PoetsenOne-Regular.ttf"
+                    color: 0.0, 0.0, 0.0, 1.0
+                    size_hint: (2, 2)
+                    width: 260
+                    height: 260
+                    pos_hint: {'center_x': 0.50}
+            # BoxLayout 3
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: (None, None)
+                size: (290, 230)
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [20]
+                # Image:
+                Label:
+                    id: sayur_image
+                    # source: 'Image/Menyusun-suku-kata.png'
+                    text: 'Image2'
+                    font_size: '23sp'
+                    font_name: "Font/PoetsenOne-Regular.ttf"
+                    color: 0.0, 0.0, 0.0, 1.0
+                    size_hint: (2, 2)
+                    width: 260
+                    height: 260
+                    pos_hint: {'center_x': 0.50}
+
+        Label:
+            text: 'Buah'
+            font_size: '23sp'
+            font_name: "Font/Mogra-Regular.ttf"
+            color: 0.0, 0.0, 0.0, 1.0
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'center_x': 0.29, 'top': 0.27}
+
+        Label:
+            text: 'Sayur'
+            font_size: '23sp'
+            font_name: "Font/Mogra-Regular.ttf"
+            color: 0.0, 0.0, 0.0, 1.0
+            size_hint: None, None
+            size: self.texture_size
+            halign: 'center'  # Horizontal alignment
+            pos_hint: {'center_x': 0.71, 'top': 0.27}
 
 <PermainanScreen>:
     canvas.before:
@@ -352,7 +477,7 @@
         FloatLayout:
             size_hint: None, None
             size: 80, 80
-            pos_hint: {'x': 0.02, 'top': 0.98}
+            pos_hint: {'x': 0.03, 'top': 0.96}
             canvas.before:
                 Color:
                     rgba: 0.502, 0.502, 0.502, 1.0 # 0, 0, 0, 1  # Black background
@@ -383,7 +508,7 @@
         Label:
             text: 'Permainan'
             font_size: '40sp'
-            font_name: "Mogra-Regular.ttf"
+            font_name: "Font/Mogra-Regular.ttf"
             color: 0.0, 0.0, 0.0, 1.0
             size_hint: None, None
             halign: 'center'
@@ -414,7 +539,7 @@
                     # source: 'Image/Tebak-warna.png'
                     text: 'Image'
                     font_size: '23sp'
-                    font_name: "PoetsenOne-Regular.ttf"
+                    font_name: "Font/PoetsenOne-Regular.ttf"
                     color: 0.0, 0.0, 0.0, 1.0
                     size_hint: (2, 2)
                     width: 260
@@ -437,7 +562,7 @@
                     # source: 'Image/Mencocokkan-gambar.png'
                     text: 'Image'
                     font_size: '23sp'
-                    font_name: "PoetsenOne-Regular.ttf"
+                    font_name: "Font/PoetsenOne-Regular.ttf"
                     color: 0.0, 0.0, 0.0, 1.0
                     size_hint: (2, 2)
                     width: 260
@@ -460,7 +585,7 @@
                     # source: 'Image/Penjumlahan.png'
                     text: 'Image'
                     font_size: '23sp'
-                    font_name: "PoetsenOne-Regular.ttf"
+                    font_name: "Font/PoetsenOne-Regular.ttf"
                     color: 0.0, 0.0, 0.0, 1.0
                     size_hint: (2, 2)
                     width: 260
@@ -470,7 +595,7 @@
         Label:
             text: 'Tebak Warna'
             font_size: '23sp'
-            font_name: "Mogra-Regular.ttf"
+            font_name: "Font/Mogra-Regular.ttf"
             color: 0.0, 0.0, 0.0, 1.0
             size_hint: None, None
             size: self.texture_size
@@ -479,17 +604,16 @@
         Label:
             text: 'Mencocokkan\nGambar'
             font_size: '23sp'
-            font_name: "Mogra-Regular.ttf"
+            font_name: "Font/Mogra-Regular.ttf"
             color: 0.0, 0.0, 0.0, 1.0
             size_hint: None, None
-            # text_size: self.width, None  # Atur text_size untuk membatasi lebar teks
             halign: 'center'  # Horizontal alignment
             pos_hint: {'center_x': 0.51, 'top': 0.30}
 
         Label:
             text: 'Penjumlahan'
             font_size: '23sp'
-            font_name: "Mogra-Regular.ttf"
+            font_name: "Font/Mogra-Regular.ttf"
             color: 0.0, 0.0, 0.0, 1.0
             size_hint: None, None
             size: self.texture_size

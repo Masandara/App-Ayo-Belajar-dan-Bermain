@@ -8,7 +8,8 @@ from kivy.core.window import Window
 import re  # Untuk melakukan validasi menggunakan regular expression
 from kivy.lang import Builder
 import os
-from Mempelajari.main_Alfabet import AlfabetScreen
+# from Mempelajari.main_Alfabet import AlfabetScreen
+# from Mengenalbs.main_Buah import MengenalBSScreen
 
 # == Aplikasi Ayo Belajar ==
 # Mengatur ukuran window (lebar, tinggi)
@@ -103,7 +104,7 @@ class MempelajariScreen(Screen):
             self.go_to_alfabet()
             return True
         elif self.ids.mengenalbuahsayur_image.collide_point(*touch.pos):
-            self.go_to_mengenalbuahsayur()
+            self.go_to_mengenalbs()
             return True
         elif self.ids.menyusunsukukata_image.collide_point(*touch.pos):
             self.go_to_menyusunsukukata()
@@ -114,12 +115,54 @@ class MempelajariScreen(Screen):
         # Navigate to AlfabetScreen with a fade transition
         self.manager.transition = FadeTransition(duration=0.2)
         self.manager.current = 'alfabet'
+
+    def go_to_mengenalbs(self):
+        # Navigate to AlfabetScreen with a fade transition
+        self.manager.transition = FadeTransition(duration=0.2)
+        self.manager.current = 'mengenalbs'
         
 class AlfabetScreen(Screen):
     def go_to_mempelajari(self):
         # Navigate back to MempelajariScreen with a fade transition
         self.manager.transition = SlideTransition(direction="left", duration=0.2)
         self.manager.current = 'mempelajari'
+
+class MengenalBSScreen(Screen):
+    def go_to_mempelajari(self):
+        # Navigate back to MempelajariScreen with a fade transition
+        self.manager.transition = SlideTransition(direction="left", duration=0.2)
+        self.manager.current = 'mempelajari'
+        
+    def on_touch_down(self, touch):
+        if self.ids.buah_image.collide_point(*touch.pos):
+            self.go_to_buah()
+            return True
+        elif self.ids.sayur_image.collide_point(*touch.pos):
+            self.go_to_sayur()
+            return True
+        return super().on_touch_down(touch)
+    
+    def go_to_buah(self):
+        # Navigate to AlfabetScreen with a fade transition
+        self.manager.transition = FadeTransition(duration=0.2)
+        self.manager.current = 'buah'
+
+    def go_to_sayur(self):
+        # Navigate to AlfabetScreen with a fade transition
+        self.manager.transition = FadeTransition(duration=0.2)
+        self.manager.current = 'sayur'
+        
+class BuahScreen(Screen):
+    def go_to_mengenalbs(self):
+        # Navigate back to MempelajariScreen with a fade transition
+        self.manager.transition = SlideTransition(direction="left", duration=0.2)
+        self.manager.current = 'mengenalbs'
+
+class SayurScreen(Screen):
+    def go_to_mengenalbs(self):
+        # Navigate back to MempelajariScreen with a fade transition
+        self.manager.transition = SlideTransition(direction="left", duration=0.2)
+        self.manager.current = 'mengenalbs'
 
 class PermainanScreen(Screen):  # Menambahkan PermainanScreen
     def go_to_layar(self):
@@ -136,6 +179,7 @@ class AyoBelajarApp(App):
         sm.add_widget(MempelajariScreen(name='mempelajari'))
         sm.add_widget(PermainanScreen(name='permainan'))
         sm.add_widget(AlfabetScreen(name='alfabet'))
+        sm.add_widget(MengenalBSScreen(name='mengenalbs'))
         
         return sm 
 
