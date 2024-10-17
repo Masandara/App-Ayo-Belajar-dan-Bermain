@@ -15,8 +15,9 @@ class AlfabetScreen(Screen):
         self.manager.transition = SlideTransition(direction="left", duration=0.2)
         self.manager.current = 'mempelajari'
 
-    huruf_saat_ini = StringProperty("A")  # Menyimpan huruf soal saat ini
-    opsi_jawaban = ListProperty(["A", "B", "C", "D", "E"])  # Menyimpan opsi jawaban
+    huruf_saat_ini = StringProperty("")  # Menyimpan huruf soal saat ini
+    opsi_jawaban = ListProperty(["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
+                                 "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"])  # Menyimpan opsi jawaban
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

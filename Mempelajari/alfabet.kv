@@ -88,7 +88,7 @@
 
         # Letter to be identified (Aa)
         Label:
-            text: 'Aa'  # Menampilkan huruf seperti 'Aa'
+            text: root.huruf_saat_ini  # Menampilkan huruf saat ini
             font_size: '75sp'
             font_name: "Font/PoetsenOne-Regular.ttf"
             color: 1.0, 1.0, 1.0, 1.0
@@ -98,8 +98,6 @@
             outline_color: 0.0, 0.0, 0.0, 1.0  # Warna stroke
             outline_width: 3
 
-        Button:
-            on_release: app.root.get_screen('alfabet').periksa_jawaban(self.text)
         # GridLayout for letter buttons (D, A, B, C, E)
         GridLayout:
             cols: 3
