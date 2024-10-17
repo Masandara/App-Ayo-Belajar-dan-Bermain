@@ -21,7 +21,7 @@ from Permainan.main_Penjumlahan import PenjumlahanScreen
 Window.size = (900, 500)
 Window.clearcolor = (0.65, 0.65, 0.65, 0.7)
 
-class HomeScreen(Screen):  # Mengganti dari LoginScreen ke HomeScreen
+class HomeScreen(Screen):
     def save_name(self):
         user_name = self.ids.name_input.text.strip()  # Menghapus spasi di awal dan akhir input
         
@@ -50,7 +50,7 @@ class HomeScreen(Screen):  # Mengganti dari LoginScreen ke HomeScreen
         close_button.bind(on_press=popup.dismiss)
         popup.open()
 
-class LayarScreen(Screen):  # Mengganti HomeScreen ke LayarScreen
+class LayarScreen(Screen):
     def show_logout_popup(self):
         layout = BoxLayout(orientation='vertical', padding=10, spacing=10)
         popup_label = Label(text='Apakah Kamu Ingin Selesai?', font_size='15sp')
@@ -89,12 +89,12 @@ class LayarScreen(Screen):  # Mengganti HomeScreen ke LayarScreen
         return super().on_touch_down(touch)
     
     def go_to_mempelajari(self):
-        # Navigate to LayarScreen with a fade transition
+        # Navigate to MempelajariScreen with a fade transition
         self.manager.transition = FadeTransition(duration=0.3)
         self.manager.current = 'mempelajari'
         
     def go_to_permainan(self):
-        # Navigate to LayarScreen with a fade transition
+        # Navigate to PermainanScreen with a fade transition
         self.manager.transition = FadeTransition(duration=0.3)
         self.manager.current = 'permainan'
 
@@ -122,12 +122,12 @@ class MempelajariScreen(Screen):
         self.manager.current = 'alfabet'
 
     def go_to_mengenalbs(self):
-        # Navigate to AlfabetScreen with a fade transition
+        # Navigate to MengenalbsScreen with a fade transition
         self.manager.transition = FadeTransition(duration=0.2)
         self.manager.current = 'mengenalbs'
 
     def go_to_menyusunsk(self):
-        # Navigate to AlfabetScreen with a fade transition
+        # Navigate to MenyusunSKScreen with a fade transition
         self.manager.transition = FadeTransition(duration=0.2)
         self.manager.current = 'menyusunsk'
 
@@ -175,17 +175,17 @@ class PermainanScreen(Screen):  # Menambahkan PermainanScreen
         return super().on_touch_down(touch)
     
     def go_to_tebakwarna(self):
-        # Navigate to AlfabetScreen with a fade transition
+        # Navigate to TebakWarnaScreen with a fade transition
         self.manager.transition = FadeTransition(duration=0.2)
         self.manager.current = 'tebakwarna'
 
     def go_to_mencocokkangambar(self):
-        # Navigate to AlfabetScreen with a fade transition
+        # Navigate to MencocokkanGambarScreen with a fade transition
         self.manager.transition = FadeTransition(duration=0.2)
         self.manager.current = 'mencocokkangambar'
 
     def go_to_penjumlahan(self):
-        # Navigate to AlfabetScreen with a fade transition
+        # Navigate to PenjumlahanScreen with a fade transition
         self.manager.transition = FadeTransition(duration=0.2)
         self.manager.current = 'penjumlahan'
 
