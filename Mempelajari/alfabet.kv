@@ -29,7 +29,7 @@
 
         FloatLayout:
             size_hint: None, None
-            size: 55, 55
+            size: 60, 60
             pos_hint: {'x': 0.03, 'top': 0.96}
 
             # Circle with dashed stroke
@@ -43,7 +43,7 @@
                     rgba: 0, 0, 0, 1  # Black stroke
                 Line:
                     width: 1.5
-                    circle: (self.center_x, self.center_y, 25.5)
+                    circle: (self.center_x, self.center_y, 30.5)
                     dash_length: 2
                     dash_offset: 1
 
@@ -51,14 +51,14 @@
             Image:
                 source: 'Image/arrow-left.png'
                 size_hint: None, None
-                size: 25, 25
+                size: 35, 35
                 pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 
             # Transparent button to detect touch and navigate back
             Button:
                 background_color: 0, 0, 0, 0
                 size_hint: None, None
-                size: 80, 80
+                size: 60, 60
                 pos_hint: {'center_x': 0.5, 'center_y': 0.5}
                 on_press: root.go_to_mempelajari()  # Navigate back to MempelajariScreen
 
