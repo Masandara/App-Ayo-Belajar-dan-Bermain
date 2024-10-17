@@ -1,4 +1,4 @@
-<AlfabetScreen>:
+<TebakWarnaScreen>:
     canvas.before:
         Color:
             rgba: 0.894, 0.894, 0.894, 1.0
@@ -60,11 +60,11 @@
                 size_hint: None, None
                 size: 80, 80
                 pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-                on_press: root.go_to_mempelajari()  # Navigate back to MempelajariScreen
+                on_press: root.go_to_permainan()  # Navigate back to MempelajariScreen
 
         # Alfabet label
         Label:
-            text: 'ALFABET'
+            text: 'TEBAK WARNA'
             font_size: '40sp'
             font_name: 'Font/Eracake.ttf'
             color: 1.0, 1.0, 1.0, 1.0 # 1.0, 0.647, 0.0, 1.0 Orange
@@ -76,25 +76,13 @@
 
         # Question label: "Huruf apakah di bawah ini"
         Label:
-            text: 'HURUF APAKAH DI BAWAH INI'
+            text: 'BIRU'
             font_size: '35sp'
             font_name: "Font/PoetsenOne-Regular.ttf"
             color: 1.0, 1.0, 1.0, 1.0
             size_hint: None, None
             size: self.texture_size
             pos_hint: {'center_x': 0.5, 'top': 0.8}
-            outline_color: 0.0, 0.0, 0.0, 1.0  # Warna stroke
-            outline_width: 3
-
-        # Letter to be identified (Aa)
-        Label:
-            text: 'Aa'  # Menampilkan huruf seperti 'Aa'
-            font_size: '75sp'
-            font_name: "Font/PoetsenOne-Regular.ttf"
-            color: 1.0, 1.0, 1.0, 1.0
-            size_hint: None, None
-            size: self.texture_size
-            pos_hint: {'center_x': 0.5, 'top': 0.7}
             outline_color: 0.0, 0.0, 0.0, 1.0  # Warna stroke
             outline_width: 3
 
@@ -167,69 +155,3 @@
                     Line:
                         width: 2
                         rounded_rectangle: (self.x, self.y, self.width, self.height, 25)
-
-
-        GridLayout:
-            cols: 5
-            size_hint: 0.7, 0.2
-            size: 500, 150
-            pos_hint: {'center_x': 0.5, 'center_y': 0.15}
-            spacing: [45, 0]  # Horizontal and vertical spacing between buttons
-            padding: [10, 20, 10, 20]  # Padding: left, top, right, bottom
-
-            # Empty widget for left space
-            Widget:
-                size_hint: None, None
-                size: 85, 0
-
-            # Letter button D
-            RoundedButtonWithStroke:
-                # text: root.opsi_jawaban[3]
-                # on_release: app.root.get_screen('alfabet').periksa_jawaban(self.text)
-                background_color: 0, 0.5, 1, 1  # Light blue button
-                font_size: '32sp'
-                color: 0, 0, 0, 1
-                canvas.before:
-                    Color:
-                        rgba: 0.502, 0.502, 0.502, 1.0 # 0.2, 0.6, 0.86, 1  # Warna latar belakang tombol
-                    RoundedRectangle:
-                        pos: self.pos
-                        size: self.size
-                        radius: [25]
-
-                    Color:
-                        rgba: 0, 0, 0, 1  # Warna cyan untuk stroke
-                    Line:
-                        width: 2
-                        rounded_rectangle: (self.x, self.y, self.width, self.height, 25)
-
-            # Empty space in the middle
-            Widget:
-                size_hint: None, None
-                size: 25, 0
-
-            # Letter button E
-            RoundedButtonWithStroke:
-                # text: root.opsi_jawaban[4]
-                # on_release: app.root.get_screen('alfabet').periksa_jawaban(self.text)
-                background_color: 0.5, 1, 0, 1  # Green button
-                font_size: '32sp'
-                color: 0, 0, 0, 1
-                canvas.before:
-                    Color:
-                        rgba: 0.502, 0.502, 0.502, 1.0 # 0.2, 0.6, 0.86, 1  # Warna latar belakang tombol
-                    RoundedRectangle:
-                        pos: self.pos
-                        size: self.size
-                        radius: [25]
-
-                    Color:
-                        rgba: 0, 0, 0, 1  # Warna cyan untuk stroke
-                    Line:
-                        width: 2
-                        rounded_rectangle: (self.x, self.y, self.width, self.height, 25)
-
-            # Empty widget for right space
-            Widget:
-                size_hint: None, None
-                size: 85, 0

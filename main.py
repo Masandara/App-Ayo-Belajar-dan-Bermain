@@ -8,12 +8,17 @@ from kivy.core.window import Window
 import re  # Untuk melakukan validasi menggunakan regular expression
 from kivy.lang import Builder
 import os
-# from Mempelajari.main_Alfabet import AlfabetScreen
-# from Mengenalbs.main_Buah import MengenalBSScreen
+from Mempelajari.main_Alfabet import AlfabetScreen
+from Mempelajari.main_Menyusunsk import MenyusunSKScreen
+from Mempelajari.Mengenalbs.main_Buah import BuahScreen
+from Mempelajari.Mengenalbs.main_Sayur import SayurScreen
+from Permainan.main_Tebakwarna import TebakWarnaScreen
+from Permainan.main_Cocokgambar import MencocokkanGambarScreen
+from Permainan.main_Penjumlahan import PenjumlahanScreen
 
 # == Aplikasi Ayo Belajar ==
 # Mengatur ukuran window (lebar, tinggi)
-# Window.size = (800, 500)
+Window.size = (900, 500)
 Window.clearcolor = (0.65, 0.65, 0.65, 0.7)
 
 class HomeScreen(Screen):  # Mengganti dari LoginScreen ke HomeScreen
@@ -107,7 +112,7 @@ class MempelajariScreen(Screen):
             self.go_to_mengenalbs()
             return True
         elif self.ids.menyusunsukukata_image.collide_point(*touch.pos):
-            self.go_to_menyusunsukukata()
+            self.go_to_menyusunsk()
             return True
         return super().on_touch_down(touch)
     
@@ -120,12 +125,11 @@ class MempelajariScreen(Screen):
         # Navigate to AlfabetScreen with a fade transition
         self.manager.transition = FadeTransition(duration=0.2)
         self.manager.current = 'mengenalbs'
-        
-class AlfabetScreen(Screen):
-    def go_to_mempelajari(self):
-        # Navigate back to MempelajariScreen with a fade transition
-        self.manager.transition = SlideTransition(direction="left", duration=0.2)
-        self.manager.current = 'mempelajari'
+
+    def go_to_menyusunsk(self):
+        # Navigate to AlfabetScreen with a fade transition
+        self.manager.transition = FadeTransition(duration=0.2)
+        self.manager.current = 'menyusunsk'
 
 class MengenalBSScreen(Screen):
     def go_to_mempelajari(self):
@@ -143,32 +147,47 @@ class MengenalBSScreen(Screen):
         return super().on_touch_down(touch)
     
     def go_to_buah(self):
-        # Navigate to AlfabetScreen with a fade transition
+        # Navigate to BuahScreen with a fade transition
         self.manager.transition = FadeTransition(duration=0.2)
         self.manager.current = 'buah'
 
     def go_to_sayur(self):
-        # Navigate to AlfabetScreen with a fade transition
+        # Navigate to SayurScreen with a fade transition
         self.manager.transition = FadeTransition(duration=0.2)
         self.manager.current = 'sayur'
-        
-class BuahScreen(Screen):
-    def go_to_mengenalbs(self):
-        # Navigate back to MempelajariScreen with a fade transition
-        self.manager.transition = SlideTransition(direction="left", duration=0.2)
-        self.manager.current = 'mengenalbs'
-
-class SayurScreen(Screen):
-    def go_to_mengenalbs(self):
-        # Navigate back to MempelajariScreen with a fade transition
-        self.manager.transition = SlideTransition(direction="left", duration=0.2)
-        self.manager.current = 'mengenalbs'
 
 class PermainanScreen(Screen):  # Menambahkan PermainanScreen
     def go_to_layar(self):
         # Navigate to LayarScreen with a fade transition
         self.manager.transition = SlideTransition(direction="left", duration=0.2)
         self.manager.current = 'layar'
+        
+    def on_touch_down(self, touch):
+        if self.ids.tebakwarna_image.collide_point(*touch.pos):
+            self.go_to_tebakwarna()
+            return True
+        elif self.ids.mencocokkangambar_image.collide_point(*touch.pos):
+            self.go_to_mencocokkangambar()
+            return True
+        elif self.ids.penjumlahan_image.collide_point(*touch.pos):
+            self.go_to_penjumlahan()
+            return True
+        return super().on_touch_down(touch)
+    
+    def go_to_tebakwarna(self):
+        # Navigate to AlfabetScreen with a fade transition
+        self.manager.transition = FadeTransition(duration=0.2)
+        self.manager.current = 'tebakwarna'
+
+    def go_to_mencocokkangambar(self):
+        # Navigate to AlfabetScreen with a fade transition
+        self.manager.transition = FadeTransition(duration=0.2)
+        self.manager.current = 'mencocokkangambar'
+
+    def go_to_penjumlahan(self):
+        # Navigate to AlfabetScreen with a fade transition
+        self.manager.transition = FadeTransition(duration=0.2)
+        self.manager.current = 'penjumlahan'
 
 class AyoBelajarApp(App): 
     def build(self): 
@@ -180,6 +199,12 @@ class AyoBelajarApp(App):
         sm.add_widget(PermainanScreen(name='permainan'))
         sm.add_widget(AlfabetScreen(name='alfabet'))
         sm.add_widget(MengenalBSScreen(name='mengenalbs'))
+        sm.add_widget(BuahScreen(name='buah'))
+        sm.add_widget(SayurScreen(name='sayur'))
+        sm.add_widget(MenyusunSKScreen(name='menyusunsk'))
+        sm.add_widget(TebakWarnaScreen(name='tebakwarna'))
+        sm.add_widget(MencocokkanGambarScreen(name='mencocokkangambar'))
+        sm.add_widget(PenjumlahanScreen(name='penjumlahan'))
         
         return sm 
 
