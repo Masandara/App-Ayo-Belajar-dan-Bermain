@@ -1,15 +1,17 @@
 <HomeScreen>:  # Mengganti dari LoginScreen ke HomeScreen
 
-    # canvas.before:
-    #     Color:
-    #         rgba:  0.408, 0.992, 0.894, 1.0 # 0.65, 0.65, 0.65, 1.0 => Warna aqua/turquoise
-    #     Rectangle:
-    #         pos: self.pos
-    #         size: self.size
-    Image:
-        source: 'Bg/Home.png'
-        size_hint: (1, 1)
-        size: self.size
+    canvas.before:
+        Color:
+            rgba:  0.65, 0.65, 0.65, 1.0 # 0.408, 0.992, 0.894, 1.0
+            # 0.65, 0.65, 0.65, 1.0 => Warna aqua/turquoise
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    # Image:
+    #     source: 'Bg/Home.png'
+    #     size_hint: (1, 1)
+    #     size: self.size
 
     BoxLayout:
         orientation: 'vertical'
@@ -64,17 +66,17 @@
     halign: 'center'
 
 <LayarScreen>:  # Mengganti HomeScreen ke LayarScreen
-    # canvas.before:
-    #     Color:
-    #         rgba: 0.65, 0.65, 0.65, 1.0 # 0.408, 0.992, 0.894, 1.0 => Warna aqua/turquoise
-    #     Rectangle:
-    #         pos: self.pos
-    #         size: self.size
+    canvas.before:
+        Color:
+            rgba: 0.65, 0.65, 0.65, 1.0 # 0.408, 0.992, 0.894, 1.0 => Warna aqua/turquoise
+        Rectangle:
+            pos: self.pos
+            size: self.size
 
-    Image:
-        source: 'Bg/Layar.png'
-        size_hint: (1, 1)
-        size: self.size
+    # Image:
+    #     source: 'Bg/Layar.png'
+    #     size_hint: (1, 1)
+    #     size: self.size
 
     FloatLayout:
         Label:
@@ -110,14 +112,14 @@
                         pos: self.pos
                         size: self.size
                         radius: [20]
-                Image:
-                # Label:
+                # Image:
+                Label:
                     id: mempelajari_image  # Menambahkan id untuk akses di Python
-                    source: 'Image/Mempelajari.png'
-                    # text: 'Image'
+                    # source: 'Image/Mempelajari.png'
+                    text: 'Image'
                     font_size: '23sp'
                     font_name: "Font/PoetsenOne-Regular.ttf"
-                    # color: 0.0, 0.0, 0.0, 1.0
+                    color: 0.0, 0.0, 0.0, 1.0
                     size_hint: (None, None)
                     width: 285
                     height: 260
@@ -136,14 +138,14 @@
                         pos: self.pos
                         size: self.size
                         radius: [20]
-                Image:
-                # Label:
+                # Image:
+                Label:
                     id: permainan_image  # Menambahkan id untuk akses di Python
-                    source: 'Image/Permainan.png'
-                    # text: 'Image'
+                    # source: 'Image/Permainan.png'
+                    text: 'Image'
                     font_size: '23sp'
                     font_name: "Font/PoetsenOne-Regular.ttf"
-                    # color: 0.0, 0.0, 0.0, 1.0
+                    color: 0.0, 0.0, 0.0, 1.0
                     size_hint: (None, None)
                     width: 290
                     height: 250
@@ -201,16 +203,17 @@
     halign: 'center'
 
 <MempelajariScreen>:
-    # canvas.before:
-    #     Color:
-    #         rgba: 0.65, 0.65, 0.65, 1.0 # 0.408, 0.992, 0.894, 1.0 => Warna aqua/turquoise
-    #     Rectangle:
-    #         pos: self.pos
-    #         size: self.size
-    Image:
-        source: 'Bg/Layar.png'
-        size_hint: (1, 1)
-        size: self.size
+    canvas.before:
+        Color:
+            rgba: 0.65, 0.65, 0.65, 1.0 # 0.408, 0.992, 0.894, 1.0 => Warna aqua/turquoise
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    # Image:
+    #     source: 'Bg/Layar.png'
+    #     size_hint: (1, 1)
+    #     size: self.size
 
     FloatLayout:
         # Circular button with jagged edges and arrow image inside
@@ -228,7 +231,7 @@
                     rgba: 0, 0, 0, 1 # 1, 1, 1, 1  # White stroke
                 Line:
                     width: 1.5  # Adjustable stroke thickness
-                    circle: (self.center_x, self.center_y, 25)  # Circle with radius 40
+                    circle: (self.center_x, self.center_y, 25.5)  # Circle with radius 40
                     dash_length: 2  # Jagged effect with dash
                     dash_offset: 1
 
@@ -276,14 +279,14 @@
                         pos: self.pos
                         size: self.size
                         radius: [20]
-                Image:
-                # Label:
+                # Image:
+                Label:
                     id: alfabet_image
-                    source: 'Image/Alfabet.png'
-                    # text: 'Image1'
+                    # source: 'Image/Alfabet.png'
+                    text: 'Image1'
                     font_size: '23sp'
                     font_name: "Font/PoetsenOne-Regular.ttf"
-                    # color: 0.0, 0.0, 0.0, 1.0
+                    color: 0.0, 0.0, 0.0, 1.0
                     size_hint: (2, 2)
                     width: 260
                     height: 260
@@ -301,14 +304,14 @@
                         pos: self.pos
                         size: self.size
                         radius: [20]
-                Image:
-                # Label:
+                # Image:
+                Label:
                     id: mengenalbuahsayur_image
-                    source: 'Image/Mengenal-buah-sayur.png'
-                    # text: 'Image2'
+                    # source: 'Image/Mengenal-buah-sayur.png'
+                    text: 'Image2'
                     font_size: '23sp'
                     font_name: "Font/PoetsenOne-Regular.ttf"
-                    # color: 0.0, 0.0, 0.0, 1.0
+                    color: 0.0, 0.0, 0.0, 1.0
                     size_hint: (2, 2)
                     width: 260
                     height: 260
@@ -325,14 +328,14 @@
                         pos: self.pos
                         size: self.size
                         radius: [20]
-                Image:
-                # Label:
+                # Image:
+                Label:
                     id: menyusunsukukata_image
-                    source: 'Image/Menyusun-suku-kata.png'
-                    # text: 'Image3'
+                    # source: 'Image/Menyusun-suku-kata.png'
+                    text: 'Image3'
                     font_size: '23sp'
                     font_name: "Font/PoetsenOne-Regular.ttf"
-                    # color: 0.0, 0.0, 0.0, 1.0
+                    color: 0.0, 0.0, 0.0, 1.0
                     size_hint: (2, 2)
                     width: 260
                     height: 260
@@ -373,17 +376,17 @@
             outline_width: 3
 
 <MengenalBSScreen>:
-    # canvas.before:
-    #     Color:
-    #         rgba: 0.65, 0.65, 0.65, 1.0 # 0.408, 0.992, 0.894, 1.0 => Warna aqua/turquoise
-    #     Rectangle:
-    #         pos: self.pos
-    #         size: self.size
+    canvas.before:
+        Color:
+            rgba: 0.65, 0.65, 0.65, 1.0 # 0.408, 0.992, 0.894, 1.0 => Warna aqua/turquoise
+        Rectangle:
+            pos: self.pos
+            size: self.size
 
-    Image:
-        source: 'Bg/Layar.png'
-        size_hint: (1, 1)
-        size: self.size
+    # Image:
+    #     source: 'Bg/Layar.png'
+    #     size_hint: (1, 1)
+    #     size: self.size
 
     FloatLayout:
         # Circular button with jagged edges and arrow image inside
@@ -449,14 +452,14 @@
                         pos: self.pos
                         size: self.size
                         radius: [20]
-                Image:
-                # Label:
+                # Image:
+                Label:
                     id: buah_image
-                    source: 'Image/Buah-buahan.png'
-                    # text: 'Image1'
+                    # source: 'Image/Buah-buahan.png'
+                    text: 'Image1'
                     font_size: '23sp'
                     font_name: "Font/PoetsenOne-Regular.ttf"
-                    # color: 0.0, 0.0, 0.0, 1.0
+                    color: 0.0, 0.0, 0.0, 1.0
                     size_hint: (2, 2)
                     width: 260
                     height: 260
@@ -473,14 +476,14 @@
                         pos: self.pos
                         size: self.size
                         radius: [20]
-                Image:
-                # Label:
+                # Image:
+                Label:
                     id: sayur_image
-                    source: 'Image/Sayur-sayuran.png'
-                    # text: 'Image2'
+                    # source: 'Image/Sayur-sayuran.png'
+                    text: 'Image2'
                     font_size: '23sp'
                     font_name: "Font/PoetsenOne-Regular.ttf"
-                    # color: 0.0, 0.0, 0.0, 1.0
+                    color: 0.0, 0.0, 0.0, 1.0
                     size_hint: (2, 2)
                     width: 260
                     height: 260
@@ -510,23 +513,23 @@
             outline_width: 3
 
 <PermainanScreen>:
-    # canvas.before:
-    #     Color:
-    #         rgba: 0.65, 0.65, 0.65, 1.0 # 0.408, 0.992, 0.894, 1.0 => Warna aqua/turquoise
-    #     Rectangle:
-    #         pos: self.pos
-    #         size: self.size
+    canvas.before:
+        Color:
+            rgba: 0.65, 0.65, 0.65, 1.0 # 0.408, 0.992, 0.894, 1.0 => Warna aqua/turquoise
+        Rectangle:
+            pos: self.pos
+            size: self.size
 
-    Image:
-        source: 'Bg/Layar.png'
-        size_hint: (1, 1)
-        size: self.size
+    # Image:
+    #     source: 'Bg/Layar.png'
+    #     size_hint: (1, 1)
+    #     size: self.size
 
     FloatLayout:
         # Circular button with jagged edges and arrow image inside
         FloatLayout:
             size_hint: None, None
-            size: 80, 80
+            size: 55, 55
             pos_hint: {'x': 0.03, 'top': 0.96}
             canvas.before:
                 Color:
@@ -538,9 +541,9 @@
                     rgba: 0, 0, 0, 1 # 1, 1, 1, 1  # White stroke
                 Line:
                     width: 1.5  # Adjustable stroke thickness
-                    circle: (self.center_x, self.center_y, 40)  # Circle with radius 40
-                    dash_length: 5  # Jagged effect with dash
-                    dash_offset: 2
+                    circle: (self.center_x, self.center_y, 25.5)  # Circle with radius 40
+                    dash_length: 2  # Jagged effect with dash
+                    dash_offset: 1
 
             Image:
                 source: 'Image/arrow-left.png'  # Add your arrow image path
