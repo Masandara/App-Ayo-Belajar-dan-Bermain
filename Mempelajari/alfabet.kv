@@ -88,6 +88,7 @@
 
         # Letter to be identified (Aa)
         Label:
+            id: soal_label
             text: root.huruf_saat_ini  # Menampilkan huruf saat ini
             font_size: '75sp'
             font_name: "Font/PoetsenOne-Regular.ttf"
@@ -100,6 +101,7 @@
 
         # GridLayout for letter buttons (D, A, B, C, E)
         GridLayout:
+            id: grid_jawaban
             cols: 3
             size_hint: 0.7, 0.2
             size: 500, 150
@@ -170,6 +172,7 @@
 
 
         GridLayout:
+            id: grid_jawaban
             cols: 5
             size_hint: 0.7, 0.2
             size: 500, 150
