@@ -90,7 +90,7 @@
         Label:
             id: soal_label
             text: root.huruf_saat_ini  # Menampilkan huruf saat ini
-            font_size: '75sp'
+            font_size: '65sp'
             font_name: "Font/PoetsenOne-Regular.ttf"
             color: 1.0, 1.0, 1.0, 1.0
             size_hint: None, None
@@ -99,9 +99,9 @@
             outline_color: 0.0, 0.0, 0.0, 1.0  # Warna stroke
             outline_width: 3
 
-        # GridLayout for letter buttons (D, A, B, C, E)
+        # GridLayout
         GridLayout:
-            id: grid_jawaban
+            id: grid_jawaban1
             cols: 3
             size_hint: 0.7, 0.2
             size: 500, 150
@@ -111,7 +111,7 @@
 
             # Letter buttons
             RoundedButtonWithStroke:
-                text: root.opsi_jawaban[0]
+                text: root.opsi_jawaban[0] if len(root.opsi_jawaban) > 0 else ''
                 on_release: app.root.get_screen('alfabet').periksa_jawaban(self.text)
                 background_color: 0.0, 0.0, 1.0, 1.0  # Light blue button
                 font_size: '32sp'
@@ -131,7 +131,7 @@
                         rounded_rectangle: (self.x, self.y, self.width, self.height, 25)
 
             RoundedButtonWithStroke:
-                text: root.opsi_jawaban[1]
+                text: root.opsi_jawaban[1] if len(root.opsi_jawaban) > 1 else ''
                 on_release: app.root.get_screen('alfabet').periksa_jawaban(self.text)
                 background_color: 1, 0, 0, 1  # Red button
                 font_size: '32sp'
@@ -151,7 +151,7 @@
                         rounded_rectangle: (self.x, self.y, self.width, self.height, 25)
 
             RoundedButtonWithStroke:
-                text: root.opsi_jawaban[2]
+                text: root.opsi_jawaban[2] if len(root.opsi_jawaban) > 2 else ''
                 on_release: app.root.get_screen('alfabet').periksa_jawaban(self.text)
                 background_color: 0.5, 1, 0, 1  # Green button
                 font_size: '32sp'
@@ -172,7 +172,7 @@
 
 
         GridLayout:
-            id: grid_jawaban
+            id: grid_jawaban2
             cols: 5
             size_hint: 0.7, 0.2
             size: 500, 150
@@ -187,7 +187,7 @@
 
             # Letter button D
             RoundedButtonWithStroke:
-                text: root.opsi_jawaban[3]
+                text: root.opsi_jawaban[3] if len(root.opsi_jawaban) > 3 else ''
                 on_release: app.root.get_screen('alfabet').periksa_jawaban(self.text)
                 background_color: 0, 0.5, 1, 1  # Light blue button
                 font_size: '32sp'
@@ -213,9 +213,9 @@
 
             # Letter button E
             RoundedButtonWithStroke:
-                text: root.opsi_jawaban[4]
+                text: root.opsi_jawaban[4] if len(root.opsi_jawaban) > 4 else ''
                 on_release: app.root.get_screen('alfabet').periksa_jawaban(self.text)
-                background_color: 0.5, 1, 0, 1  # Green button
+                background_color: 0.5, 1, 0, 1
                 font_size: '32sp'
                 color: 0, 0, 0, 1
                 canvas.before:

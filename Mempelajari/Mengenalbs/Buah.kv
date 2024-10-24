@@ -27,12 +27,12 @@
                     pos: self.pos
                     size: self.size
 
+        # Tombol kembali
         FloatLayout:
             size_hint: None, None
             size: 60, 60
             pos_hint: {'x': 0.03, 'top': 0.96}
 
-            # Circle with dashed stroke
             canvas.before:
                 Color:
                     rgba: 0.502, 0.502, 0.502, 1.0  # Gray fill
@@ -47,22 +47,20 @@
                     dash_length: 2
                     dash_offset: 1
 
-            # Arrow image inside the circle
             Image:
                 source: 'Image/arrow-left.png'
                 size_hint: None, None
                 size: 35, 35
                 pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 
-            # Transparent button to detect touch and navigate back
             Button:
                 background_color: 0, 0, 0, 0
                 size_hint: None, None
                 size: 60, 60
                 pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-                on_press: root.go_to_mengenalbs()  # Navigate back to MempelajariScreen
+                on_press: root.go_to_mengenalbs()
 
-        # Alfabet label
+        # Label utama
         Label:
             text: 'BUAH - BUAHAN'
             font_size: '40sp'
@@ -71,10 +69,10 @@
             size_hint: None, None
             size: self.texture_size
             pos_hint: {'center_x': 0.5, 'top': 0.965}
-            outline_color: 0.0, 0.0, 0.0, 1.0  # Warna stroke
+            outline_color: 0.0, 0.0, 0.0, 1.0
             outline_width: 3
 
-        # Question label: "Huruf apakah di bawah ini"
+        # Soal buah (contoh apel)
         Label:
             text: 'APEL'
             font_size: '35sp'
@@ -83,5 +81,70 @@
             size_hint: None, None
             size: self.texture_size
             pos_hint: {'center_x': 0.5, 'top': 0.8}
-            outline_color: 0.0, 0.0, 0.0, 1.0  # Warna stroke
+            outline_color: 0.0, 0.0, 0.0, 1.0
             outline_width: 3
+
+        # Tempat untuk Soal gambar buah dan panah di bawah label APEL
+        Image:
+            source: 'Image/Buah/Soal_apel.png'  # Gambar buah (apel)
+            size_hint: None, None
+            size: 200, 200
+            pos_hint: {'center_x': 0.4, 'top': 0.7}
+
+        Image:
+            source: 'Image/arrow-right.png'  # Gambar panah
+            size_hint: None, None
+            size: 100, 100
+            pos_hint: {'center_x': 0.6, 'top': 0.7}
+
+        # Persegi panjang tempat jawaban dengan sudut melengkung
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: None, None
+            size: 850, 150
+            pos_hint: {'center_x': 0.5, 'y': 0.1}
+            padding: 10
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1  # Warna putih untuk background
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [30]  # Radius untuk sudut melengkung
+
+            # Tempat jawaban
+            # Tempatkan 7 gambar buah di sini
+            Image:
+                source: 'Image/Buah/Apel.png'  # Gambar jawaban pertama
+                size_hint: None, None
+                size: 100, 100
+
+            Image:
+                source: 'Image/Buah/Ceri.png'  # Gambar jawaban kedua
+                size_hint: None, None
+                size: 100, 100
+
+            Image:
+                source: 'Image/Buah/Durian.png'  # Gambar jawaban ketiga
+                size_hint: None, None
+                size: 100, 100
+
+            Image:
+                source: 'Image/Buah/Mangga.png'  # Gambar jawaban keempat
+                size_hint: None, None
+                size: 100, 100
+
+            Image:
+                source: 'Image/Buah/Lemon.png'  # Gambar jawaban kelima
+                size_hint: None, None
+                size: 100, 100
+
+            Image:
+                source: 'Image/Buah/Pisang.png'  # Gambar jawaban keenam
+                size_hint: None, None
+                size: 100, 100
+
+            Image:
+                source: 'Image/Buah/Naga.png'  # Gambar jawaban ketujuh
+                size_hint: None, None
+                size: 100, 100
