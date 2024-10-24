@@ -204,7 +204,7 @@ class AyoBelajarApp(App):
         sm.add_widget(MenyusunSKScreen(name='menyusunsk'))
         sm.add_widget(TebakWarnaScreen(name='tebakwarna'))
         sm.add_widget(MencocokkanGambarScreen(name='mencocokkangambar'))
-        sm.add_widget(PenjumlahanScreen(name='penjumlahan'))
+        sm.add_widget(PenjumlahanScreen(name='penjumlahan')) 
         
         return sm 
 
