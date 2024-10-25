@@ -62,25 +62,13 @@
 
         # Label utama
         Label:
-            text: 'BUAH - BUAHAN'
-            font_size: '40sp'
-            font_name: 'Font/Eracake.ttf'
-            color: 1.0, 1.0, 1.0, 1.0
-            size_hint: None, None
-            size: self.texture_size
-            pos_hint: {'center_x': 0.5, 'top': 0.965}
-            outline_color: 0.0, 0.0, 0.0, 1.0
-            outline_width: 3
-
-        # Soal buah (contoh apel)
-        Label:
             text: 'APEL'
-            font_size: '35sp'
+            font_size: '50sp'
             font_name: "Font/PoetsenOne-Regular.ttf"
             color: 1.0, 1.0, 1.0, 1.0
             size_hint: None, None
             size: self.texture_size
-            pos_hint: {'center_x': 0.5, 'top': 0.8}
+            pos_hint: {'center_x': 0.5, 'top': 0.99}
             outline_color: 0.0, 0.0, 0.0, 1.0
             outline_width: 3
 
@@ -88,22 +76,24 @@
         Image:
             source: 'Image/Buah/Soal_apel.png'  # Gambar buah (apel)
             size_hint: None, None
-            size: 200, 200
-            pos_hint: {'center_x': 0.4, 'top': 0.7}
+            size: 250, 250
+            pos_hint: {'center_x': 0.5, 'top': 0.77}
 
         Image:
             source: 'Image/arrow-right.png'  # Gambar panah
             size_hint: None, None
             size: 100, 100
-            pos_hint: {'center_x': 0.6, 'top': 0.7}
+            pos_hint: {'center_x': 0.8, 'top': 0.65}
 
         # Persegi panjang tempat jawaban dengan sudut melengkung
         BoxLayout:
             orientation: 'horizontal'
             size_hint: None, None
-            size: 850, 150
-            pos_hint: {'center_x': 0.5, 'y': 0.1}
+            size: 975, 145
+            pos_hint: {'center_x': 0.5, 'top': 0.29}
             padding: 20
+            spacing: 40
+            halign: 'center'
             canvas.before:
                 Color:
                     rgba: 1, 1, 1, 1  # Warna putih untuk background
