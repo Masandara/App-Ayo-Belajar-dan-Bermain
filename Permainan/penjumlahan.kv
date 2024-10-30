@@ -1,28 +1,26 @@
 <PenjumlahanScreen>:
     canvas.before:
         Color:
-            rgba: 0.894, 0.894, 0.894, 1.0
+            rgba: 0.894, 0.894, 0.894, 1.0  # Latar belakang abu-abu terang
         Rectangle:
             pos: self.pos
             size: self.size
 
     FloatLayout:
-        # Circular button with arrow-left for navigation
+        # Tombol navigasi (panah ke kiri) dengan lingkaran
         FloatLayout:
             size_hint: None, None
-            size: 1200, 185  # You can adjust the size here
-            pos_hint: {'center_x': 0.5, 'top': 1.14}  # Adjust position
+            size: 1200, 185
+            pos_hint: {'center_x': 0.5, 'top': 1.14}
             canvas.before:
-                # Menggambar bayangan
                 Color:
-                    rgba: 0.0, 0.0, 0.0, 0.25  # Warna bayangan (hitam transparan)
+                    rgba: 0.0, 0.0, 0.0, 0.25  # Warna bayangan hitam transparan
                 Ellipse:
-                    pos: self.x + 1, self.y - 3  # Offset bayangan
+                    pos: self.x + 1, self.y - 3
                     size: self.size
 
-                # Menggambar latar belakang
                 Color:
-                    rgba: 0.0, 1.0, 1.0, 1.0  # Cyan color (adjust if needed)
+                    rgba: 0.0, 1.0, 1.0, 1.0  # Warna latar belakang cyan
                 Ellipse:
                     pos: self.pos
                     size: self.size
@@ -32,44 +30,187 @@
             size: 60, 60
             pos_hint: {'x': 0.03, 'top': 0.96}
 
-            # Circle with dashed stroke
             canvas.before:
                 Color:
-                    rgba: 0.502, 0.502, 0.502, 1.0  # Gray fill
+                    rgba: 0.502, 0.502, 0.502, 1.0  # Warna lingkaran abu-abu
                 Ellipse:
                     pos: self.pos
                     size: self.size
                 Color:
-                    rgba: 0, 0, 0, 1  # Black stroke
+                    rgba: 0, 0, 0, 1  # Garis luar hitam
                 Line:
                     width: 1.5
                     circle: (self.center_x, self.center_y, 30.5)
                     dash_length: 2
                     dash_offset: 1
 
-            # Arrow image inside the circle
             Image:
                 source: 'Image/arrow-left.png'
                 size_hint: None, None
                 size: 35, 35
                 pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 
-            # Transparent button to detect touch and navigate back
             Button:
                 background_color: 0, 0, 0, 0
                 size_hint: None, None
                 size: 60, 60
                 pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-                on_press: root.go_to_permainan()  # Navigate back to MempelajariScreen
+                on_press: root.go_to_permainan()  # Kembali ke layar permainan
 
-        # Alfabet label
+        # Label judul "PENJUMLAHAN"
         Label:
             text: 'PENJUMLAHAN'
             font_size: '40sp'
             font_name: 'Font/Eracake.ttf'
-            color: 1.0, 1.0, 1.0, 1.0 # 1.0, 0.647, 0.0, 1.0 Orange
+            color: 1.0, 1.0, 1.0, 1.0  # Warna teks putih
             size_hint: None, None
             size: self.texture_size
             pos_hint: {'center_x': 0.5, 'top': 0.965}
-            outline_color: 0.0, 0.0, 0.0, 1.0  # Warna stroke
+            outline_color: 0.0, 0.0, 0.0, 1.0  # Warna outline hitam
             outline_width: 3
+
+        # Label soal penjumlahan
+        Label:
+            text: '2    +    6    =    ?'
+            font_size: '60sp'
+            font_name: 'Font/Eracake.ttf'  # Font angka
+            color: 0, 0, 0, 1  # Warna hitam
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'center_x': 0.42, 'center_y': 0.71}
+
+        # Kotak apel untuk angka 2 dengan radius 20 dan apel di tengah
+        FloatLayout:
+            size_hint: None, None
+            size: 300, 300
+            pos_hint: {'x': 0.12, 'center_y': 0.35}
+            canvas.before:
+                Color:
+                    rgba: 1.0, 1.0, 1.0, 1.0  # Warna kotak putih
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20]  # Radius di setiap sudut
+
+            # Gambar apel di tengah
+            Image:
+                source: 'Image/Buah/Apel.png'
+                size_hint: None, None
+                size: 100, 100
+                pos_hint: {'center_x': 0.5, 'center_y': 0.7}
+
+            Image:
+                source: 'Image/Buah/Apel.png'
+                size_hint: None, None
+                size: 100, 100
+                pos_hint: {'center_x': 0.5, 'center_y': 0.3}
+
+        # Kotak apel untuk angka 6 dengan radius 20 dan apel di tengah
+        GridLayout:
+            cols: 2
+            rows: 3
+            spacing: 10
+            size_hint: None, None
+            size: 300, 300
+            pos_hint: {'x': 0.45, 'center_y': 0.35}
+            canvas.before:
+                Color:
+                    rgba: 1.0, 1.0, 1.0, 1.0  # Warna kotak putih
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20]  # Radius di setiap sudut
+
+            # 6 apel di tengah kolom
+            Image:
+                source: 'Image/Buah/Apel.png'
+                size_hint: None, None
+                size: 80, 80
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            Image:
+                source: 'Image/Buah/Apel.png'
+                size_hint: None, None
+                size: 80, 80
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            Image:
+                source: 'Image/Buah/Apel.png'
+                size_hint: None, None
+                size: 80, 80
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            Image:
+                source: 'Image/Buah/Apel.png'
+                size_hint: None, None
+                size: 80, 80
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            Image:
+                source: 'Image/Buah/Apel.png'
+                size_hint: None, None
+                size: 80, 80
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            Image:
+                source: 'Image/Buah/Apel.png'
+                size_hint: None, None
+                size: 80, 80
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        # Pilihan jawaban di sebelah kanan dengan radius 20
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: None, None
+            size: 100, 300
+            pos_hint: {'x': 0.79, 'center_y': 0.35}
+            spacing: 30
+
+            # Pilihan pertama (4) dengan radius 20
+            Button:
+                text: '4'
+                font_size: '40sp'
+                font_name: 'Font/Eracake.ttf'
+                color: 0, 0, 0, 1
+                background_normal: ''
+                background_color: 1, 1, 1, 1
+                size_hint: None, None
+                size: 110, 110
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [20]
+
+            # Pilihan kedua (8) dengan radius 20
+            Button:
+                text: '8'
+                font_size: '40sp'
+                font_name: 'Font/Eracake.ttf'
+                color: 0, 0, 0, 1
+                background_normal: ''
+                background_color: 1, 1, 1, 1
+                size_hint: None, None
+                size: 110, 110
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [20]
+
+            # Pilihan ketiga (9) dengan radius 20
+            Button:
+                text: '9'
+                font_size: '40sp'
+                font_name: 'Font/Eracake.ttf'
+                color: 0, 0, 0, 1
+                background_normal: ''
+                background_color: 1, 1, 1, 1
+                size_hint: None, None
+                size: 110, 110
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [20]

@@ -62,6 +62,7 @@
 
         # Label utama
         Label:
+            id: label_nama_buah
             text: 'APEL'
             font_size: '50sp'
             font_name: "Font/PoetsenOne-Regular.ttf"
@@ -74,19 +75,51 @@
 
         # Tempat untuk Soal gambar buah dan panah di bawah label APEL
         Image:
-            source: 'Image/Buah/Soal_apel.png'  # Gambar buah (apel)
+            id: soal_image
             size_hint: None, None
             size: 250, 250
             pos_hint: {'center_x': 0.5, 'top': 0.77}
 
-        Image:
-            source: 'Image/arrow-right.png'  # Gambar panah
+        Button:
+            id: arrow_right
+            background_normal: 'Image/arrow-right.png'  # Gambar panah
             size_hint: None, None
             size: 100, 100
             pos_hint: {'center_x': 0.8, 'top': 0.65}
+            on_press: root.next_buah()
+
+        Button:
+            id: arrow_left
+            background_normal: 'Image/arrow-left.png'
+            size_hint: None, None
+            size: 100, 100
+            pos_hint: {'x': 0.15, 'top': 0.65}
+            opacity: 0  # Disembunyikan di awal
+            on_press: root.prev_buah()
+
+        # Outline dinamis untuk jawaban
+        FloatLayout:
+            Widget:
+                id: outline
+                size_hint: None, None
+                size: 120, 145
+                canvas.before:
+                    Color:
+                        rgba: 0.894, 0.894, 0.894, 0
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [30]  # Radius untuk sudut melengkung
+                canvas.after:
+                    Color:
+                        rgba: 0, 0, 0, 1  # Warna hitam untuk outline
+                    Line:
+                        width: 2
+                        rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
 
         # Persegi panjang tempat jawaban dengan sudut melengkung
         BoxLayout:
+            id: jawaban_container
             orientation: 'horizontal'
             size_hint: None, None
             size: 975, 145
@@ -96,45 +129,58 @@
             halign: 'center'
             canvas.before:
                 Color:
-                    rgba: 1, 1, 1, 1  # Warna putih untuk background
+                    rgba: 0.894, 0.894, 0.894, 0
                 RoundedRectangle:
                     size: self.size
                     pos: self.pos
                     radius: [30]  # Radius untuk sudut melengkung
+            canvas.after:
+                Color:
+                    rgba: 0, 0, 0, 1  # Warna hitam untuk outline
+                Line:
+                    width: 2
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
 
             # Tempat jawaban
             # Tempatkan 7 gambar buah di sini
             Image:
-                source: 'Image/Buah/Apel.png'  # Gambar jawaban pertama
+                id: jawaban_apel
+                source: 'Image/Buah/Apel.png'
                 size_hint: None, None
                 size: 100, 100
 
             Image:
-                source: 'Image/Buah/Ceri.png'  # Gambar jawaban kedua
+                id: jawaban_ceri
+                source: 'Image/Buah/Ceri.png'
                 size_hint: None, None
                 size: 100, 100
 
             Image:
-                source: 'Image/Buah/Durian.png'  # Gambar jawaban ketiga
+                id: jawaban_durian
+                source: 'Image/Buah/Durian.png'
                 size_hint: None, None
                 size: 100, 100
 
             Image:
-                source: 'Image/Buah/Mangga.png'  # Gambar jawaban keempat
+                id: jawaban_mangga
+                source: 'Image/Buah/Mangga.png'
                 size_hint: None, None
                 size: 100, 100
 
             Image:
-                source: 'Image/Buah/Lemon.png'  # Gambar jawaban kelima
+                id: jawaban_lemon
+                source: 'Image/Buah/Lemon.png'
                 size_hint: None, None
                 size: 100, 100
 
             Image:
-                source: 'Image/Buah/Pisang.png'  # Gambar jawaban keenam
+                id: jawaban_pisang
+                source: 'Image/Buah/Pisang.png'
                 size_hint: None, None
                 size: 100, 100
 
             Image:
-                source: 'Image/Buah/Naga.png'  # Gambar jawaban ketujuh
+                id: jawaban_naga
+                source: 'Image/Buah/Naga.png'
                 size_hint: None, None
                 size: 100, 100

@@ -62,7 +62,7 @@
                 pos_hint: {'center_x': 0.5, 'center_y': 0.5}
                 on_press: root.go_to_permainan()  # Navigate back to MempelajariScreen
 
-        # Alfabet label
+        # Judul Permainan
         Label:
             text: 'MENCOCOKKAN GAMBAR'
             font_size: '40sp'
@@ -73,3 +73,94 @@
             pos_hint: {'center_x': 0.5, 'top': 0.965}
             outline_color: 0.0, 0.0, 0.0, 1.0  # Warna stroke
             outline_width: 3
+
+        # Kolom utama untuk gambar
+        BoxLayout:
+            orientation: 'horizontal'
+            spacing: 30
+            size_hint: None, None
+            size: 1000, 300
+            pos_hint: {'center_x': 0.8, 'center_y': 0.68}
+
+            # Kolom gambar utama (shadow)
+            FloatLayout:
+                size_hint: None, None
+                size: 330, 220
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [20]
+
+                Image:
+                    source: 'Image/Cocok-gambar/Soal/Soal1.png'  # Gambar bayangan
+                    size_hint: None, None
+                    size: 280, 230
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        # Kolom utama untuk gambar
+        BoxLayout:
+            orientation: 'horizontal'
+            spacing: 30
+            size_hint: None, None
+            size: 1000, 300
+            pos_hint: {'center_x': 0.59, 'center_y': 0.34}
+
+            # Kolom gambar opsi
+            BoxLayout:
+                orientation: 'horizontal'
+                spacing: 30
+
+                # Setiap opsi gambar
+                FloatLayout:
+                    size_hint: None, None
+                    size: 250, 160
+                    canvas.before:
+                        Color:
+                            rgba: 1, 1, 1, 1
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [20]
+
+                    Image:
+                        source: 'Image/Cocok-gambar/Jawab1.png'  # Gambar opsi pertama
+                        size_hint: None, None
+                        size: 200, 150
+                        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+                FloatLayout:
+                    size_hint: None, None
+                    size: 250, 160
+                    canvas.before:
+                        Color:
+                            rgba: 1, 1, 1, 1
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [20]
+
+                    Image:
+                        source: 'Image/Cocok-gambar/Jawab2.png'  # Gambar opsi kedua
+                        size_hint: None, None
+                        size: 200, 150
+                        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+                FloatLayout:
+                    size_hint: None, None
+                    size: 250, 160
+                    canvas.before:
+                        Color:
+                            rgba: 1, 1, 1, 1
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [20]
+
+                    Image:
+                        source: 'Image/Cocok-gambar/Jawab3.png'  # Gambar opsi ketiga
+                        size_hint: None, None
+                        size: 200, 150
+                        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
