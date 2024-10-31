@@ -76,7 +76,8 @@
 
         # Question label: "Huruf apakah di bawah ini"
         Label:
-            text: 'BIRU'
+            id: question_label
+            # text: 'BIRU'
             font_size: '35sp'
             font_name: "Font/PoetsenOne-Regular.ttf"
             color: 1.0, 1.0, 1.0, 1.0
@@ -86,72 +87,96 @@
             outline_color: 0.0, 0.0, 0.0, 1.0  # Warna stroke
             outline_width: 3
 
-        # GridLayout for letter buttons (D, A, B, C, E)
-        GridLayout:
-            cols: 3
-            size_hint: 0.7, 0.2
-            size: 500, 150
+        # GridLayout for letter buttons
+        FloatLayout:
+            size_hint: 0.6, 0.3
             pos_hint: {'center_x': 0.5, 'center_y': 0.35}
-            spacing: [120, 30]  # Horizontal and vertical spacing between buttons
-            padding: [10, 20, 10, 20]  # Padding: left, top, right, bottom
-
-            # Letter buttons
-            RoundedButtonWithStroke:
-                # text: root.opsi_jawaban[0]
-                # on_release: app.root.get_screen('alfabet').periksa_jawaban(self.text)
-                background_color: 0.0, 0.0, 1.0, 1.0  # Light blue button
-                font_size: '32sp'
-                color: 0, 0, 0, 1
-                canvas.before:
-                    Color:
-                        rgba: 0.502, 0.502, 0.502, 1.0 # 0.2, 0.6, 0.86, 1  # Warna latar belakang tombol
-                    RoundedRectangle:
-                        pos: self.pos
-                        size: self.size
-                        radius: [25]
-
-                    Color:
-                        rgba: 0, 0, 0, 1  # Warna cyan untuk stroke
-                    Line:
-                        width: 2
-                        rounded_rectangle: (self.x, self.y, self.width, self.height, 25)
 
             RoundedButtonWithStroke:
-                # text: root.opsi_jawaban[1]
-                # on_release: app.root.get_screen('alfabet').periksa_jawaban(self.text)
-                background_color: 1, 0, 0, 1  # Red button
-                font_size: '32sp'
-                color: 0, 0, 0, 1
-                canvas.before:
-                    Color:
-                        rgba: 0.502, 0.502, 0.502, 1.0 # 0.2, 0.6, 0.86, 1  # Warna latar belakang tombol
-                    RoundedRectangle:
-                        pos: self.pos
-                        size: self.size
-                        radius: [25]
-
-                    Color:
-                        rgba: 0, 0, 0, 1  # Warna cyan untuk stroke
-                    Line:
-                        width: 2
-                        rounded_rectangle: (self.x, self.y, self.width, self.height, 25)
+                id: answer_button_1
+                font_size: '28sp'
+                size_hint: 0.4, 0.4
+                pos_hint: {'x': 0.05, 'top': 1}
+                on_press: root.check_answer(self.text)
 
             RoundedButtonWithStroke:
-                # text: root.opsi_jawaban[2]
-                # on_release: app.root.get_screen('alfabet').periksa_jawaban(self.text)
-                background_color: 0.5, 1, 0, 1  # Green button
-                font_size: '32sp'
-                color: 0, 0, 0, 1
-                canvas.before:
-                    Color:
-                        rgba: 0.502, 0.502, 0.502, 1.0 # 0.2, 0.6, 0.86, 1  # Warna latar belakang tombol
-                    RoundedRectangle:
-                        pos: self.pos
-                        size: self.size
-                        radius: [25]
+                id: answer_button_2
+                font_size: '28sp'
+                size_hint: 0.4, 0.4
+                pos_hint: {'right': 0.95, 'top': 1}
+                on_press: root.check_answer(self.text)
 
-                    Color:
-                        rgba: 0, 0, 0, 1  # Warna cyan untuk stroke
-                    Line:
-                        width: 2
-                        rounded_rectangle: (self.x, self.y, self.width, self.height, 25)
+            RoundedButtonWithStroke:
+                id: answer_button_3
+                font_size: '28sp'
+                size_hint: 0.4, 0.4
+                pos_hint: {'center_x': 0.5, 'y': 0}
+                on_press: root.check_answer(self.text)
+        # GridLayout:
+        #     cols: 3
+        #     size_hint: 0.7, 0.2
+        #     size: 500, 150
+        #     pos_hint: {'center_x': 0.5, 'center_y': 0.35}
+        #     spacing: [120, 30]  # Horizontal and vertical spacing between buttons
+        #     padding: [10, 20, 10, 20]  # Padding: left, top, right, bottom
+
+        #     # Letter buttons
+        #     RoundedButtonWithStroke:
+        #         # text: root.opsi_jawaban[0]
+        #         # on_release: app.root.get_screen('alfabet').periksa_jawaban(self.text)
+        #         background_color: 0.0, 0.0, 1.0, 1.0  # Light blue button
+        #         font_size: '32sp'
+        #         color: 0, 0, 0, 1
+        #         canvas.before:
+        #             Color:
+        #                 rgba: 0.502, 0.502, 0.502, 1.0 # 0.2, 0.6, 0.86, 1  # Warna latar belakang tombol
+        #             RoundedRectangle:
+        #                 pos: self.pos
+        #                 size: self.size
+        #                 radius: [25]
+
+        #             Color:
+        #                 rgba: 0, 0, 0, 1  # Warna cyan untuk stroke
+        #             Line:
+        #                 width: 2
+        #                 rounded_rectangle: (self.x, self.y, self.width, self.height, 25)
+
+        #     RoundedButtonWithStroke:
+        #         # text: root.opsi_jawaban[1]
+        #         # on_release: app.root.get_screen('alfabet').periksa_jawaban(self.text)
+        #         background_color: 1, 0, 0, 1  # Red button
+        #         font_size: '32sp'
+        #         color: 0, 0, 0, 1
+        #         canvas.before:
+        #             Color:
+        #                 rgba: 0.502, 0.502, 0.502, 1.0 # 0.2, 0.6, 0.86, 1  # Warna latar belakang tombol
+        #             RoundedRectangle:
+        #                 pos: self.pos
+        #                 size: self.size
+        #                 radius: [25]
+
+        #             Color:
+        #                 rgba: 0, 0, 0, 1  # Warna cyan untuk stroke
+        #             Line:
+        #                 width: 2
+        #                 rounded_rectangle: (self.x, self.y, self.width, self.height, 25)
+
+        #     RoundedButtonWithStroke:
+        #         # text: root.opsi_jawaban[2]
+        #         # on_release: app.root.get_screen('alfabet').periksa_jawaban(self.text)
+        #         background_color: 0.5, 1, 0, 1  # Green button
+        #         font_size: '32sp'
+        #         color: 0, 0, 0, 1
+        #         canvas.before:
+        #             Color:
+        #                 rgba: 0.502, 0.502, 0.502, 1.0 # 0.2, 0.6, 0.86, 1  # Warna latar belakang tombol
+        #             RoundedRectangle:
+        #                 pos: self.pos
+        #                 size: self.size
+        #                 radius: [25]
+
+        #             Color:
+        #                 rgba: 0, 0, 0, 1  # Warna cyan untuk stroke
+        #             Line:
+        #                 width: 2
+        #                 rounded_rectangle: (self.x, self.y, self.width, self.height, 25)
