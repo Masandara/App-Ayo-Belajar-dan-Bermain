@@ -1,10 +1,15 @@
 <MencocokkanGambarScreen>:
-    canvas.before:
-        Color:
-            rgba: 0.894, 0.894, 0.894, 1.0
-        Rectangle:
-            pos: self.pos
-            size: self.size
+    # canvas.before:
+    #     Color:
+    #         rgba: 0.894, 0.894, 0.894, 1.0
+    #     Rectangle:
+    #         pos: self.pos
+    #         size: self.size
+
+    Image:
+        source: 'Bg/Bg7.png'
+        size_hint: (1, 1)
+        size: self.size
 
     FloatLayout:
         # Circular button with arrow-left for navigation
@@ -12,20 +17,20 @@
             size_hint: None, None
             size: 1200, 185  # You can adjust the size here
             pos_hint: {'center_x': 0.5, 'top': 1.14}  # Adjust position
-            canvas.before:
-                # Menggambar bayangan
-                Color:
-                    rgba: 0.0, 0.0, 0.0, 0.25  # Warna bayangan (hitam transparan)
-                Ellipse:
-                    pos: self.x + 1, self.y - 3  # Offset bayangan
-                    size: self.size
+            # canvas.before:
+            #     # Menggambar bayangan
+            #     Color:
+            #         rgba: 0.0, 0.0, 0.0, 0.25  # Warna bayangan (hitam transparan)
+            #     Ellipse:
+            #         pos: self.x + 1, self.y - 3  # Offset bayangan
+            #         size: self.size
 
-                # Menggambar latar belakang
-                Color:
-                    rgba: 0.0, 1.0, 1.0, 1.0  # Cyan color (adjust if needed)
-                Ellipse:
-                    pos: self.pos
-                    size: self.size
+            #     # Menggambar latar belakang
+            #     Color:
+            #         rgba: 0.0, 1.0, 1.0, 1.0  # Cyan color (adjust if needed)
+            #     Ellipse:
+            #         pos: self.pos
+            #         size: self.size
 
         FloatLayout:
             size_hint: None, None
@@ -74,30 +79,32 @@
             outline_color: 0.0, 0.0, 0.0, 1.0  # Warna stroke
             outline_width: 3
 
-        # Kolom utama untuk gambar
+        # Kolom utama untuk gambar (Shadow)
         BoxLayout:
+            id: main_image
             orientation: 'horizontal'
             spacing: 30
             size_hint: None, None
             size: 1000, 300
-            pos_hint: {'center_x': 0.8, 'center_y': 0.68}
+            pos_hint: {'center_x': 0.825, 'center_y': 0.73}
 
             # Kolom gambar utama (shadow)
             FloatLayout:
                 size_hint: None, None
-                size: 330, 220
+                size: 280, 170
                 canvas.before:
                     Color:
-                        rgba: 1, 1, 1, 1
+                        rgba: 1, 1, 1, 0.2
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
                         radius: [20]
 
                 Image:
-                    source: 'Image/Cocok-gambar/Soal/Soal1.png'  # Gambar bayangan
+                    id: main_image
+                    source: root.main_image_source #'Image/Cocok-gambar/Soal/Soal1.png'  # Gambar bayangan
                     size_hint: None, None
-                    size: 280, 230
+                    size: 230, 180
                     pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 
         # Kolom utama untuk gambar
@@ -106,7 +113,7 @@
             spacing: 30
             size_hint: None, None
             size: 1000, 300
-            pos_hint: {'center_x': 0.59, 'center_y': 0.34}
+            pos_hint: {'center_x': 0.63, 'center_y': 0.4}
 
             # Kolom gambar opsi
             BoxLayout:
@@ -115,52 +122,76 @@
 
                 # Setiap opsi gambar
                 FloatLayout:
+                    id: answer_1
                     size_hint: None, None
-                    size: 250, 160
+                    size: 220, 130
                     canvas.before:
                         Color:
-                            rgba: 1, 1, 1, 1
+                            rgba: 1, 1, 1, 0.2
                         RoundedRectangle:
                             pos: self.pos
                             size: self.size
                             radius: [20]
 
                     Image:
-                        source: 'Image/Cocok-gambar/Jawab1.png'  # Gambar opsi pertama
+                        id: answer_1_img
+                        # source: 'Image/Cocok-gambar/Jawab11.png'  # Gambar opsi pertama
                         size_hint: None, None
-                        size: 200, 150
+                        size: 170, 120
                         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    Button:
+                        background_color: 0, 0, 0, 0
+                        size_hint: None, None
+                        size: 170, 120
+                        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                        on_press: root.check_answer(root.ids.answer_1_img.source)
 
                 FloatLayout:
+                    id: answer_2
                     size_hint: None, None
-                    size: 250, 160
+                    size: 220, 130
                     canvas.before:
                         Color:
-                            rgba: 1, 1, 1, 1
+                            rgba: 1, 1, 1, 0.2
                         RoundedRectangle:
                             pos: self.pos
                             size: self.size
                             radius: [20]
 
                     Image:
-                        source: 'Image/Cocok-gambar/Jawab2.png'  # Gambar opsi kedua
+                        id: answer_2_img
+                        # source: 'Image/Cocok-gambar/Jawab12.png'  # Gambar opsi kedua
                         size_hint: None, None
-                        size: 200, 150
+                        size: 170, 120
                         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    Button:
+                        background_color: 0, 0, 0, 0
+                        size_hint: None, None
+                        size: 170, 120
+                        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                        on_press: root.check_answer(root.ids.answer_2_img.source)
 
                 FloatLayout:
+                    id: answer_3
                     size_hint: None, None
-                    size: 250, 160
+                    size: 220, 130
                     canvas.before:
                         Color:
-                            rgba: 1, 1, 1, 1
+                            rgba: 1, 1, 1, 0.2
                         RoundedRectangle:
                             pos: self.pos
                             size: self.size
                             radius: [20]
 
                     Image:
-                        source: 'Image/Cocok-gambar/Jawab3.png'  # Gambar opsi ketiga
+                        id: answer_3_img
+                        # source: 'Image/Cocok-gambar/Jawab13.png'  # Gambar opsi ketiga
                         size_hint: None, None
-                        size: 200, 150
+                        size: 170, 120
                         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    Button:
+                        background_color: 0, 0, 0, 0
+                        size_hint: None, None
+                        size: 170, 120
+                        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                        on_press: root.check_answer(root.ids.answer_3_img.source)

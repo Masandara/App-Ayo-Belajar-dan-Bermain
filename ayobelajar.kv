@@ -1,17 +1,17 @@
 <HomeScreen>:  # Mengganti dari LoginScreen ke HomeScreen
 
-    canvas.before:
-        Color:
-            rgba:  0.65, 0.65, 0.65, 1.0 # 0.408, 0.992, 0.894, 1.0
-            # 0.65, 0.65, 0.65, 1.0 => Warna aqua/turquoise
-        Rectangle:
-            pos: self.pos
-            size: self.size
+    # canvas.before:
+    #     Color:
+    #         rgba:  0.65, 0.65, 0.65, 1.0 # 0.408, 0.992, 0.894, 1.0
+    #         # 0.65, 0.65, 0.65, 1.0 => Warna aqua/turquoise
+    #     Rectangle:
+    #         pos: self.pos
+    #         size: self.size
 
-    # Image:
-    #     source: 'Bg/Home.png'
-    #     size_hint: (1, 1)
-    #     size: self.size
+    Image:
+        source: 'Bg/Bg3.png'
+        size_hint: (1, 1)
+        size: self.size
 
     BoxLayout:
         orientation: 'vertical'
@@ -66,17 +66,17 @@
     halign: 'center'
 
 <LayarScreen>:  # Mengganti HomeScreen ke LayarScreen
-    canvas.before:
-        Color:
-            rgba: 0.65, 0.65, 0.65, 1.0 # 0.408, 0.992, 0.894, 1.0 => Warna aqua/turquoise
-        Rectangle:
-            pos: self.pos
-            size: self.size
+    # canvas.before:
+    #     Color:
+    #         rgba: 0.65, 0.65, 0.65, 1.0 # 0.408, 0.992, 0.894, 1.0 => Warna aqua/turquoise
+    #     Rectangle:
+    #         pos: self.pos
+    #         size: self.size
 
-    # Image:
-    #     source: 'Bg/Layar.png'
-    #     size_hint: (1, 1)
-    #     size: self.size
+    Image:
+        source: 'Bg/Bg6.png'
+        size_hint: (1, 1)
+        size: self.size
 
     FloatLayout:
         Label:
@@ -97,60 +97,74 @@
             orientation: 'horizontal'
             size_hint: (None, None)
             size: (650, 300)
-            pos_hint: {'center_x': 0.45, 'top': 0.7}
-            spacing: 150
+            pos_hint: {'center_x': 0.52, 'top': 0.85}
+            spacing: 125
 
             # Mempelajari Image Box
             BoxLayout:
                 orientation: 'vertical'
                 size_hint: (None, None)
-                size: (300, 250)
+                size: (240, 180)
                 canvas.before:
                     Color:
-                        rgba: 1, 1, 1, 1
+                        rgba: 1, 1, 1, 0.2
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
                         radius: [20]
-                # Image:
-                Label:
+                # canvas.after:
+                #     Color:
+                #         rgba: 0, 0, 0, 1  # Warna hitam untuk outline
+                #     Line:
+                #         width: 1.5
+                #         rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+
+                Image:
+                # Label:
                     id: mempelajari_image  # Menambahkan id untuk akses di Python
-                    # source: 'Image/Mempelajari.png'
-                    text: 'Image'
+                    source: 'Image/Mempelajari.png'
+                    # text: 'Image'
                     font_size: '23sp'
                     font_name: "Font/PoetsenOne-Regular.ttf"
-                    color: 0.0, 0.0, 0.0, 1.0
-                    size_hint: (None, None)
-                    width: 285
+                    # color: 0.0, 0.0, 0.0, 1.0
+                    size_hint: (1, 1)
+                    width: 260
                     height: 260
                     halign: 'center'
-                    pos_hint: {'center_x': 0.50, 'top': 0.9}
+                    pos_hint: {'center_x': 0.50}
 
-        # Permainan Image Box
+            # Permainan Image Box
             BoxLayout:
                 orientation: 'vertical'
                 size_hint: (None, None)
-                size: (300, 250)
+                size: (240, 180)
                 canvas.before:
                     Color:
-                        rgba: 1, 1, 1, 1
+                        rgba: 1, 1, 1, 0.2
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
                         radius: [20]
-                # Image:
-                Label:
+                # canvas.after:
+                #     Color:
+                #         rgba: 0, 0, 0, 1  # Warna hitam untuk outline
+                #     Line:
+                #         width: 1.5
+                #         rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+
+                Image:
+                # Label:
                     id: permainan_image  # Menambahkan id untuk akses di Python
-                    # source: 'Image/Permainan.png'
-                    text: 'Image'
+                    source: 'Image/Permainan.png'
+                    # text: 'Image'
                     font_size: '23sp'
                     font_name: "Font/PoetsenOne-Regular.ttf"
-                    color: 0.0, 0.0, 0.0, 1.0
-                    size_hint: (None, None)
-                    width: 290
-                    height: 250
+                    # color: 0.0, 0.0, 0.0, 1.0
+                    size_hint: (1, 1)
+                    width: 260
+                    height: 260
                     halign: 'center'
-                    pos_hint: {'center_x': 0.50, 'top': 0.9}
+                    pos_hint: {'center_x': 0.50}
 
         Label:
             text: 'Mempelajari'
@@ -159,7 +173,7 @@
             color: 1.0, 1.0, 1.0, 1.0
             size_hint: None, None
             size: self.texture_size
-            pos_hint: {'center_x': 0.29, 'top': 0.18}
+            pos_hint: {'center_x': 0.337, 'top': 0.34}
             outline_color: 0.0, 0.0, 0.0, 1.0  # Warna stroke
             outline_width: 3
 
@@ -170,37 +184,127 @@
             color: 1.0, 1.0, 1.0, 1.0
             size_hint: None, None
             size: self.texture_size
-            pos_hint: {'center_x': 0.70, 'top': 0.18}
+            pos_hint: {'center_x': 0.665, 'top': 0.34}
             outline_color: 0.0, 0.0, 0.0, 1.0  # Warna stroke
             outline_width: 3
 
-        RoundedButtonWithStroke:
-            text: 'Keluar'
+        # BoxLayout untuk Icon Exit dan Gear
+        BoxLayout:
+            orientation: 'horizontal'
             size_hint: (None, None)
-            size: (150, 50)
-            pos_hint: {'right': 0.98, 'top': 0.98}
-            on_press: root.show_logout_popup()
+            size: (100, 50)
+            pos_hint: {'right': 0.96, 'top': 0.96}
+            spacing: 30
 
-<RoundedButtonWithStroke@ButtonBehavior+Label>:
-    canvas.before:
-        Color:
-            rgba: 0.502, 0.502, 0.502, 1.0 # 0.2, 0.6, 0.86, 1  # Warna latar belakang tombol
-        RoundedRectangle:
-            pos: self.pos
-            size: self.size
-            radius: [25]  # Radius sudut melengkung
+            # Icon Gear
+            Image:
+                id: gear_icon
+                source: 'Icon/Gear.png'
+                size_hint: (None, None)  # Nonaktifkan ukuran otomatis
+                size: (50, 50)  # Atur ukuran ikon secara manual
 
-        # Membuat garis stroke di sekitar tombol
-        Color:
-            rgba: 0.0, 0.0, 0.0, 1.0  # Warna stroke (hitam)
-        Line:
-            rounded_rectangle: [self.x, self.y, self.width, self.height, 25]  # Bentuk rounded sesuai tombol
-            width: 1.5  # Ketebalan stroke (2 pixels)
+            # Icon Exit
+            Image:
+                id: exit_icon
+                source: 'Icon/Exit.png'
+                size_hint: (None, None)  # Nonaktifkan ukuran otomatis
+                size: (50, 50)  # Atur ukuran ikon secara manual
 
-    font_size: '20sp'
-    color: 1, 1, 1, 1  # Warna teks putih
-    bold: True
-    halign: 'center'
+        # Widget Pengaturan
+        FloatLayout:
+            id: settings_widget
+            size_hint: (0.5, 0.7)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            opacity: 0  # Widget tersembunyi secara default
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 0.85  # Warna latar belakang dengan transparansi
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20]
+
+            # Icon silang untuk menutup widget
+            Image:
+                source: 'Icon/Close.png'
+                size_hint: (None, None)
+                size: (35, 35)
+                pos_hint: {'right': 0.97, 'top': 0.97}
+                on_touch_down: root.close_settings_widget()  # Fungsi untuk menutup widget
+
+            # Label Pengaturan
+            Label:
+                text: 'Pengaturan'
+                font_size: '25sp'
+                font_name: "Font/Eracake.ttf" #"Font/PoetsenOne-Regular.ttf"
+                color: 1.0, 1.0, 1.0, 1.0
+                pos_hint: {'center_x': 0.5, 'y': 0.35}
+
+            # Icon Music dan Slider Volume
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint: (1, 0.2)
+                pos_hint: {'center_x': 0.6, 'top': 0.65}
+                spacing: 25
+
+                Image:
+                    source: 'Icon/Music.png'
+                    size_hint: (None, None)
+                    size: (40, 40)
+                    pos_hint: {'center_x': 0.6, 'top': 0.65}
+                    canvas.before:
+                        Color:
+                            rgba: 1, 1, 1, 1  # Warna latar belakang dengan transparansi
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: (70, 70)
+                            radius: [50]
+
+                Slider:
+                    id: music_slider
+                    min: 0
+                    max: 100
+                    value: 50
+                    on_value: root.update_volume_label('music', self.value)
+
+                Label:
+                    id: music_volume_label
+                    text: '50%'
+                    font_size: '18sp'
+                    color: 1.0, 1.0, 1.0, 1.0
+
+            # Icon Speaker dan Slider Volume
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint: (1, 0.2)
+                pos_hint: {'center_x': 0.6, 'top': 0.45}
+                spacing: 25
+
+                Image:
+                    source: 'Icon/Speaker.png'
+                    size_hint: (None, None)
+                    size: (40, 40)
+                    pos_hint: {'center_x': 0.6, 'top': 0.45}
+                    canvas.before:
+                        Color:
+                            rgba: 1, 1, 1, 1  # Warna latar belakang dengan transparansi
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: (70, 70)
+                            radius: [50]
+
+                Slider:
+                    id: speaker_slider
+                    min: 0
+                    max: 100
+                    value: 50
+                    on_value: root.update_volume_label('speaker', self.value)
+
+                Label:
+                    id: speaker_volume_label
+                    text: '50%'
+                    font_size: '18sp'
+                    color: 1.0, 1.0, 1.0, 1.0
 
 <MempelajariScreen>:
     canvas.before:
@@ -210,10 +314,10 @@
             pos: self.pos
             size: self.size
 
-    # Image:
-    #     source: 'Bg/Layar.png'
-    #     size_hint: (1, 1)
-    #     size: self.size
+    Image:
+        source: 'Bg/Bg6.png'
+        size_hint: (1, 1)
+        size: self.size
 
     FloatLayout:
         # Circular button with jagged edges and arrow image inside
@@ -265,29 +369,36 @@
             orientation: 'horizontal'
             size_hint: (None, None)
             size: (650, 300)
-            pos_hint: {'center_x': 0.37, 'top': 0.75}
+            pos_hint: {'center_x': 0.445, 'top': 0.85}
             spacing: 35
             # BoxLayout 1
             BoxLayout:
                 orientation: 'vertical'
                 size_hint: (None, None)
-                size: (290, 230)
+                size: (240, 180)
                 canvas.before:
                     Color:
-                        rgba: 1, 1, 1, 1
+                        rgba: 1, 1, 1, 0.2
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
                         radius: [20]
-                # Image:
-                Label:
+                # canvas.after:
+                #     Color:
+                #         rgba: 0, 0, 0, 1  # Warna hitam untuk outline
+                #     Line:
+                #         width: 1.5
+                #         rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+
+                Image:
+                # Label:
                     id: alfabet_image
-                    # source: 'Image/Alfabet.png'
-                    text: 'Image1'
+                    source: 'Image/Alfabet.png'
+                    # text: 'Image1'
                     font_size: '23sp'
                     font_name: "Font/PoetsenOne-Regular.ttf"
-                    color: 0.0, 0.0, 0.0, 1.0
-                    size_hint: (2, 2)
+                    # color: 0.0, 0.0, 0.0, 1.0
+                    size_hint: (1, 1)
                     width: 260
                     height: 260
                     pos_hint: {'center_x': 0.50}
@@ -296,23 +407,30 @@
             BoxLayout:
                 orientation: 'vertical'
                 size_hint: (None, None)
-                size: (290, 230)
+                size: (240, 180)
                 canvas.before:
                     Color:
-                        rgba: 1, 1, 1, 1
+                        rgba: 1, 1, 1, 0.2
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
                         radius: [20]
-                # Image:
-                Label:
+                # canvas.after:
+                #     Color:
+                #         rgba: 0, 0, 0, 1  # Warna hitam untuk outline
+                #     Line:
+                #         width: 1.5
+                #         rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+
+                Image:
+                # Label:
                     id: mengenalbuahsayur_image
-                    # source: 'Image/Mengenal-buah-sayur.png'
-                    text: 'Image2'
+                    source: 'Image/Mengenal-buah-sayur.png'
+                    # text: 'Image2'
                     font_size: '23sp'
                     font_name: "Font/PoetsenOne-Regular.ttf"
-                    color: 0.0, 0.0, 0.0, 1.0
-                    size_hint: (2, 2)
+                    # color: 0.0, 0.0, 0.0, 1.0
+                    size_hint: (1, 1)
                     width: 260
                     height: 260
                     pos_hint: {'center_x': 0.50}
@@ -320,23 +438,30 @@
             BoxLayout:
                 orientation: 'vertical'
                 size_hint: (None, None)
-                size: (290, 230)
+                size: (240, 180)
                 canvas.before:
                     Color:
-                        rgba: 1, 1, 1, 1
+                        rgba: 1, 1, 1, 0.2
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
                         radius: [20]
-                # Image:
-                Label:
+                # canvas.after:
+                #     Color:
+                #         rgba: 0, 0, 0, 1  # Warna hitam untuk outline
+                #     Line:
+                #         width: 1.5
+                #         rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+
+                Image:
+                # Label:
                     id: menyusunsukukata_image
-                    # source: 'Image/Menyusun-suku-kata.png'
-                    text: 'Image3'
+                    source: 'Image/Menyusun-suku-kata.png'
+                    # text: 'Image3'
                     font_size: '23sp'
                     font_name: "Font/PoetsenOne-Regular.ttf"
-                    color: 0.0, 0.0, 0.0, 1.0
-                    size_hint: (2, 2)
+                    # color: 0.0, 0.0, 0.0, 1.0
+                    size_hint: (1, 1)
                     width: 260
                     height: 260
                     pos_hint: {'center_x': 0.50}
@@ -348,7 +473,7 @@
             color: 1.0, 1.0, 1.0, 1.0
             size_hint: None, None
             size: self.texture_size
-            pos_hint: {'center_x': 0.212, 'top': 0.22}
+            pos_hint: {'center_x': 0.265, 'top': 0.34}
             outline_color: 0.0, 0.0, 0.0, 1.0  # Warna stroke
             outline_width: 3
 
@@ -359,7 +484,7 @@
             color: 1.0, 1.0, 1.0, 1.0
             size_hint: None, None
             halign: 'center'  # Horizontal alignment
-            pos_hint: {'center_x': 0.5, 'top': 0.25}
+            pos_hint: {'center_x': 0.51, 'top': 0.361}
             outline_color: 0.0, 0.0, 0.0, 1.0  # Warna stroke
             outline_width: 3
 
@@ -371,7 +496,7 @@
             size_hint: None, None
             size: self.texture_size
             halign: 'center'  # Horizontal alignment
-            pos_hint: {'center_x': 0.79, 'top': 0.221}
+            pos_hint: {'center_x': 0.755, 'top': 0.341}
             outline_color: 0.0, 0.0, 0.0, 1.0  # Warna stroke
             outline_width: 3
 
@@ -383,10 +508,10 @@
             pos: self.pos
             size: self.size
 
-    # Image:
-    #     source: 'Bg/Layar.png'
-    #     size_hint: (1, 1)
-    #     size: self.size
+    Image:
+        source: 'Bg/Bg6.png'
+        size_hint: (1, 1)
+        size: self.size
 
     FloatLayout:
         # Circular button with jagged edges and arrow image inside
@@ -423,7 +548,7 @@
     FloatLayout:
         Label:
             text: 'Mengenal\nBuah & Sayur'
-            font_size: '40sp'
+            font_size: '35sp'
             font_name: "Font/Eracake.ttf"
             color: 1.0, 1.0, 1.0, 1.0 # 0.0, 0.0, 0.0, 1.0
             size_hint: None, None
@@ -438,53 +563,68 @@
             orientation: 'horizontal'
             size_hint: (None, None)
             size: (650, 300)
-            pos_hint: {'center_x': 0.47, 'top': 0.75}
+            pos_hint: {'center_x': 0.52, 'top': 0.85}
             spacing: 125
             # BoxLayout 1
             BoxLayout:
                 orientation: 'vertical'
                 size_hint: (None, None)
-                size: (290, 230)
+                size: (240, 180)
                 canvas.before:
                     Color:
-                        rgba: 1, 1, 1, 1
+                        rgba: 1, 1, 1, 0.2
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
                         radius: [20]
-                # Image:
-                Label:
+                # canvas.after:
+                #     Color:
+                #         rgba: 0, 0, 0, 1  # Warna hitam untuk outline
+                #     Line:
+                #         width: 1.5
+                #         rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+
+                Image:
+                # Label:
                     id: buah_image
-                    # source: 'Image/Buah-buahan.png'
-                    text: 'Image1'
+                    source: 'Image/Buah-buahan.png'
+                    # text: 'Image1'
                     font_size: '23sp'
                     font_name: "Font/PoetsenOne-Regular.ttf"
-                    color: 0.0, 0.0, 0.0, 1.0
-                    size_hint: (2, 2)
+                    # color: 0.0, 0.0, 0.0, 1.0
+                    size_hint: (1, 1)
                     width: 260
                     height: 260
+                    halign: 'center'
                     pos_hint: {'center_x': 0.50}
-            # BoxLayout 3
+            # BoxLayout 2
             BoxLayout:
                 orientation: 'vertical'
                 size_hint: (None, None)
-                size: (290, 230)
+                size: (240, 180)
                 canvas.before:
                     Color:
-                        rgba: 1, 1, 1, 1
+                        rgba: 1, 1, 1, 0.2
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
                         radius: [20]
-                # Image:
-                Label:
+                # canvas.after:
+                #     Color:
+                #         rgba: 0, 0, 0, 1  # Warna hitam untuk outline
+                #     Line:
+                #         width: 1.5
+                #         rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+
+                Image:
+                # Label:
                     id: sayur_image
-                    # source: 'Image/Sayur-sayuran.png'
-                    text: 'Image2'
+                    source: 'Image/Sayur-sayuran.png'
+                    # text: 'Image2'
                     font_size: '23sp'
                     font_name: "Font/PoetsenOne-Regular.ttf"
-                    color: 0.0, 0.0, 0.0, 1.0
-                    size_hint: (2, 2)
+                    # color: 0.0, 0.0, 0.0, 1.0
+                    size_hint: (1, 1)
                     width: 260
                     height: 260
                     pos_hint: {'center_x': 0.50}
@@ -496,7 +636,7 @@
             color: 1.0, 1.0, 1.0, 1.0 # 0.0, 0.0, 0.0, 1.0
             size_hint: None, None
             size: self.texture_size
-            pos_hint: {'center_x': 0.305, 'top': 0.2}
+            pos_hint: {'center_x': 0.337, 'top': 0.34}
             outline_color: 0.0, 0.0, 0.0, 1.0  # Warna stroke
             outline_width: 3
 
@@ -508,7 +648,7 @@
             size_hint: None, None
             size: self.texture_size
             halign: 'center'  # Horizontal alignment
-            pos_hint: {'center_x': 0.675, 'top': 0.2}
+            pos_hint: {'center_x': 0.665, 'top': 0.34}
             outline_color: 0.0, 0.0, 0.0, 1.0  # Warna stroke
             outline_width: 3
 
@@ -520,10 +660,10 @@
             pos: self.pos
             size: self.size
 
-    # Image:
-    #     source: 'Bg/Layar.png'
-    #     size_hint: (1, 1)
-    #     size: self.size
+    Image:
+        source: 'Bg/Bg6.png'
+        size_hint: (1, 1)
+        size: self.size
 
     FloatLayout:
         # Circular button with jagged edges and arrow image inside
@@ -575,29 +715,36 @@
             orientation: 'horizontal'
             size_hint: (None, None)
             size: (650, 300)
-            pos_hint: {'center_x': 0.37, 'top': 0.75}
+            pos_hint: {'center_x': 0.445, 'top': 0.85}
             spacing: 35
             # BoxLayout 1
             BoxLayout:
                 orientation: 'vertical'
                 size_hint: (None, None)
-                size: (290, 230)
+                size: (240, 180)
                 canvas.before:
                     Color:
-                        rgba: 1, 1, 1, 1
+                        rgba: 1, 1, 1, 0.2
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
                         radius: [20]
-                # Image:
-                Label:
+                # canvas.after:
+                #     Color:
+                #         rgba: 0, 0, 0, 1  # Warna hitam untuk outline
+                #     Line:
+                #         width: 1.5
+                #         rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+
+                Image:
+                # Label:
                     id: tebakwarna_image
-                    # source: 'Image/Tebak-warna.png'
-                    text: 'Image1'
+                    source: 'Image/Tebak-warna.png'
+                    # text: 'Image1'
                     font_size: '23sp'
                     font_name: "Font/PoetsenOne-Regular.ttf"
-                    color: 0.0, 0.0, 0.0, 1.0
-                    size_hint: (2, 2)
+                    # color: 0.0, 0.0, 0.0, 1.0
+                    size_hint: (1, 1)
                     width: 260
                     height: 260
                     pos_hint: {'center_x': 0.50}
@@ -605,23 +752,30 @@
             BoxLayout:
                 orientation: 'vertical'
                 size_hint: (None, None)
-                size: (290, 230)
+                size: (240, 180)
                 canvas.before:
                     Color:
-                        rgba: 1, 1, 1, 1
+                        rgba: 1, 1, 1, 0.2
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
                         radius: [20]
-                # Image:
-                Label:
+                # canvas.after:
+                #     Color:
+                #         rgba: 0, 0, 0, 1  # Warna hitam untuk outline
+                #     Line:
+                #         width: 1.5
+                #         rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+
+                Image:
+                # Label:
                     id: mencocokkangambar_image
-                    # source: 'Image/Mencocokkan-gambar.png'
-                    text: 'Image2'
+                    source: 'Image/Mencocokkan-gambar.png'
+                    # text: 'Image2'
                     font_size: '23sp'
                     font_name: "Font/PoetsenOne-Regular.ttf"
-                    color: 0.0, 0.0, 0.0, 1.0
-                    size_hint: (2, 2)
+                    # color: 0.0, 0.0, 0.0, 1.0
+                    size_hint: (1, 1)
                     width: 260
                     height: 260
                     pos_hint: {'center_x': 0.50}
@@ -629,23 +783,30 @@
             BoxLayout:
                 orientation: 'vertical'
                 size_hint: (None, None)
-                size: (290, 230)
+                size: (240, 180)
                 canvas.before:
                     Color:
-                        rgba: 1, 1, 1, 1
+                        rgba: 1, 1, 1, 0.2
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
                         radius: [20]
-                # Image:
-                Label:
+                # canvas.after:
+                #     Color:
+                #         rgba: 0, 0, 0, 1  # Warna hitam untuk outline
+                #     Line:
+                #         width: 1.5
+                #         rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+
+                Image:
+                # Label:
                     id: penjumlahan_image
-                    # source: 'Image/Penjumlahan.png'
-                    text: 'Image3'
+                    source: 'Image/Penjumlahan.png'
+                    # text: 'Image3'
                     font_size: '23sp'
                     font_name: "Font/PoetsenOne-Regular.ttf"
-                    color: 0.0, 0.0, 0.0, 1.0
-                    size_hint: (2, 2)
+                    # color: 0.0, 0.0, 0.0, 1.0
+                    size_hint: (1, 1)
                     width: 260
                     height: 260
                     pos_hint: {'center_x': 0.50}
@@ -657,7 +818,7 @@
             color: 1.0, 1.0, 1.0, 1.0 # 0.0, 0.0, 0.0, 1.0
             size_hint: None, None
             size: self.texture_size
-            pos_hint: {'center_x': 0.212, 'top': 0.22}
+            pos_hint: {'center_x': 0.265, 'top': 0.34}
             outline_color: 0.0, 0.0, 0.0, 1.0  # Warna stroke
             outline_width: 3
 
@@ -668,7 +829,7 @@
             color: 1.0, 1.0, 1.0, 1.0 # 0.0, 0.0, 0.0, 1.0
             size_hint: None, None
             halign: 'center'  # Horizontal alignment
-            pos_hint: {'center_x': 0.5, 'top': 0.25}
+            pos_hint: {'center_x': 0.51, 'top': 0.361}
             outline_color: 0.0, 0.0, 0.0, 1.0  # Warna stroke
             outline_width: 3
 
@@ -680,6 +841,6 @@
             size_hint: None, None
             size: self.texture_size
             halign: 'center'  # Horizontal alignment
-            pos_hint: {'center_x': 0.79, 'top': 0.221}
+            pos_hint: {'center_x': 0.755, 'top': 0.341}
             outline_color: 0.0, 0.0, 0.0, 1.0  # Warna stroke
             outline_width: 3

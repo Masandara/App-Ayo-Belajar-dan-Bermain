@@ -6,26 +6,31 @@
             pos: self.pos
             size: self.size
 
+    Image:
+        source: 'Bg/Bg7.png'
+        size_hint: (1, 1)
+        size: self.size
+
     FloatLayout:
         # Circular button with arrow-left for navigation
         FloatLayout:
             size_hint: None, None
             size: 1200, 185  # You can adjust the size here
             pos_hint: {'center_x': 0.5, 'top': 1.14}  # Adjust position
-            canvas.before:
-                # Menggambar bayangan
-                Color:
-                    rgba: 0.0, 0.0, 0.0, 0.25  # Warna bayangan (hitam transparan)
-                Ellipse:
-                    pos: self.x + 1, self.y - 3  # Offset bayangan
-                    size: self.size
+            # canvas.before:
+            #     # Menggambar bayangan
+            #     Color:
+            #         rgba: 0.0, 0.0, 0.0, 0.25  # Warna bayangan (hitam transparan)
+            #     Ellipse:
+            #         pos: self.x + 1, self.y - 3  # Offset bayangan
+            #         size: self.size
 
-                # Menggambar latar belakang
-                Color:
-                    rgba: 0.0, 1.0, 1.0, 1.0  # Cyan color (adjust if needed)
-                Ellipse:
-                    pos: self.pos
-                    size: self.size
+            #     # Menggambar latar belakang
+            #     Color:
+            #         rgba: 0.0, 1.0, 1.0, 1.0  # Cyan color (adjust if needed)
+            #     Ellipse:
+            #         pos: self.pos
+            #         size: self.size
 
         FloatLayout:
             size_hint: None, None

@@ -1,10 +1,15 @@
 <AlfabetScreen>:
-    canvas.before:
-        Color:
-            rgba: 0.894, 0.894, 0.894, 1.0
-        Rectangle:
-            pos: self.pos
-            size: self.size
+    # canvas.before:
+    #     Color:
+    #         rgba: 0.894, 0.894, 0.894, 1.0
+    #     Rectangle:
+    #         pos: self.pos
+    #         size: self.size
+
+    Image:
+        source: 'Bg/Bg7.png'
+        size_hint: (1, 1)
+        size: self.size
 
     FloatLayout:
         # Circular button with arrow-left for navigation
@@ -12,20 +17,20 @@
             size_hint: None, None
             size: 1200, 185  # You can adjust the size here
             pos_hint: {'center_x': 0.5, 'top': 1.14}  # Adjust position
-            canvas.before:
-                # Menggambar bayangan
-                Color:
-                    rgba: 0.0, 0.0, 0.0, 0.25  # Warna bayangan (hitam transparan)
-                Ellipse:
-                    pos: self.x + 1, self.y - 3  # Offset bayangan
-                    size: self.size
+            # canvas.before:
+            #     # Menggambar bayangan
+            #     Color:
+            #         rgba: 0.0, 0.0, 0.0, 0.25  # Warna bayangan (hitam transparan)
+            #     Ellipse:
+            #         pos: self.x + 1, self.y - 3  # Offset bayangan
+            #         size: self.size
 
-                # Menggambar latar belakang
-                Color:
-                    rgba: 0.0, 1.0, 1.0, 1.0  # Cyan color (adjust if needed)
-                Ellipse:
-                    pos: self.pos
-                    size: self.size
+            #     # Menggambar latar belakang
+            #     Color:
+            #         rgba: 0.0, 1.0, 1.0, 1.0  # Cyan color (adjust if needed)
+            #     Ellipse:
+            #         pos: self.pos
+            #         size: self.size
 
         FloatLayout:
             size_hint: None, None
@@ -63,16 +68,16 @@
                 on_press: root.go_to_mempelajari()  # Navigate back to MempelajariScreen
 
         # Alfabet label
-        Label:
-            text: 'ALFABET'
-            font_size: '40sp'
-            font_name: 'Font/Eracake.ttf'
-            color: 1.0, 1.0, 1.0, 1.0 # 1.0, 0.647, 0.0, 1.0 Orange
-            size_hint: None, None
-            size: self.texture_size
-            pos_hint: {'center_x': 0.5, 'top': 0.965}
-            outline_color: 0.0, 0.0, 0.0, 1.0  # Warna stroke
-            outline_width: 3
+        # Label:
+        #     text: 'ALFABET'
+        #     font_size: '40sp'
+        #     font_name: 'Font/Eracake.ttf'
+        #     color: 1.0, 1.0, 1.0, 1.0 # 1.0, 0.647, 0.0, 1.0 Orange
+        #     size_hint: None, None
+        #     size: self.texture_size
+        #     pos_hint: {'center_x': 0.5, 'top': 0.965}
+        #     outline_color: 0.0, 0.0, 0.0, 1.0  # Warna stroke
+        #     outline_width: 3
 
         # Question label: "Huruf apakah di bawah ini"
         Label:
