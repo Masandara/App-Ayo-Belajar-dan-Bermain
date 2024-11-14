@@ -1,0 +1,18 @@
+<LoginScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: 'Login'
+        TextInput:
+            id: email_input
+            hint_text: 'Email'
+        TextInput:
+            id: password_input
+            hint_text: 'Password'
+            password: True
+        Button:
+            text: 'Login'
+            on_press: root.login_user()
+        Button:
+            text: 'Daftar Akun'
+            on_press: app.root.current = 'register'

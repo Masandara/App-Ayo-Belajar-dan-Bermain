@@ -1,0 +1,21 @@
+<RegisterScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: 'Daftar Akun Baru'
+        TextInput:
+            id: name_input
+            hint_text: 'Nama'
+        TextInput:
+            id: email_input
+            hint_text: 'Email'
+        TextInput:
+            id: password_input
+            hint_text: 'Password'
+            password: True
+        Button:
+            text: 'Daftar'
+            on_press: root.register_user()
+        Button:
+            text: 'Kembali ke Login'
+            on_press: app.root.current = 'login'

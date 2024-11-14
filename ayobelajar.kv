@@ -112,12 +112,11 @@
                         pos: self.pos
                         size: self.size
                         radius: [20]
-                # canvas.after:
-                #     Color:
-                #         rgba: 0, 0, 0, 1  # Warna hitam untuk outline
-                #     Line:
-                #         width: 1.5
-                #         rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+                    # Color:
+                    #     rgba: 0, 0, 0, 1  # Warna hitam untuk outline
+                    # Line:
+                    #     width: 1.5
+                    #     rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
 
                 Image:
                 # Label:
@@ -145,12 +144,11 @@
                         pos: self.pos
                         size: self.size
                         radius: [20]
-                # canvas.after:
-                #     Color:
-                #         rgba: 0, 0, 0, 1  # Warna hitam untuk outline
-                #     Line:
-                #         width: 1.5
-                #         rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+                    # Color:
+                    #     rgba: 0, 0, 0, 1  # Warna hitam untuk outline
+                    # Line:
+                    #     width: 1.5
+                    #     rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
 
                 Image:
                 # Label:
@@ -193,8 +191,14 @@
             orientation: 'horizontal'
             size_hint: (None, None)
             size: (100, 50)
-            pos_hint: {'right': 0.96, 'top': 0.96}
+            pos_hint: {'right': 0.88, 'top': 0.96}
             spacing: 30
+
+            Image:
+                id: profil_icon
+                source: 'Icon/profil.png'  # Gantilah dengan path ikon profil Anda
+                size_hint: (None, None)  # Nonaktifkan ukuran otomatis
+                size: (50, 50)  # Ukuran ikon secara manual
 
             # Icon Gear
             Image:
@@ -383,12 +387,11 @@
                         pos: self.pos
                         size: self.size
                         radius: [20]
-                # canvas.after:
-                #     Color:
-                #         rgba: 0, 0, 0, 1  # Warna hitam untuk outline
-                #     Line:
-                #         width: 1.5
-                #         rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+                    # Color:
+                    #     rgba: 0, 0, 0, 1  # Warna hitam untuk outline
+                    # Line:
+                    #     width: 1.5
+                    #     rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
 
                 Image:
                 # Label:
@@ -415,12 +418,11 @@
                         pos: self.pos
                         size: self.size
                         radius: [20]
-                # canvas.after:
-                #     Color:
-                #         rgba: 0, 0, 0, 1  # Warna hitam untuk outline
-                #     Line:
-                #         width: 1.5
-                #         rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+                    # Color:
+                    #     rgba: 0, 0, 0, 1  # Warna hitam untuk outline
+                    # Line:
+                    #     width: 1.5
+                    #     rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
 
                 Image:
                 # Label:
@@ -446,12 +448,11 @@
                         pos: self.pos
                         size: self.size
                         radius: [20]
-                # canvas.after:
-                #     Color:
-                #         rgba: 0, 0, 0, 1  # Warna hitam untuk outline
-                #     Line:
-                #         width: 1.5
-                #         rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+                    # Color:
+                    #     rgba: 0, 0, 0, 1  # Warna hitam untuk outline
+                    # Line:
+                    #     width: 1.5
+                    #     rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
 
                 Image:
                 # Label:
@@ -501,12 +502,12 @@
             outline_width: 3
 
 <MengenalBSScreen>:
-    canvas.before:
-        Color:
-            rgba: 0.65, 0.65, 0.65, 1.0 # 0.408, 0.992, 0.894, 1.0 => Warna aqua/turquoise
-        Rectangle:
-            pos: self.pos
-            size: self.size
+    # canvas.before:
+    #     Color:
+    #         rgba: 0.65, 0.65, 0.65, 1.0 # 0.408, 0.992, 0.894, 1.0 => Warna aqua/turquoise
+    #     Rectangle:
+    #         pos: self.pos
+    #         size: self.size
 
     Image:
         source: 'Bg/Bg6.png'
@@ -577,12 +578,11 @@
                         pos: self.pos
                         size: self.size
                         radius: [20]
-                # canvas.after:
-                #     Color:
-                #         rgba: 0, 0, 0, 1  # Warna hitam untuk outline
-                #     Line:
-                #         width: 1.5
-                #         rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+                    # Color:
+                    #     rgba: 0, 0, 0, 1  # Warna hitam untuk outline
+                    # Line:
+                    #     width: 1.5
+                    #     rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
 
                 Image:
                 # Label:
@@ -609,12 +609,11 @@
                         pos: self.pos
                         size: self.size
                         radius: [20]
-                # canvas.after:
-                #     Color:
-                #         rgba: 0, 0, 0, 1  # Warna hitam untuk outline
-                #     Line:
-                #         width: 1.5
-                #         rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+                    # Color:
+                    #     rgba: 0, 0, 0, 1  # Warna hitam untuk outline
+                    # Line:
+                    #     width: 1.5
+                    #     rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
 
                 Image:
                 # Label:
@@ -701,7 +700,7 @@
         Label:
             text: 'Permainan'
             font_size: '40sp'
-            font_name: "Font/Mogra-Regular.ttf"
+            font_name: "Font/Eracake.ttf"
             color: 1.0, 1.0, 1.0, 1.0 # 0.0, 0.0, 0.0, 1.0
             size_hint: None, None
             halign: 'center'
@@ -729,12 +728,11 @@
                         pos: self.pos
                         size: self.size
                         radius: [20]
-                # canvas.after:
-                #     Color:
-                #         rgba: 0, 0, 0, 1  # Warna hitam untuk outline
-                #     Line:
-                #         width: 1.5
-                #         rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+                    # Color:
+                    #     rgba: 0, 0, 0, 1  # Warna hitam untuk outline
+                    # Line:
+                    #     width: 1.5
+                    #     rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
 
                 Image:
                 # Label:
@@ -760,12 +758,11 @@
                         pos: self.pos
                         size: self.size
                         radius: [20]
-                # canvas.after:
-                #     Color:
-                #         rgba: 0, 0, 0, 1  # Warna hitam untuk outline
-                #     Line:
-                #         width: 1.5
-                #         rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+                    # Color:
+                    #     rgba: 0, 0, 0, 1  # Warna hitam untuk outline
+                    # Line:
+                    #     width: 1.5
+                    #     rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
 
                 Image:
                 # Label:
@@ -791,12 +788,11 @@
                         pos: self.pos
                         size: self.size
                         radius: [20]
-                # canvas.after:
-                #     Color:
-                #         rgba: 0, 0, 0, 1  # Warna hitam untuk outline
-                #     Line:
-                #         width: 1.5
-                #         rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
+                    # Color:
+                    #     rgba: 0, 0, 0, 1  # Warna hitam untuk outline
+                    # Line:
+                    #     width: 1.5
+                    #     rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
 
                 Image:
                 # Label:

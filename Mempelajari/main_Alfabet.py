@@ -4,6 +4,7 @@ from kivy.uix.screenmanager import (
     ScreenManager,
     Screen,
 )
+from kivy.graphics import Color, RoundedRectangle, Line
 from kivy.lang import Builder
 from kivy.uix.popup import Popup
 from kivy.uix.label import Label
@@ -85,17 +86,18 @@ class AlfabetScreen(Screen):
                     self.get_huruf_saat_ini()
                 )  # Update menggunakan metode
 
-                # Ambil opsi jawaban baru dan bersihkan grid untuk memperbarui tampilan
+                # Ambil opsi jawaban baru tapi jangan bersihkan grid_jawaban
                 self.opsi_jawaban = self.acak_jawaban()
-                self.ids.grid_jawaban1.clear_widgets()
-                self.ids.grid_jawaban2.clear_widgets()
 
+                # Membuat tombol untuk soal berikutnya tanpa menghapus widget sebelumnya
                 for i, opsi in enumerate(self.opsi_jawaban):
-                    btn = self.buat_button(opsi)
-                    # Tambahkan tombol ke grid_jawaban1 atau grid_jawaban2
-                    if i < 3:
+                    btn = self.buat_button(
+                        opsi
+                    )  # Menggunakan fungsi buat_button untuk desain konsisten
+                    # Hanya menambah tombol jika jumlah tombol kurang dari 6
+                    if i < 3 and len(self.ids.grid_jawaban1.children) < 3:
                         self.ids.grid_jawaban1.add_widget(btn)
-                    else:
+                    elif i >= 3 and len(self.ids.grid_jawaban2.children) < 3:
                         self.ids.grid_jawaban2.add_widget(btn)
 
                 self.animasi_soal_dan_jawaban()
@@ -104,6 +106,36 @@ class AlfabetScreen(Screen):
         else:
             # Tidak ada pop-up jika jawaban salah, hanya abaikan
             pass
+
+        # Mengubah tampilan tombol yang benar menggunakan canvas.before
+        for btn in self.ids.grid_jawaban1.children + self.ids.grid_jawaban2.children:
+            # Pastikan btn adalah Button dan memiliki atribut text
+            if hasattr(btn, "text") and btn.text == jawaban:
+                btn.canvas.before.clear()
+                with btn.canvas.before:
+                    # Menambahkan warna latar belakang tombol yang benar
+                    Color(0.502, 0.502, 0.502, 1.0)  # Grey background
+                    RoundedRectangle(
+                        pos=btn.pos, size=btn.size, radius=[25]  # Sudut melengkung
+                    )
+
+                    # Menambahkan border pada tombol (stroke)
+                    Color(0, 0, 0, 1)  # Stroke berwarna hitam
+                    Line(
+                        width=2,
+                        rounded_rectangle=(
+                            btn.x,
+                            btn.y,
+                            btn.width,
+                            btn.height,
+                            25,
+                        ),  # Stroke melingkar
+                    )
+
+        # Menambahkan aksi pada tombol saat ditekan
+        btn.bind(on_release=lambda instance: self.periksa_jawaban(instance.text))
+
+        return btn
 
     def acak_jawaban(self):
         # Pastikan satu opsi adalah huruf yang benar
@@ -181,6 +213,13 @@ class AlfabetScreen(Screen):
             # Tutup pop-up setelah 1.5 detik
             Clock.schedule_once(lambda dt: popup.dismiss(), 1.8)
 
+    def update_button_styles(self):
+        # Paksa pembaruan canvas untuk setiap tombol dengan mengiterasinya
+        for btn in self.ids.grid_jawaban1.children:
+            btn.canvas.ask_update()
+        for btn in self.ids.grid_jawaban2.children:
+            btn.canvas.ask_update()
+
     def animasi_soal_dan_jawaban(self):
         # Animasi pada soal dan jawaban
         animasi_soal = Animation(opacity=0, duration=0.5) + Animation(
@@ -195,63 +234,63 @@ class AlfabetScreen(Screen):
         animasi_jawaban.start(self.ids.grid_jawaban1)  # Grid jawaban
         animasi_jawaban.start(self.ids.grid_jawaban2)  # Grid jawaban
 
-    def sesuaikan_grid_layout(self, sisa_huruf):
-        """
-        Fungsi untuk menyesuaikan GridLayout ketika mendekati huruf terakhir (W-Z).
-        Akan menampilkan jumlah opsi yang sesuai dengan huruf yang tersisa.
-        """
-        if sisa_huruf == 1:
-            # Hanya satu huruf tersisa
-            self.ids.grid_jawaban1.clear_widgets()
-            self.ids.grid_jawaban2.clear_widgets()
+    # def sesuaikan_grid_layout(self, sisa_huruf):
+    #     """
+    #     Fungsi untuk menyesuaikan GridLayout ketika mendekati huruf terakhir (W-Z).
+    #     Akan menampilkan jumlah opsi yang sesuai dengan huruf yang tersisa.
+    #     """
+    #     if sisa_huruf == 1:
+    #         # Hanya satu huruf tersisa
+    #         self.ids.grid_jawaban1.clear_widgets()
+    #         self.ids.grid_jawaban2.clear_widgets()
 
-            # Buat satu tombol di grid_jawaban1
-            self.ids.grid_jawaban1.add_widget(self.buat_button(self.opsi_jawaban[0]))
+    #         # Buat satu tombol di grid_jawaban1
+    #         self.ids.grid_jawaban1.add_widget(self.buat_button(self.opsi_jawaban[0]))
 
-        elif sisa_huruf == 2:
-            # Dua huruf tersisa
-            self.ids.grid_jawaban1.clear_widgets()
-            self.ids.grid_jawaban2.clear_widgets()
+    #     elif sisa_huruf == 2:
+    #         # Dua huruf tersisa
+    #         self.ids.grid_jawaban1.clear_widgets()
+    #         self.ids.grid_jawaban2.clear_widgets()
 
-            # Buat dua tombol di grid_jawaban1
-            self.ids.grid_jawaban1.add_widget(self.buat_button(self.opsi_jawaban[0]))
-            self.ids.grid_jawaban1.add_widget(self.buat_button(self.opsi_jawaban[1]))
+    #         # Buat dua tombol di grid_jawaban1
+    #         self.ids.grid_jawaban1.add_widget(self.buat_button(self.opsi_jawaban[0]))
+    #         self.ids.grid_jawaban1.add_widget(self.buat_button(self.opsi_jawaban[1]))
 
-        elif sisa_huruf == 3:
-            # Tiga huruf tersisa
-            self.ids.grid_jawaban1.clear_widgets()
-            self.ids.grid_jawaban2.clear_widgets()
+    #     elif sisa_huruf == 3:
+    #         # Tiga huruf tersisa
+    #         self.ids.grid_jawaban1.clear_widgets()
+    #         self.ids.grid_jawaban2.clear_widgets()
 
-            # Buat tiga tombol di grid_jawaban1
-            self.ids.grid_jawaban1.add_widget(self.buat_button(self.opsi_jawaban[0]))
-            self.ids.grid_jawaban1.add_widget(self.buat_button(self.opsi_jawaban[1]))
-            self.ids.grid_jawaban1.add_widget(self.buat_button(self.opsi_jawaban[2]))
+    #         # Buat tiga tombol di grid_jawaban1
+    #         self.ids.grid_jawaban1.add_widget(self.buat_button(self.opsi_jawaban[0]))
+    #         self.ids.grid_jawaban1.add_widget(self.buat_button(self.opsi_jawaban[1]))
+    #         self.ids.grid_jawaban1.add_widget(self.buat_button(self.opsi_jawaban[2]))
 
-        elif sisa_huruf == 4:
-            # Empat huruf tersisa
-            self.ids.grid_jawaban1.clear_widgets()
-            self.ids.grid_jawaban2.clear_widgets()
+    #     elif sisa_huruf == 4:
+    #         # Empat huruf tersisa
+    #         self.ids.grid_jawaban1.clear_widgets()
+    #         self.ids.grid_jawaban2.clear_widgets()
 
-            # Buat tiga tombol di grid_jawaban1 dan satu di grid_jawaban2
-            self.ids.grid_jawaban1.add_widget(self.buat_button(self.opsi_jawaban[0]))
-            self.ids.grid_jawaban1.add_widget(self.buat_button(self.opsi_jawaban[1]))
-            self.ids.grid_jawaban1.add_widget(self.buat_button(self.opsi_jawaban[2]))
-            self.ids.grid_jawaban2.add_widget(self.buat_button(self.opsi_jawaban[3]))
+    #         # Buat tiga tombol di grid_jawaban1 dan satu di grid_jawaban2
+    #         self.ids.grid_jawaban1.add_widget(self.buat_button(self.opsi_jawaban[0]))
+    #         self.ids.grid_jawaban1.add_widget(self.buat_button(self.opsi_jawaban[1]))
+    #         self.ids.grid_jawaban1.add_widget(self.buat_button(self.opsi_jawaban[2]))
+    #         self.ids.grid_jawaban2.add_widget(self.buat_button(self.opsi_jawaban[3]))
 
-        else:
-            # Jika lebih dari 4 huruf tersisa, tampilkan normal seperti biasa
-            self.ids.grid_jawaban1.clear_widgets()
-            self.ids.grid_jawaban2.clear_widgets()
+    #     else:
+    #         # Jika lebih dari 4 huruf tersisa, tampilkan normal seperti biasa
+    #         self.ids.grid_jawaban1.clear_widgets()
+    #         self.ids.grid_jawaban2.clear_widgets()
 
-            for i in range(3):
-                self.ids.grid_jawaban1.add_widget(
-                    self.buat_button(self.opsi_jawaban[i])
-                )
+    #         for i in range(3):
+    #             self.ids.grid_jawaban1.add_widget(
+    #                 self.buat_button(self.opsi_jawaban[i])
+    #             )
 
-            for i in range(3, len(self.opsi_jawaban)):
-                self.ids.grid_jawaban2.add_widget(
-                    self.buat_button(self.opsi_jawaban[i])
-                )
+    #         for i in range(3, len(self.opsi_jawaban)):
+    #             self.ids.grid_jawaban2.add_widget(
+    #                 self.buat_button(self.opsi_jawaban[i])
+    #             )
 
 
 # Load the Alfabet.kv file manually

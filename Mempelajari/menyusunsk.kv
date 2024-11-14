@@ -1,10 +1,15 @@
 <MenyusunSKScreen>:
-    canvas.before:
-        Color:
-            rgba: 0.894, 0.894, 0.894, 1.0
-        Rectangle:
-            pos: self.pos
-            size: self.size
+    # canvas.before:
+    #     Color:
+    #         rgba: 0.894, 0.894, 0.894, 1.0
+    #     Rectangle:
+    #         pos: self.pos
+    #         size: self.size
+
+    Image:
+        source: 'Bg/Bg7.png'
+        size_hint: (1, 1)
+        size: self.size
 
     FloatLayout:
         # Circular button with arrow-left for navigation
@@ -12,20 +17,20 @@
             size_hint: None, None
             size: 1200, 185  # You can adjust the size here
             pos_hint: {'center_x': 0.5, 'top': 1.14}  # Adjust position
-            canvas.before:
-                # Menggambar bayangan
-                Color:
-                    rgba: 0.0, 0.0, 0.0, 0.25  # Warna bayangan (hitam transparan)
-                Ellipse:
-                    pos: self.x + 1, self.y - 3  # Offset bayangan
-                    size: self.size
+            # canvas.before:
+            #     # Menggambar bayangan
+            #     Color:
+            #         rgba: 0.0, 0.0, 0.0, 0.25  # Warna bayangan (hitam transparan)
+            #     Ellipse:
+            #         pos: self.x + 1, self.y - 3  # Offset bayangan
+            #         size: self.size
 
-                # Menggambar latar belakang
-                Color:
-                    rgba: 0.0, 1.0, 1.0, 1.0  # Cyan color (adjust if needed)
-                Ellipse:
-                    pos: self.pos
-                    size: self.size
+            #     # Menggambar latar belakang
+            #     Color:
+            #         rgba: 0.0, 1.0, 1.0, 1.0  # Cyan color (adjust if needed)
+            #     Ellipse:
+            #         pos: self.pos
+            #         size: self.size
 
         FloatLayout:
             id: float_layout
@@ -66,12 +71,12 @@
         # Alfabet label
         Label:
             text: 'MENYUSUN SUKU KATA'
-            font_size: '40sp'
+            font_size: '32sp'
             font_name: 'Font/Eracake.ttf'
             color: 1.0, 1.0, 1.0, 1.0 # 1.0, 0.647, 0.0, 1.0 Orange
             size_hint: None, None
             size: self.texture_size
-            pos_hint: {'center_x': 0.5, 'top': 0.965}
+            pos_hint: {'center_x': 0.5, 'top': 0.87}
             outline_color: 0.0, 0.0, 0.0, 1.0  # Warna stroke
             outline_width: 3
 
@@ -80,14 +85,14 @@
             spacing: 30
             size_hint: None, None
             size: 1000, 300
-            pos_hint: {'center_x': 0.8, 'center_y': 0.71}
+            pos_hint: {'center_x': 0.825, 'center_y': 0.73}
 
             FloatLayout:
                 size_hint: None, None
-                size: 310, 200
+                size: 280, 170
                 canvas.before:
                     Color:
-                        rgba: 1, 1, 1, 1
+                        rgba: 1, 1, 1, 0.2
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
@@ -97,226 +102,154 @@
                     id: image_display
                     source: 'Image/Susun-kata/Sepeda.png'
                     size_hint: None, None
-                    size: 250, 200
+                    size: 230, 180
                     pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 
                 Label:
                     id: answer_1
-                    text: '----'
+                    text: '---'
                     font_size: '40sp'
                     font_name: 'Font/PoetsenOne-Regular.ttf'
                     color: 0, 0, 0, 1
                     size_hint: None, None
                     size: self.texture_size
-                    pos_hint: {'center_x': 0.2, 'y': -0.75}
+                    pos_hint: {'center_x': 0.15, 'y': -0.5}
 
                 Label:
                     id: answer_2
-                    text: ' ---- '
+                    text: '---'
                     font_size: '40sp'
                     font_name: 'Font/PoetsenOne-Regular.ttf'
                     color: 0, 0, 0, 1
                     size_hint: None, None
                     size: self.texture_size
-                    pos_hint: {'center_x': 0.5, 'y': -0.75}
+                    pos_hint: {'center_x': 0.5, 'y': -0.5}
 
                 Label:
                     id: answer_3
-                    text: '----'
+                    text: '---'
                     font_size: '40sp'
                     font_name: 'Font/PoetsenOne-Regular.ttf'
                     color: 0, 0, 0, 1
                     size_hint: None, None
                     size: self.texture_size
-                    pos_hint: {'center_x': 0.8, 'y': -0.75}
+                    pos_hint: {'center_x': 0.85, 'y': -0.5}
 
         BoxLayout:
             orientation: 'horizontal'
-            spacing: 30
+            spacing: 35
             size_hint: None, None
             size: 1000, 300
-            pos_hint: {'center_x': 0.65, 'center_y': 0.34}
+            pos_hint: {'center_x': 0.65, 'center_y': 0.42}
 
-            BoxLayout:
-                orientation: 'horizontal'
-                spacing: 30
+            FloatLayout:
+                size_hint: None, None
+                size: 140, 80
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 0.2
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [20]
+                    Color:
+                        rgba: 0, 0, 0, 1  # Warna cyan untuk stroke
+                    Line:
+                        width: 2
+                        rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
 
-                FloatLayout:
+                Button:
+                    id: choice_1
+                    text: 'SE'
+                    font_size: '30sp'
+                    font_name: 'Font/PoetsenOne-Regular.ttf'
+                    color: 0, 0, 0, 1
                     size_hint: None, None
                     size: 140, 80
-                    canvas.before:
-                        Color:
-                            rgba: 1, 1, 1, 1
-                        RoundedRectangle:
-                            pos: self.pos
-                            size: self.size
-                            radius: [20]
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    background_color: 0, 0, 0, 0
+                    on_press: root.check_answer(self, 0)
 
-                    Button:
-                        id: choice_1
-                        text: 'SE'
-                        font_size: '30sp'
-                        font_name: 'Font/PoetsenOne-Regular.ttf'
-                        color: 0, 0, 0, 1
-                        size_hint: None, None
-                        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-                        on_press: root.check_answer(self, 0)
+            FloatLayout:
+                size_hint: None, None
+                size: 140, 80
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 0.2
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [20]
+                    Color:
+                        rgba: 0, 0, 0, 1  # Warna cyan untuk stroke
+                    Line:
+                        width: 2
+                        rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
 
-                FloatLayout:
+                Button:
+                    id: choice_2
+                    text: 'PE'
+                    font_size: '30sp'
+                    font_name: 'Font/PoetsenOne-Regular.ttf'
+                    color: 0, 0, 0, 1
                     size_hint: None, None
                     size: 140, 80
-                    canvas.before:
-                        Color:
-                            rgba: 1, 1, 1, 1
-                        RoundedRectangle:
-                            pos: self.pos
-                            size: self.size
-                            radius: [20]
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    background_color: 0, 0, 0, 0
+                    on_press: root.check_answer(self, 1)
 
-                    Button:
-                        id: choice_2
-                        text: 'PE'
-                        font_size: '30sp'
-                        font_name: 'Font/PoetsenOne-Regular.ttf'
-                        color: 0, 0, 0, 1
-                        size_hint: None, None
-                        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-                        on_press: root.check_answer(self, 1)
+            FloatLayout:
+                size_hint: None, None
+                size: 140, 80
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 0.2
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [20]
+                    Color:
+                        rgba: 0, 0, 0, 1  # Warna cyan untuk stroke
+                    Line:
+                        width: 2
+                        rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
 
-                FloatLayout:
+                Button:
+                    id: choice_3
+                    text: 'DA'
+                    font_size: '30sp'
+                    font_name: 'Font/PoetsenOne-Regular.ttf'
+                    color: 0, 0, 0, 1
                     size_hint: None, None
                     size: 140, 80
-                    canvas.before:
-                        Color:
-                            rgba: 1, 1, 1, 1
-                        RoundedRectangle:
-                            pos: self.pos
-                            size: self.size
-                            radius: [20]
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    background_color: 0, 0, 0, 0
+                    on_press: root.check_answer(self, 2)
 
-                    Button:
-                        id: choice_3
-                        text: 'DA'
-                        font_size: '30sp'
-                        font_name: 'Font/PoetsenOne-Regular.ttf'
-                        color: 0, 0, 0, 1
-                        size_hint: None, None
-                        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-                        on_press: root.check_answer(self, 2)
+            FloatLayout:
+                size_hint: None, None
+                size: 140, 80
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 0.2
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [20]
+                    Color:
+                        rgba: 0, 0, 0, 1  # Warna cyan untuk stroke
+                    Line:
+                        width: 2
+                        rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
 
-                FloatLayout:
+                Button:
+                    id: choice_4
+                    text: 'DE'
+                    font_size: '30sp'
+                    font_name: 'Font/PoetsenOne-Regular.ttf'
+                    color: 0, 0, 0, 1
                     size_hint: None, None
                     size: 140, 80
-                    canvas.before:
-                        Color:
-                            rgba: 1, 1, 1, 1
-                        RoundedRectangle:
-                            pos: self.pos
-                            size: self.size
-                            radius: [20]
-
-                    Button:
-                        id: choice_4
-                        text: 'DE'
-                        font_size: '30sp'
-                        font_name: 'Font/PoetsenOne-Regular.ttf'
-                        color: 0, 0, 0, 1
-                        size_hint: None, None
-                        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-                        on_press: root.check_answer(self, 3)
-
-            # BoxLayout:
-            #     orientation: 'horizontal'
-            #     spacing: 30
-
-            #     FloatLayout:
-            #         size_hint: None, None
-            #         size: 140, 80
-            #         canvas.before:
-            #             Color:
-            #                 rgba: 1, 1, 1, 1
-            #             RoundedRectangle:
-            #                 pos: self.pos
-            #                 size: self.size
-            #                 radius: [20]
-            #             Color:
-            #                 rgba: 0, 0, 0, 1  # Warna cyan untuk stroke
-            #             Line:
-            #                 width: 2
-            #                 rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
-
-            #         Label:
-            #             text: 'SE'
-            #             font_size: '30sp'
-            #             font_name: 'Font/PoetsenOne-Regular.ttf'  # Menggunakan font PoetsenOne
-            #             color: 0, 0, 0, 1
-            #             pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-
-            #     FloatLayout:
-            #         size_hint: None, None
-            #         size: 140, 80
-            #         canvas.before:
-            #             Color:
-            #                 rgba: 1, 1, 1, 1
-            #             RoundedRectangle:
-            #                 pos: self.pos
-            #                 size: self.size
-            #                 radius: [20]
-            #             Color:
-            #                 rgba: 0, 0, 0, 1  # Warna cyan untuk stroke
-            #             Line:
-            #                 width: 2
-            #                 rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
-
-            #         Label:
-            #             text: 'DA'
-            #             font_size: '30sp'
-            #             font_name: 'Font/PoetsenOne-Regular.ttf'  # Menggunakan font PoetsenOne
-            #             color: 0, 0, 0, 1
-            #             pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-
-            #     FloatLayout:
-            #         size_hint: None, None
-            #         size: 140, 80
-            #         canvas.before:
-            #             Color:
-            #                 rgba: 1, 1, 1, 1
-            #             RoundedRectangle:
-            #                 pos: self.pos
-            #                 size: self.size
-            #                 radius: [20]
-            #             Color:
-            #                 rgba: 0, 0, 0, 1  # Warna cyan untuk stroke
-            #             Line:
-            #                 width: 2
-            #                 rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
-
-            #         Label:
-            #             text: 'PE'
-            #             font_size: '30sp'
-            #             font_name: 'Font/PoetsenOne-Regular.ttf'  # Menggunakan font PoetsenOne
-            #             color: 0, 0, 0, 1
-            #             pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-
-            #     FloatLayout:
-            #         size_hint: None, None
-            #         size: 140, 80
-            #         canvas.before:
-            #             Color:
-            #                 rgba: 1, 1, 1, 1
-            #             RoundedRectangle:
-            #                 pos: self.pos
-            #                 size: self.size
-            #                 radius: [20]
-            #             Color:
-            #                 rgba: 0, 0, 0, 1  # Warna cyan untuk stroke
-            #             Line:
-            #                 width: 2
-            #                 rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
-
-            #         Label:
-            #             text: 'AD'
-            #             font_size: '30sp'
-            #             font_name: 'Font/PoetsenOne-Regular.ttf'  # Menggunakan font PoetsenOne
-            #             color: 0, 0, 0, 1
-            #             pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    background_color: 0, 0, 0, 0
+                    on_press: root.check_answer(self, 3)

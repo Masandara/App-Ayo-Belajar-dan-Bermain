@@ -1,0 +1,58 @@
+<ProfilScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 10
+
+        Label:
+            id: email_label
+            text: "Email: -"
+            font_size: 18
+
+        BoxLayout:
+            size_hint_y: None
+            height: 50
+            orientation: 'horizontal'
+
+            Button:
+                size_hint: None, None
+                size: 30, 30
+                background_normal: 'Image/arrow-left.png'  # Ganti dengan ikon kembali Anda
+                on_release: root.manager.current = 'layar'
+
+        BoxLayout:
+            Label:
+                id: name_label
+                text: "Nama: -"
+                font_size: 18
+            Button:
+                text: "Edit Nama"
+                on_press: root.edit_name()
+
+        BoxLayout:
+            Label:
+                text: "Password: ******"
+                font_size: 18
+            Button:
+                text: "Edit Password"
+                on_press: root.edit_password()
+
+        BoxLayout:
+            Label:
+                id: age_label
+                text: "Umur: -"
+                font_size: 18
+            Button:
+                id: age_button
+                text: "Tambahkan Umur"
+                on_press: root.add_or_edit_age()
+
+        BoxLayout:
+            Label:
+                id: hobby_label
+                text: "Hobi: -"
+                font_size: 18
+            Button:
+                id: hobby_button
+                text: "Tambahkan Hobi"
+                on_press: root.add_or_edit_hobby()

@@ -1,10 +1,15 @@
 <BuahScreen>:
-    canvas.before:
-        Color:
-            rgba: 0.894, 0.894, 0.894, 1.0
-        Rectangle:
-            pos: self.pos
-            size: self.size
+    # canvas.before:
+    #     Color:
+    #         rgba: 0.894, 0.894, 0.894, 1.0
+    #     Rectangle:
+    #         pos: self.pos
+    #         size: self.size
+
+    Image:
+        source: 'Bg/Bg7.png'
+        size_hint: (1, 1)
+        size: self.size
 
     FloatLayout:
         # Circular button with arrow-left for navigation
@@ -12,20 +17,20 @@
             size_hint: None, None
             size: 1200, 185  # You can adjust the size here
             pos_hint: {'center_x': 0.5, 'top': 1.14}  # Adjust position
-            canvas.before:
-                # Menggambar bayangan
-                Color:
-                    rgba: 0.0, 0.0, 0.0, 0.25  # Warna bayangan (hitam transparan)
-                Ellipse:
-                    pos: self.x + 1, self.y - 3  # Offset bayangan
-                    size: self.size
+            # canvas.before:
+            #     # Menggambar bayangan
+            #     Color:
+            #         rgba: 0.0, 0.0, 0.0, 0.25  # Warna bayangan (hitam transparan)
+            #     Ellipse:
+            #         pos: self.x + 1, self.y - 3  # Offset bayangan
+            #         size: self.size
 
-                # Menggambar latar belakang
-                Color:
-                    rgba: 0.0, 1.0, 1.0, 1.0  # Cyan color (adjust if needed)
-                Ellipse:
-                    pos: self.pos
-                    size: self.size
+            #     # Menggambar latar belakang
+            #     Color:
+            #         rgba: 0.0, 1.0, 1.0, 1.0  # Cyan color (adjust if needed)
+            #     Ellipse:
+            #         pos: self.pos
+            #         size: self.size
 
         # Tombol kembali
         FloatLayout:
@@ -63,21 +68,21 @@
         # Label utama
         Label:
             id: label_nama_buah
-            text: 'APEL'
-            font_size: '50sp'
+            text: ''
+            font_size: '30sp'
             font_name: "Font/PoetsenOne-Regular.ttf"
             color: 1.0, 1.0, 1.0, 1.0
             size_hint: None, None
             size: self.texture_size
-            pos_hint: {'center_x': 0.5, 'top': 0.99}
+            pos_hint: {'center_x': 0.5, 'top': 0.46}
             outline_color: 0.0, 0.0, 0.0, 1.0
-            outline_width: 3
+            outline_width: 2
 
         # Tempat untuk Soal gambar buah dan panah di bawah label APEL
         Image:
             id: soal_image
             size_hint: None, None
-            size: 250, 250
+            size: 180, 180
             pos_hint: {'center_x': 0.5, 'top': 0.77}
 
         Button:
@@ -102,7 +107,7 @@
             Widget:
                 id: outline
                 size_hint: None, None
-                size: 120, 145
+                size: 150, 175
                 canvas.before:
                     Color:
                         rgba: 0.894, 0.894, 0.894, 0
@@ -122,10 +127,10 @@
             id: jawaban_container
             orientation: 'horizontal'
             size_hint: None, None
-            size: 975, 145
-            pos_hint: {'center_x': 0.5, 'top': 0.29}
-            padding: 20
-            spacing: 40
+            size: 795, 110
+            pos_hint: {'center_x': 0.5, 'top': 0.35}
+            padding: 17
+            spacing: 30
             halign: 'center'
             canvas.before:
                 Color:
@@ -147,40 +152,40 @@
                 id: jawaban_apel
                 source: 'Image/Buah/Apel.png'
                 size_hint: None, None
-                size: 100, 100
+                size: 80, 80
 
             Image:
                 id: jawaban_ceri
                 source: 'Image/Buah/Ceri.png'
                 size_hint: None, None
-                size: 100, 100
+                size: 80, 80
 
             Image:
                 id: jawaban_durian
                 source: 'Image/Buah/Durian.png'
                 size_hint: None, None
-                size: 100, 100
+                size: 80, 80
 
             Image:
                 id: jawaban_mangga
                 source: 'Image/Buah/Mangga.png'
                 size_hint: None, None
-                size: 100, 100
+                size: 80, 80
 
             Image:
                 id: jawaban_lemon
                 source: 'Image/Buah/Lemon.png'
                 size_hint: None, None
-                size: 100, 100
+                size: 80, 80
 
             Image:
                 id: jawaban_pisang
                 source: 'Image/Buah/Pisang.png'
                 size_hint: None, None
-                size: 100, 100
+                size: 80, 80
 
             Image:
                 id: jawaban_naga
                 source: 'Image/Buah/Naga.png'
                 size_hint: None, None
-                size: 100, 100
+                size: 80, 80

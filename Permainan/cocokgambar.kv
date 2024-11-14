@@ -70,12 +70,12 @@
         # Judul Permainan
         Label:
             text: 'MENCOCOKKAN GAMBAR'
-            font_size: '40sp'
+            font_size: '32sp'
             font_name: 'Font/Eracake.ttf'
             color: 1.0, 1.0, 1.0, 1.0 # 1.0, 0.647, 0.0, 1.0 Orange
             size_hint: None, None
             size: self.texture_size
-            pos_hint: {'center_x': 0.5, 'top': 0.965}
+            pos_hint: {'center_x': 0.5, 'top': 0.87}
             outline_color: 0.0, 0.0, 0.0, 1.0  # Warna stroke
             outline_width: 3
 
@@ -107,13 +107,26 @@
                     size: 230, 180
                     pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 
+                # Label untuk menampilkan keterangan soal saat jawaban benar
+                Label:
+                    id: question_label
+                    text: root.current_question_label
+                    font_size: '25sp'
+                    font_name: 'Font/PoetsenOne-Regular.ttf'
+                    color: 1, 1, 1, 1
+                    size_hint: None, None
+                    opacity: 1 if root.show_label else 0
+                    pos_hint: {'center_x': 0.5, 'center_y': -0.2}
+                    outline_color: 0.0, 0.0, 0.0, 1.0  # Warna stroke
+                    outline_width: 2.5
+
         # Kolom utama untuk gambar
         BoxLayout:
             orientation: 'horizontal'
             spacing: 30
             size_hint: None, None
             size: 1000, 300
-            pos_hint: {'center_x': 0.63, 'center_y': 0.4}
+            pos_hint: {'center_x': 0.63, 'center_y': 0.41}
 
             # Kolom gambar opsi
             BoxLayout:
@@ -135,7 +148,6 @@
 
                     Image:
                         id: answer_1_img
-                        # source: 'Image/Cocok-gambar/Jawab11.png'  # Gambar opsi pertama
                         size_hint: None, None
                         size: 170, 120
                         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
@@ -160,7 +172,6 @@
 
                     Image:
                         id: answer_2_img
-                        # source: 'Image/Cocok-gambar/Jawab12.png'  # Gambar opsi kedua
                         size_hint: None, None
                         size: 170, 120
                         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
@@ -185,7 +196,6 @@
 
                     Image:
                         id: answer_3_img
-                        # source: 'Image/Cocok-gambar/Jawab13.png'  # Gambar opsi ketiga
                         size_hint: None, None
                         size: 170, 120
                         pos_hint: {'center_x': 0.5, 'center_y': 0.5}

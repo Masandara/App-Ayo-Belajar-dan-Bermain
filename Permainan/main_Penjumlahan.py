@@ -30,7 +30,7 @@ class CustomPopup(Popup):
 
             Color(0, 0, 0, 1)  # Hitam
             self.line = Line(
-                rectangle=(self.x, self.y, self.width, self.height), width=2
+                rectangle=(self.x, self.y, self.width, self.height), width=1.5
             )
 
         self.bind(size=self._update_rect, pos=self._update_rect)
@@ -41,10 +41,6 @@ class CustomPopup(Popup):
             text=message, size_hint_y=None, height=40, color=(1, 1, 1, 1)
         )
         self.content.add_widget(message_label)
-
-        close_button = Button(text="Tutup", size_hint_y=None, height=40)
-        close_button.bind(on_release=self.dismiss)
-        self.content.add_widget(close_button)
 
         Clock.schedule_once(lambda dt: self.dismiss(), 2)
 
@@ -70,17 +66,11 @@ class PenjumlahanScreen(Screen):
     ]
 
     def on_enter(self):
-        print("Entering PenjumlahanScreen")
-        print("Available IDs:", self.ids.keys())
-        # Generate the first question when the screen is entered
         Clock.schedule_once(lambda dt: self.generate_question())
 
     def generate_question(self):
-        print("generate_question called")  # Debug print
-        print("Current IDs:", self.ids)
         self.angka1 = random.randint(1, 10)
         self.angka2 = random.randint(1, 10)
-        print(f"Angka: {self.angka1}, {self.angka2}")  # Debug print
         self.buah_terpilih = random.choice(self.gambar_list)
 
         self.ids.soal_label.text = f" {self.angka1}   +   {self.angka2}   =   ?"
@@ -124,8 +114,12 @@ class PenjumlahanScreen(Screen):
 
     def check_jawaban(self, jawaban):
         if jawaban == (self.angka1 + self.angka2):
+            # Ganti tanda tanya dengan jawaban yang benar
+            self.ids.soal_label.text = (
+                f" {self.angka1}   +   {self.angka2}   =   {jawaban}"
+            )
             self.show_popup("Jawaban Benar!", "Selamat, jawaban Anda benar!")
-            Clock.schedule_once(lambda dt: self.generate_question(), 2)
+            Clock.schedule_once(lambda dt: self.generate_question(), 1.5)
         else:
             self.show_popup("Jawaban Salah!", "Coba lagi!")
 

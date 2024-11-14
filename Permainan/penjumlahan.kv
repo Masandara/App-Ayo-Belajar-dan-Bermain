@@ -65,12 +65,12 @@
         # Label judul "PENJUMLAHAN"
         Label:
             text: 'PENJUMLAHAN'
-            font_size: '40sp'
+            font_size: '32sp'
             font_name: 'Font/Eracake.ttf'
             color: 1.0, 1.0, 1.0, 1.0  # Warna teks putih
             size_hint: None, None
             size: self.texture_size
-            pos_hint: {'center_x': 0.5, 'top': 0.965}
+            pos_hint: {'center_x': 0.5, 'top': 0.87}
             outline_color: 0.0, 0.0, 0.0, 1.0  # Warna outline hitam
             outline_width: 3
 
@@ -90,233 +90,120 @@
             id: kotak_buah_a  # ID untuk kotak apel angka 2
             cols: 3
             rows: 4
-            spacing: 10
-            padding: 10
+            spacing: 20
+            padding: 15, 15, 15, 15
             size_hint: None, None
-            height: self.minimum_height
-            width: self.minimum_width
-            pos_hint: {'x': 0.12, 'center_y': 0.35}
+            size: 225, 285  # Ukuran tetap untuk wadah X, Y
+            pos_hint: {'x': 0.21, 'center_y': 0.4}
             canvas.before:
                 Color:
-                    rgba: 1.0, 1.0, 1.0, 1.0  # Warna kotak putih
+                    rgba: 1.0, 1.0, 1.0, 0.2  # Warna kotak putih
                 RoundedRectangle:
                     pos: self.pos
                     size: self.size
                     radius: [20]  # Radius di setiap sudut
-        # FloatLayout:
-        #     size_hint: None, None
-        #     size: 300, 300
-        #     pos_hint: {'x': 0.12, 'center_y': 0.35}
-        #     canvas.before:
-        #         Color:
-        #             rgba: 1.0, 1.0, 1.0, 1.0  # Warna kotak putih
-        #         RoundedRectangle:
-        #             pos: self.pos
-        #             size: self.size
-        #             radius: [20]  # Radius di setiap sudut
+                Color:
+                    rgba: 0, 0, 0, 1  # Warna hitam untuk outline
+                Line:
+                    width: 1.5
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
 
-        #     # Gambar apel di tengah
-        #     Image:
-        #         source: 'Image/Buah/Apel.png'
-        #         size_hint: None, None
-        #         size: 100, 100
-        #         pos_hint: {'center_x': 0.5, 'center_y': 0.7}
-
-        #     Image:
-        #         source: 'Image/Buah/Apel.png'
-        #         size_hint: None, None
-        #         size: 100, 100
-        #         pos_hint: {'center_x': 0.5, 'center_y': 0.3}
-
-        # Kotak apel untuk angka 6 dengan radius 20 dan apel di tengah
+        # Kotak apel dengan radius 20 dan apel di tengah
         GridLayout:
             id: kotak_buah_b  # ID untuk kotak apel angka 6
             cols: 3
             rows: 4
-            spacing: 10
-            padding: 10
+            spacing: 20
+            padding: 15, 15, 15, 15
             size_hint: None, None
-            height: self.minimum_height
-            width: self.minimum_width
-            pos_hint: {'x': 0.45, 'center_y': 0.35}
+            size: 225, 285  # Ukuran tetap untuk wadah
+            pos_hint: {'x': 0.45, 'center_y': 0.4}
             canvas.before:
                 Color:
-                    rgba: 1.0, 1.0, 1.0, 1.0  # Warna kotak putih
+                    rgba: 1.0, 1.0, 1.0, 0.2  # Warna kotak putih
                 RoundedRectangle:
                     pos: self.pos
                     size: self.size
                     radius: [20]  # Radius di setiap sudut
-        # GridLayout:
-        #     cols: 2
-        #     rows: 3
-        #     spacing: 10
-        #     size_hint: None, None
-        #     size: 300, 300
-        #     pos_hint: {'x': 0.45, 'center_y': 0.35}
-        #     canvas.before:
-        #         Color:
-        #             rgba: 1.0, 1.0, 1.0, 1.0  # Warna kotak putih
-        #         RoundedRectangle:
-        #             pos: self.pos
-        #             size: self.size
-        #             radius: [20]  # Radius di setiap sudut
-
-        #     # 6 apel di tengah kolom
-        #     Image:
-        #         source: 'Image/Buah/Apel.png'
-        #         size_hint: None, None
-        #         size: 80, 80
-        #         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-        #     Image:
-        #         source: 'Image/Buah/Apel.png'
-        #         size_hint: None, None
-        #         size: 80, 80
-        #         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-        #     Image:
-        #         source: 'Image/Buah/Apel.png'
-        #         size_hint: None, None
-        #         size: 80, 80
-        #         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-        #     Image:
-        #         source: 'Image/Buah/Apel.png'
-        #         size_hint: None, None
-        #         size: 80, 80
-        #         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-        #     Image:
-        #         source: 'Image/Buah/Apel.png'
-        #         size_hint: None, None
-        #         size: 80, 80
-        #         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-        #     Image:
-        #         source: 'Image/Buah/Apel.png'
-        #         size_hint: None, None
-        #         size: 80, 80
-        #         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                Color:
+                    rgba: 0, 0, 0, 1  # Warna hitam untuk outline
+                Line:
+                    width: 1.5
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
 
         # Pilihan jawaban di sebelah kanan dengan radius 20
         BoxLayout:
             orientation: 'vertical'
             size_hint: None, None
             size: 100, 300
-            pos_hint: {'x': 0.79, 'center_y': 0.35}
-            spacing: 30
+            pos_hint: {'x': 0.7, 'center_y': 0.43}
+            spacing: 25
 
             # Pilihan pertama (4) dengan radius 20
             Button:
                 id: btn_jawaban_1  # ID untuk pilihan jawaban 1
-                text: 'Jawaban 1'
                 font_size: '40sp'
                 font_name: 'Font/Eracake.ttf'
                 color: 0, 0, 0, 1
-                background_normal: ''
-                background_color: 1, 1, 1, 1
+                background_color: 1, 1, 1, 0
                 size_hint: None, None
-                size: 110, 110
+                size: 100, 100
+                on_release: root.check_jawaban(int(self.text))
                 canvas.before:
                     Color:
-                        rgba: 1, 1, 1, 1
+                        rgba: 1, 1, 1, 0.2
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
                         radius: [20]
-                on_release: root.check_jawaban(int(self.text))
+                    Color:
+                        rgba: 0, 0, 0, 1  # Warna cyan untuk stroke
+                    Line:
+                        width: 1.5
+                        rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
 
             # Pilihan kedua (8) dengan radius 20
             Button:
                 id: btn_jawaban_2  # ID untuk pilihan jawaban 2
-                text: 'Jawaban 2'
                 font_size: '40sp'
                 font_name: 'Font/Eracake.ttf'
                 color: 0, 0, 0, 1
-                background_normal: ''
-                background_color: 1, 1, 1, 1
+                background_color: 1, 1, 1, 0
                 size_hint: None, None
-                size: 110, 110
+                size: 100, 100
+                on_release: root.check_jawaban(int(self.text))
                 canvas.before:
                     Color:
-                        rgba: 1, 1, 1, 1
+                        rgba: 1, 1, 1, 0.2
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
                         radius: [20]
-                on_release: root.check_jawaban(int(self.text))
+                    Color:
+                        rgba: 0, 0, 0, 1  # Warna cyan untuk stroke
+                    Line:
+                        width: 1.5
+                        rounded_rectangle: (self.x, self.y, self.width, self.height, 20)
 
             # Pilihan ketiga (9) dengan radius 20
             Button:
                 id: btn_jawaban_3  # ID untuk pilihan jawaban 3
-                text: 'Jawaban 3'
                 font_size: '40sp'
                 font_name: 'Font/Eracake.ttf'
                 color: 0, 0, 0, 1
-                background_normal: ''
-                background_color: 1, 1, 1, 1
+                background_color: 1, 1, 1, 0
                 size_hint: None, None
-                size: 110, 110
+                size: 100, 100
+                on_release: root.check_jawaban(int(self.text))
                 canvas.before:
                     Color:
-                        rgba: 1, 1, 1, 1
+                        rgba: 1, 1, 1, 0.2
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
                         radius: [20]
-                on_release: root.check_jawaban(int(self.text))
-        # BoxLayout:
-        #     orientation: 'vertical'
-        #     size_hint: None, None
-        #     size: 100, 300
-        #     pos_hint: {'x': 0.79, 'center_y': 0.35}
-        #     spacing: 30
-
-        #     # Pilihan pertama (4) dengan radius 20
-        #     Button:
-        #         text: '4'
-        #         font_size: '40sp'
-        #         font_name: 'Font/Eracake.ttf'
-        #         color: 0, 0, 0, 1
-        #         background_normal: ''
-        #         background_color: 1, 1, 1, 1
-        #         size_hint: None, None
-        #         size: 110, 110
-        #         canvas.before:
-        #             Color:
-        #                 rgba: 1, 1, 1, 1
-        #             RoundedRectangle:
-        #                 pos: self.pos
-        #                 size: self.size
-        #                 radius: [20]
-
-        #     # Pilihan kedua (8) dengan radius 20
-        #     Button:
-        #         text: '8'
-        #         font_size: '40sp'
-        #         font_name: 'Font/Eracake.ttf'
-        #         color: 0, 0, 0, 1
-        #         background_normal: ''
-        #         background_color: 1, 1, 1, 1
-        #         size_hint: None, None
-        #         size: 110, 110
-        #         canvas.before:
-        #             Color:
-        #                 rgba: 1, 1, 1, 1
-        #             RoundedRectangle:
-        #                 pos: self.pos
-        #                 size: self.size
-        #                 radius: [20]
-
-        #     # Pilihan ketiga (9) dengan radius 20
-        #     Button:
-        #         text: '9'
-        #         font_size: '40sp'
-        #         font_name: 'Font/Eracake.ttf'
-        #         color: 0, 0, 0, 1
-        #         background_normal: ''
-        #         background_color: 1, 1, 1, 1
-        #         size_hint: None, None
-        #         size: 110, 110
-        #         canvas.before:
-        #             Color:
-        #                 rgba: 1, 1, 1, 1
-        #             RoundedRectangle:
-        #                 pos: self.pos
-        #                 size: self.size
-        #                 radius: [20]
+                    Color:
+                        rgba: 0, 0, 0, 1  # Warna cyan untuk stroke
+                    Line:
+                        width: 1.5
+                        rounded_rectangle: (self.x, self.y, self.width, self.height, 20)

@@ -91,7 +91,7 @@ class MenyusunSKScreen(Screen):
 
             # Reset kolom jawaban dan index jawaban saat ini
             for i in range(3):
-                self.ids[f"answer_{i+1}"].text = "----"
+                self.ids[f"answer_{i+1}"].text = "---"
             self.current_answer_index = 0
 
         except Exception as e:
@@ -127,7 +127,7 @@ class MenyusunSKScreen(Screen):
         )
         self.popup.open()
 
-        # Tutup pop-up setelah 3 detik dan lanjut ke soal berikutnya
+        # Tutup pop-up setelah 2 detik dan lanjut ke soal berikutnya
         Clock.schedule_once(self.close_popup_and_next_question, 2)
 
     def close_popup_and_next_question(self, dt):

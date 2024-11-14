@@ -18,14 +18,16 @@ from kivy.clock import Clock
 
 class TebakWarnaScreen(Screen):
     current_question = 0
+    questions = []  # Memuat semua pertanyaan warna tanpa duplikat
+    previous_question = None  # Menyimpan soal sebelumnya untuk menghindari duplikasi
 
     def on_enter(self):
-        # Langsung memuat pertanyaan tanpa delay
+        self.generate_questions()  # Mengacak pertanyaan setiap kali halaman dimulai
         self.load_question()
 
-    def load_question(self):
-        # Define the questions and answers
-        questions = [
+    def generate_questions(self):
+        # Define all questions with 10 unique colors
+        all_questions = [
             {
                 "question": "MERAH",
                 "answers": [
@@ -90,20 +92,45 @@ class TebakWarnaScreen(Screen):
                     ("Merah", [1, 0, 0, 1]),
                 ],
             },
+            {
+                "question": "COKLAT",
+                "answers": [
+                    ("Coklat", [0.6, 0.3, 0, 1]),
+                    ("Hijau", [0, 1, 0, 1]),
+                    ("Biru", [0, 0, 1, 1]),
+                ],
+            },
+            {
+                "question": "ABU-ABU",
+                "answers": [
+                    ("Abu-abu", [0.5, 0.5, 0.5, 1]),
+                    ("Merah", [1, 0, 0, 1]),
+                    ("Kuning", [1, 1, 0, 1]),
+                ],
+            },
         ]
+        # Randomize the questions order
+        self.questions = random.sample(all_questions, len(all_questions))
 
-        # Pick a random question for the current session
-        question_data = random.choice(questions)
+    def load_question(self):
+        while True:
+            question_data = random.choice(self.questions)
+            if question_data["question"] != self.previous_question:
+                self.previous_question = question_data["question"]
+                break
+
         self.ids.question_label.text = question_data["question"]
+        answers = question_data["answers"]
+        random.shuffle(answers)  # Shuffle answers for randomized positions
 
-        # Update button text and color for answers
-        for i, answer_data in enumerate(question_data["answers"]):
+        # Update answer buttons
+        for i, answer_data in enumerate(answers):
             button = self.ids[f"answer_button_{i+1}"]
             button.text = answer_data[0]
             button.background_color = answer_data[1]
 
     def check_answer(self, selected_answer):
-        # Define correct answer for each color
+        # Dictionary to check the correct answer
         correct_answers = {
             "MERAH": "Merah",
             "BIRU": "Biru",
@@ -113,18 +140,26 @@ class TebakWarnaScreen(Screen):
             "HITAM": "Hitam",
             "KUNING": "Kuning",
             "UNGU": "Ungu",
+            "COKLAT": "Coklat",
+            "ABU-ABU": "Abu-abu",
         }
 
-        # Check if the selected answer is correct
+        # Check the answer
         correct_answer = correct_answers.get(self.ids.question_label.text, "")
         if selected_answer == correct_answer:
-            self.show_popup("Jawaban Benar!")
+            self.show_popup(
+                "Selamat, Jawaban kamu benar!", correct=True
+            )  # Pass correct=True
         else:
-            self.show_popup("Jawaban Salah!")
+            self.show_popup("Jawaban kamu Salah, Coba lagi!", correct=False)
 
-    def show_popup(self, message):
-        # Display popup message
+    def show_popup(self, message, correct):
+        # Display customized popup for correct/incorrect answer
         popup_content = BoxLayout(orientation="vertical")
+
+        if correct:
+            # Add space for a thumbs-up icon
+            popup_content.add_widget(Label(text="[icon_jempol]", font_size="40sp"))
         popup_content.add_widget(Label(text=message, font_size="30sp"))
 
         popup = Popup(
@@ -132,18 +167,14 @@ class TebakWarnaScreen(Screen):
         )
         popup.open()
 
-        # Set random delay for popup close and move to the next question
-        random_popup_delay = random.uniform(
-            2, 4
-        )  # Random delay between 2 and 4 seconds
-        Clock.schedule_once(lambda dt: self.next_question(popup), random_popup_delay)
+        # Set delay before closing popup and moving to the next question
+        delay = 1.5 if correct else 0  # 1.5 seconds if correct, instant for incorrect
+        Clock.schedule_once(lambda dt: self.next_question(popup, correct), delay)
 
-    def next_question(self, popup):
-        # Dismiss popup
+    def next_question(self, popup, correct):
         popup.dismiss()
-
-        # Load a new question
-        self.load_question()
+        if correct:
+            self.load_question()  # Load a new question only if the answer was correct
 
     def go_to_permainan(self):
         # Navigate back to MempelajariScreen with a fade transition
