@@ -334,9 +334,9 @@ class AyoBelajarApp(App):
     def build(self):
         sm = ScreenManager()
 
-        sm.add_widget(LoginScreen(name="login"))
-        sm.add_widget(RegisterScreen(name="register"))
-        sm.add_widget(ProfilScreen(name="profil"))
+        # sm.add_widget(LoginScreen(name="login"))
+        # sm.add_widget(RegisterScreen(name="register"))
+        # sm.add_widget(ProfilScreen(name="profil"))
 
         sm.add_widget(LayarScreen(name="layar"))
         sm.add_widget(MempelajariScreen(name="mempelajari"))
@@ -345,13 +345,12 @@ class AyoBelajarApp(App):
         sm.add_widget(MengenalBSScreen(name="mengenalbs"))
         sm.add_widget(BuahScreen(name="buah"))
         sm.add_widget(SayurScreen(name="sayur"))
-        sm.add_widget(MencocokkanGambarScreen(name="mencocokkangambar"))
         sm.add_widget(MenyusunSKScreen(name="menyusunsk"))
+        sm.add_widget(MencocokkanGambarScreen(name="mencocokkangambar"))
         sm.add_widget(TebakWarnaScreen(name="tebakwarna"))
-
-        sm.add_widget(ScoreScreen(name="score_screen"))
         sm.add_widget(PenjumlahanScreen(name="penjumlahan"))
 
+        sm.add_widget(ScoreScreen(name="score_screen"))
         return sm
 
 
