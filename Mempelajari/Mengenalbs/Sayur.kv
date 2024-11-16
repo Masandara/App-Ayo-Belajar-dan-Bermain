@@ -1,10 +1,15 @@
 <SayurScreen>:
-    canvas.before:
-        Color:
-            rgba: 0.894, 0.894, 0.894, 1.0
-        Rectangle:
-            pos: self.pos
-            size: self.size
+    # canvas.before:
+    #     Color:
+    #         rgba: 0.894, 0.894, 0.894, 1.0
+    #     Rectangle:
+    #         pos: self.pos
+    #         size: self.size
+
+    Image:
+        source: 'Bg/Bg7.png'
+        size_hint: (1, 1)
+        size: self.size
 
     FloatLayout:
         # Circular button with arrow-left for navigation
@@ -12,76 +17,174 @@
             size_hint: None, None
             size: 1200, 185  # You can adjust the size here
             pos_hint: {'center_x': 0.5, 'top': 1.14}  # Adjust position
-            canvas.before:
-                # Menggambar bayangan
-                Color:
-                    rgba: 0.0, 0.0, 0.0, 0.25  # Warna bayangan (hitam transparan)
-                Ellipse:
-                    pos: self.x + 1, self.y - 3  # Offset bayangan
-                    size: self.size
+            # canvas.before:
+            #     # Menggambar bayangan
+            #     Color:
+            #         rgba: 0.0, 0.0, 0.0, 0.25  # Warna bayangan (hitam transparan)
+            #     Ellipse:
+            #         pos: self.x + 1, self.y - 3  # Offset bayangan
+            #         size: self.size
 
-                # Menggambar latar belakang
-                Color:
-                    rgba: 0.0, 1.0, 1.0, 1.0  # Cyan color (adjust if needed)
-                Ellipse:
-                    pos: self.pos
-                    size: self.size
+            #     # Menggambar latar belakang
+            #     Color:
+            #         rgba: 0.0, 1.0, 1.0, 1.0  # Cyan color (adjust if needed)
+            #     Ellipse:
+            #         pos: self.pos
+            #         size: self.size
 
-        FloatLayout:
+        # Tombol kembali
+        Button:
             size_hint: None, None
-            size: 60, 60
-            pos_hint: {'x': 0.03, 'top': 0.96}
+            size: 110, 110  # Ukuran ikon lebih besar
+            pos_hint: {'x': 0.01, 'top': 0.98}  # Pojok kiri atas dengan sedikit margin
+            background_normal: 'Icon/back1.png'  # Ikon kembali
+            on_press: root.go_to_mengenalbs()
 
-            # Circle with dashed stroke
-            canvas.before:
-                Color:
-                    rgba: 0.502, 0.502, 0.502, 1.0  # Gray fill
-                Ellipse:
-                    pos: self.pos
-                    size: self.size
-                Color:
-                    rgba: 0, 0, 0, 1  # Black stroke
-                Line:
-                    width: 1.5
-                    circle: (self.center_x, self.center_y, 30.5)
-                    dash_length: 2
-                    dash_offset: 1
-
-            # Arrow image inside the circle
-            Image:
-                source: 'Image/arrow-left.png'
-                size_hint: None, None
-                size: 35, 35
-                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-
-            # Transparent button to detect touch and navigate back
-            Button:
-                background_color: 0, 0, 0, 0
-                size_hint: None, None
-                size: 60, 60
-                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-                on_press: root.go_to_mengenalbs()  # Navigate back to MempelajariScreen
-
-        # Alfabet label
+        # Label utama
         Label:
-            text: 'SAYUR - SAYURAN'
-            font_size: '40sp'
-            font_name: 'Font/Eracake.ttf'
-            color: 1.0, 1.0, 1.0, 1.0
-            size_hint: None, None
-            size: self.texture_size
-            pos_hint: {'center_x': 0.5, 'top': 0.965}
-            outline_color: 0.0, 0.0, 0.0, 1.0  # Warna stroke
-            outline_width: 3
-
-        # Question label: "Huruf apakah di bawah ini"
-        Label:
-            text: 'TOMAT'
-            font_size: '35sp'
+            id: label_nama_sayur
+            text: ''
+            font_size: '30sp'
             font_name: "Font/PoetsenOne-Regular.ttf"
             color: 1.0, 1.0, 1.0, 1.0
             size_hint: None, None
             size: self.texture_size
-            pos_hint: {'center_x': 0.5, 'top': 0.8}
-            outline_color: 0.0, 0.0, 0.0, 1.0  # Warna stroke
-            outline_width: 3
+            pos_hint: {'center_x': 0.5, 'top': 0.46}
+            outline_color: 0.0, 0.0, 0.0, 1.0
+            outline_width: 2
+
+        # Tempat untuk Soal gambar buah dan panah di bawah label APEL
+        Image:
+            id: soal_image
+            size_hint: None, None
+            size: 180, 180
+            pos_hint: {'center_x': 0.5, 'top': 0.77}
+
+        # Tombol navigasi ke buah berikutnya
+        FloatLayout:
+            id: arrow_right
+            size_hint: None, None
+            size: 100, 100
+            pos_hint: {'center_x': 0.8, 'top': 0.65}
+
+            Image:
+                source: 'Image/arrow-right.png'  # Gambar panah kanan
+                size_hint: None, None
+                size: 60, 60
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+            Button:
+                background_color: 0, 0, 0, 0
+                size_hint: None, None
+                size: 100, 100
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                on_press: root.next_sayur()
+
+        # Tombol navigasi ke buah sebelumnya
+        FloatLayout:
+            id: arrow_left
+            size_hint: None, None
+            size: 100, 100
+            pos_hint: {'x': 0.15, 'top': 0.65}
+
+            Image:
+                source: 'Image/arrow-left.png'  # Gambar panah kiri
+                size_hint: None, None
+                size: 60, 60
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+            Button:
+                background_color: 0, 0, 0, 0
+                size_hint: None, None
+                size: 100, 100
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                opacity: 0  # Disembunyikan di awal
+                on_press: root.prev_sayur()
+
+        # Outline dinamis untuk jawaban
+        FloatLayout:
+            Widget:
+                id: outline
+                size_hint: None, None
+                size: 170, 195
+                canvas.before:
+                    Color:
+                        rgba: 0.894, 0.894, 0.894, 0
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [30]  # Radius untuk sudut melengkung
+                canvas.after:
+                    Color:
+                        rgba: 0, 0, 0, 1  # Warna hitam untuk outline
+                    Line:
+                        width: 2
+                        rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
+
+        # Persegi panjang tempat jawaban dengan sudut melengkung
+        BoxLayout:
+            id: jawaban_container
+            orientation: 'horizontal'
+            size_hint: None, None
+            size: 795, 110
+            pos_hint: {'center_x': 0.5, 'top': 0.35}
+            padding: 17
+            spacing: 34
+            halign: 'center'
+            canvas.before:
+                Color:
+                    rgba: 0.894, 0.894, 0.894, 0
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [30]  # Radius untuk sudut melengkung
+            canvas.after:
+                Color:
+                    rgba: 0, 0, 0, 1  # Warna hitam untuk outline
+                Line:
+                    width: 2
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
+
+            # Tempat jawaban
+            # Tempatkan 7 gambar buah di sini
+            Image:
+                id: jawaban_tomat
+                source: 'Image/Sayur/Tomat.png'
+                size_hint: None, None
+                size: 80, 80
+
+            Image:
+                id: jawaban_wortel
+                source: 'Image/Sayur/Wortel.png'
+                size_hint: None, None
+                size: 80, 80
+
+            Image:
+                id: jawaban_kentang
+                source: 'Image/Sayur/Kentang.png'
+                size_hint: None, None
+                size: 80, 80
+
+            Image:
+                id: jawaban_kubis
+                source: 'Image/Sayur/Kubis.png'
+                size_hint: None, None
+                size: 80, 80
+
+            Image:
+                id: jawaban_terong
+                source: 'Image/Sayur/Terong.png'
+                size_hint: None, None
+                size: 80, 80
+
+            Image:
+                id: jawaban_jagung
+                source: 'Image/Sayur/Jagung.png'
+                size_hint: None, None
+                size: 80, 80
+
+            Image:
+                id: jawaban_bawang putih
+                source: 'Image/Sayur/Bawangputih.png'
+                size_hint: None, None
+                size: 80, 80

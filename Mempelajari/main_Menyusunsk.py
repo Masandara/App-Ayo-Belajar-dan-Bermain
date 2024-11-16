@@ -120,10 +120,10 @@ class MenyusunSKScreen(Screen):
 
     def show_popup(self):
         self.popup = Popup(
-            title="Selamat!",
-            content=Label(text="Jawaban Anda benar!"),
+            title="Hasil",
+            content=Label(text="Selamat, jawaban benar!"),
             size_hint=(None, None),
-            size=(400, 200),
+            size=(300, 150),
         )
         self.popup.open()
 

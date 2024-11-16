@@ -13,13 +13,13 @@ from kivy.core.audio import SoundLoader
 class BuahScreen(Screen):
     buah_list = ["apel", "ceri", "durian", "mangga", "lemon", "pisang", "naga"]
     sound_files = {
-        "apel": "sSounds/Apel.MP3",
-        "ceri": "sSounds/Ceri.MP3",
-        "durian": "sSounds/Durian.MP3",
-        "mangga": "sSounds/Mangga.MP3",
-        "lemon": "sSounds/Lemon.MP3",
-        "pisang": "sSounds/Pisang.MP3",
-        "naga": "sSounds/Naga.MP3",
+        "apel": "Sounds/Apel.MP3",
+        "ceri": "Sounds/Ceri.MP3",
+        "durian": "Sounds/Durian.MP3",
+        "mangga": "Sounds/Mangga.MP3",
+        "lemon": "Sounds/Lemon.MP3",
+        "pisang": "Sounds/Pisang.MP3",
+        "naga": "Sounds/Naga.MP3",
     }
 
     def __init__(self, **kwargs):
@@ -31,6 +31,7 @@ class BuahScreen(Screen):
     def on_enter(self):
         # Reset ke tampilan awal (soal pertama) setiap kali masuk ke layar ini
         self.current_index = 0
+        self.outline_widget = self.ids.outline
         self.update_outline_position()
         self.update_question()
         self.play_backsound()
@@ -43,14 +44,20 @@ class BuahScreen(Screen):
         current_buah = self.buah_list[self.current_index]
         target_widget = self.ids[f"jawaban_{current_buah}"]
 
-        # Set ukuran outline agar sama dengan target_widget (misalnya, gambar buah)
-        self.outline_widget.size = target_widget.size
+        # Atur ukuran outline sedikit lebih besar dari target_widget (misalnya, gambar buah)
+        buffer_size = 29.9  # Tambahkan 20 piksel ke ukuran outline
+        self.outline_widget.size = (
+            target_widget.width + buffer_size,
+            target_widget.height + buffer_size,
+        )
 
-        # Set posisi outline agar tepat di sekitar target_widget
-        self.outline_widget.pos = target_widget.pos
+        # Atur posisi outline untuk sedikit memperbesar posisi outline sekitar target_widget
+        outline_x = target_widget.x - buffer_size / 1.89
+        outline_y = target_widget.y - buffer_size / 1.8
+        self.outline_widget.pos = (outline_x, outline_y)
 
         # Buat animasi untuk outline menuju ke posisi buah saat ini
-        anim = Animation(pos=target_widget.pos, duration=0.1, t="out_expo")
+        anim = Animation(pos=(outline_x, outline_y), duration=0.1, t="out_expo")
         anim.start(self.outline_widget)
 
         # Update visibilitas panah
