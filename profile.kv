@@ -1,58 +1,136 @@
 <ProfilScreen>:
-    BoxLayout:
-        orientation: 'vertical'
-        padding: 20
-        spacing: 10
+    FloatLayout:
+        # Full-screen background image
+        Image:
+            source: 'bg/bg3.png'
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: 1, 1  # Cover the full screen
 
-        Label:
-            id: email_label
-            text: "Email: -"
-            font_size: 18
-
-        BoxLayout:
-            size_hint_y: None
-            height: 50
-            orientation: 'horizontal'
-
-            Button:
-                size_hint: None, None
-                size: 30, 30
-                background_normal: 'Image/arrow-left.png'  # Ganti dengan ikon kembali Anda
-                on_release: root.manager.current = 'layar'
+        Button:
+            size_hint: None, None
+            size: 110, 110  # Ukuran ikon lebih besar
+            pos_hint: {'x': 0.01, 'top': 0.98}  # Pojok kiri atas dengan sedikit margin
+            background_normal: 'Icon/back1.png'  # Ikon kembali
+            on_release: root.manager.current = 'layar'
 
         BoxLayout:
+            orientation: 'vertical'
+            size_hint: 0.8, 0.8
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            padding: [20, 20, 20, 20]
+            spacing: 15
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 0.7  # Semi-transparent white background
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20]  # Rounded corners
+
             Label:
-                id: name_label
-                text: "Nama: -"
-                font_size: 18
-            Button:
-                text: "Edit Nama"
-                on_press: root.edit_name()
+                id: email_label
+                text: "Email: -"
+                font_size: '18sp'
+                color: (0.2, 0.4, 0.6, 1)
+                font_name: 'font/JandaManatee.ttf'
+                halign: 'left'  # Rata kiri
+                valign: 'middle'
+                text_size: self.size
 
-        BoxLayout:
-            Label:
-                text: "Password: ******"
-                font_size: 18
-            Button:
-                text: "Edit Password"
-                on_press: root.edit_password()
+            BoxLayout:
+                spacing: 10
+                Label:
+                    id: name_label
+                    text: "Nama: -"
+                    font_size: '18sp'
+                    color: (0.2, 0.4, 0.6, 1)
+                    font_name: 'font/JandaManatee.ttf'
+                    halign: 'left'
+                    valign: 'middle'
+                    text_size: self.size
+                Button:
+                    text: "Edit Nama"
+                    font_size: '16sp'
+                    size_hint_x: 0.8
+                    background_color: (0.2, 0.6, 0.8, 1)
+                    color: (1, 1, 1, 1)
+                    on_press: root.edit_name()
 
-        BoxLayout:
-            Label:
-                id: age_label
-                text: "Umur: -"
-                font_size: 18
-            Button:
-                id: age_button
-                text: "Tambahkan Umur"
-                on_press: root.add_or_edit_age()
+            BoxLayout:
+                spacing: 10
+                Label:
+                    text: "Password: ***"
+                    font_size: '18sp'
+                    color: (0.2, 0.4, 0.6, 1)
+                    font_name: 'font/JandaManatee.ttf'
+                    halign: 'left'
+                    valign: 'middle'
+                    text_size: self.size
+                Button:
+                    text: "Edit Password"
+                    font_size: '16sp'
+                    size_hint_x: 0.8
+                    background_color: (0.2, 0.6, 0.8, 1)
+                    color: (1, 1, 1, 1)
+                    on_press: root.edit_password()
 
-        BoxLayout:
-            Label:
-                id: hobby_label
-                text: "Hobi: -"
-                font_size: 18
-            Button:
-                id: hobby_button
-                text: "Tambahkan Hobi"
-                on_press: root.add_or_edit_hobby()
+            BoxLayout:
+                spacing: 10
+                Label:
+                    id: age_label
+                    text: "Umur: -"
+                    font_size: '18sp'
+                    color: (0.2, 0.4, 0.6, 1)
+                    font_name: 'font/JandaManatee.ttf'
+                    halign: 'left'
+                    valign: 'middle'
+                    text_size: self.size
+                Button:
+                    id: age_button
+                    text: "Tambahkan Umur" if root.ids.age_label.text == "Umur: -" else "Edit Umur"
+                    font_size: '16sp'
+                    size_hint_x: 0.8  # Sama dengan tombol Edit Nama dan Password
+                    background_color: (0.2, 0.6, 0.8, 1)
+                    color: (1, 1, 1, 1)
+                    on_press: root.add_or_edit_age()
+                # Button:
+                #     id: delete_age_button
+                #     text: "Hapus Umur"
+                #     font_size: '16sp'
+                #     size_hint_x: 0.4  # Sama dengan tombol lainnya
+                #     background_color: (1, 0.5, 0.5, 1)
+                #     color: (1, 1, 1, 1)
+                #     on_press: root.delete_age()
+                #     opacity: 0 if root.ids.age_label.text == "Umur: -" else 1
+                #     disabled: root.ids.age_label.text == "Umur: -"
+
+            BoxLayout:
+                spacing: 10
+                Label:
+                    id: hobby_label
+                    text: "Hobi: -"
+                    font_size: '18sp'
+                    color: (0.2, 0.4, 0.6, 1)
+                    font_name: 'font/JandaManatee.ttf'
+                    halign: 'left'
+                    valign: 'middle'
+                    text_size: self.size
+                Button:
+                    id: hobby_button
+                    text: "Tambahkan Hobi" if root.ids.hobby_label.text == "Hobi: -" else "Edit Hobi"
+                    font_size: '16sp'
+                    size_hint_x: 0.8  # Sama dengan tombol lainnya
+                    background_color: (0.2, 0.6, 0.8, 1)
+                    color: (1, 1, 1, 1)
+                    on_press: root.add_or_edit_hobby()
+                # Button:
+                #     id: delete_hobby_button
+                #     text: "Hapus Hobi"
+                #     font_size: '16sp'
+                #     size_hint_x: 0.4  # Sama dengan tombol lainnya
+                #     background_color: (1, 0.5, 0.5, 1)
+                #     color: (1, 1, 1, 1)
+                #     on_press: root.delete_hobby()
+                #     opacity: 0 if root.ids.hobby_label.text == "Hobi: -" else 1
+                #     disabled: root.ids.hobby_label.text == "Hobi: -"
