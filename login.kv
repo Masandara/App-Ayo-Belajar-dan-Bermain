@@ -1,18 +1,75 @@
 <LoginScreen>:
-    BoxLayout:
-        orientation: 'vertical'
-        Label:
-            text: 'Login'
-        TextInput:
-            id: email_input
-            hint_text: 'Email'
-        TextInput:
-            id: password_input
-            hint_text: 'Password'
-            password: True
-        Button:
-            text: 'Login'
-            on_press: root.login_user()
-        Button:
-            text: 'Daftar Akun'
-            on_press: app.root.current = 'register'
+    FloatLayout:
+        # Full-screen background image
+        Image:
+            source: 'bg/bg3.png'
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: 1, 1  # Fill entire screen
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 0.35, 0.6  # Smaller login box size
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}  # Center the box
+
+            # Semi-transparent overlay for login form
+            canvas.before:
+                Color:
+                    rgba: (1, 1, 1, 0.2)  # 20% opacity white background
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20]  # Rounded corners
+
+            padding: [20, 20, 20, 20]  # Inner padding for spacing
+            spacing: 10
+
+            Label:
+                text: 'LOGIN'
+                font_size: '22sp'
+                bold: True
+                color: (0, 0.3, 0.5, 1)
+                font_name: 'font/JandaManatee.ttf'
+
+            TextInput:
+                id: email_input
+                hint_text: 'Email'
+                hint_text_color: (0.6, 0.6, 0.6, 1)  # Gray hint text color
+                size_hint_y: None
+                height: '35dp'  # Reduced height
+                multiline: False
+                foreground_color: (0, 0, 0, 1)  # Black text color
+                background_normal: 'atlas://data/images/defaulttheme/textinput'  # Restore default style
+                background_active: 'atlas://data/images/defaulttheme/textinput'
+
+            TextInput:
+                id: password_input
+                hint_text: 'Password'
+                hint_text_color: (0.6, 0.6, 0.6, 1)  # Gray hint text color
+                password: True
+                size_hint_y: None
+                height: '35dp'  # Reduced height
+                multiline: False
+                foreground_color: (0, 0, 0, 1)  # Black text color
+                background_normal: 'atlas://data/images/defaulttheme/textinput'  # Restore default style
+                background_active: 'atlas://data/images/defaulttheme/textinput'
+
+            Button:
+                text: 'Login'
+                size_hint_y: None
+                height: '40dp'  # Reduced height
+                background_normal: ''
+                background_color: (0.2, 0.5, 0.7, 1)
+                color: (1, 1, 1, 1)
+                on_press: root.login_user()
+                font_name: 'font/JandaManatee.ttf'
+
+            Button:
+                text: 'Daftar Akun'
+                size_hint_y: None
+                height: '40dp'  # Reduced height
+                background_normal: ''
+                background_color: (0.3, 0.6, 0.8, 1)
+                color: (1, 1, 1, 1)
+                on_press: app.root.current = 'register'
+                font_name: 'font/JandaManatee.ttf'
