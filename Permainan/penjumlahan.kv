@@ -30,37 +30,12 @@
             #         pos: self.pos
             #         size: self.size
 
-        FloatLayout:
+        Button:
             size_hint: None, None
-            size: 60, 60
-            pos_hint: {'x': 0.03, 'top': 0.96}
-
-            canvas.before:
-                Color:
-                    rgba: 0.502, 0.502, 0.502, 1.0  # Warna lingkaran abu-abu
-                Ellipse:
-                    pos: self.pos
-                    size: self.size
-                Color:
-                    rgba: 0, 0, 0, 1  # Garis luar hitam
-                Line:
-                    width: 1.5
-                    circle: (self.center_x, self.center_y, 30.5)
-                    dash_length: 2
-                    dash_offset: 1
-
-            Image:
-                source: 'Image/arrow-left.png'
-                size_hint: None, None
-                size: 35, 35
-                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-
-            Button:
-                background_color: 0, 0, 0, 0
-                size_hint: None, None
-                size: 60, 60
-                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-                on_press: root.go_to_permainan()  # Kembali ke layar permainan
+            size: 110, 110  # Ukuran ikon lebih besar
+            pos_hint: {'x': 0.01, 'top': 0.98}  # Pojok kiri atas dengan sedikit margin
+            background_normal: 'Icon/back1.png'  # Ikon kembali
+            on_press: root.go_to_permainan()
 
         # Label judul "PENJUMLAHAN"
         Label:

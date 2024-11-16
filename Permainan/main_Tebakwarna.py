@@ -147,28 +147,24 @@ class TebakWarnaScreen(Screen):
         # Check the answer
         correct_answer = correct_answers.get(self.ids.question_label.text, "")
         if selected_answer == correct_answer:
-            self.show_popup(
-                "Selamat, Jawaban kamu benar!", correct=True
-            )  # Pass correct=True
+            self.show_popup("Selamat, jawaban benar!", correct=True)
         else:
-            self.show_popup("Jawaban kamu Salah, Coba lagi!", correct=False)
+            self.show_popup("Jawaban salah, coba lagi!", correct=False)
 
     def show_popup(self, message, correct):
         # Display customized popup for correct/incorrect answer
         popup_content = BoxLayout(orientation="vertical")
 
-        if correct:
-            # Add space for a thumbs-up icon
-            popup_content.add_widget(Label(text="[icon_jempol]", font_size="40sp"))
-        popup_content.add_widget(Label(text=message, font_size="30sp"))
+        # Tampilkan pesan tanpa "icon jempol"
+        popup_content.add_widget(Label(text=message, font_size="15sp"))
 
         popup = Popup(
-            title="", content=popup_content, size_hint=(0.6, 0.4), auto_dismiss=False
+            title="", content=popup_content, size_hint=(0.3, 0.25), auto_dismiss=False
         )
         popup.open()
 
         # Set delay before closing popup and moving to the next question
-        delay = 1.5 if correct else 0  # 1.5 seconds if correct, instant for incorrect
+        delay = 1.5 if correct else 1.5  # Tambahkan durasi untuk jawaban salah
         Clock.schedule_once(lambda dt: self.next_question(popup, correct), delay)
 
     def next_question(self, popup, correct):

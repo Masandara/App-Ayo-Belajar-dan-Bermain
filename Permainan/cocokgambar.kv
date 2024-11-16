@@ -32,40 +32,12 @@
             #         pos: self.pos
             #         size: self.size
 
-        FloatLayout:
+        Button:
             size_hint: None, None
-            size: 60, 60
-            pos_hint: {'x': 0.03, 'top': 0.96}
-
-            # Circle with dashed stroke
-            canvas.before:
-                Color:
-                    rgba: 0.502, 0.502, 0.502, 1.0  # Gray fill
-                Ellipse:
-                    pos: self.pos
-                    size: self.size
-                Color:
-                    rgba: 0, 0, 0, 1  # Black stroke
-                Line:
-                    width: 1.5
-                    circle: (self.center_x, self.center_y, 30.5)
-                    dash_length: 2
-                    dash_offset: 1
-
-            # Arrow image inside the circle
-            Image:
-                source: 'Image/arrow-left.png'
-                size_hint: None, None
-                size: 35, 35
-                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-
-            # Transparent button to detect touch and navigate back
-            Button:
-                background_color: 0, 0, 0, 0
-                size_hint: None, None
-                size: 60, 60
-                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-                on_press: root.go_to_permainan()  # Navigate back to MempelajariScreen
+            size: 110, 110  # Ukuran ikon lebih besar
+            pos_hint: {'x': 0.01, 'top': 0.98}  # Pojok kiri atas dengan sedikit margin
+            background_normal: 'Icon/back1.png'  # Ikon kembali
+            on_press: root.go_to_permainan()
 
         # Judul Permainan
         Label:
@@ -205,3 +177,102 @@
                         size: 170, 120
                         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
                         on_press: root.check_answer(root.ids.answer_3_img.source)
+
+<ScoreScreen>:
+    FloatLayout:
+        # Background image (sesuai dengan permintaan untuk Bg3)
+        Image:
+            source: 'Bg/Bg3.png'
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: (1, 1)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 0.8, 0.8
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            padding: [20, 20, 20, 20]
+            spacing: 15
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 0.7  # Semi-transparent white background
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20]  # Rounded corners
+
+        # Label Utama (Selamat dan Skor Akhir)
+        Label:
+            text: "SELAMAT"
+            font_size: '48sp'
+            font_name: 'Font/PoetsenOne-Regular.ttf'
+            color: 0, 0, 0, 1  # Warna teks hitam
+            size_hint: None, None
+            pos_hint: {'center_x': 0.5, 'top': 0.85}
+
+        Label:
+            text: "Kamu Telah Menyelesaikan Permainan Ini"
+            font_size: '24sp'
+            font_name: 'Font/PoetsenOne-Regular.ttf'
+            color: 0, 0, 0, 1  # Warna teks hitam
+            size_hint: None, None
+            pos_hint: {'center_x': 0.5, 'top': 0.75}
+
+        # Nilai Akhir, dipindahkan ke tengah
+        FloatLayout:
+            size_hint: None, None
+            size: 350, 100
+            pos_hint: {'center_x': 0.7, 'center_y': 0.7}  # Skor di tengah
+
+            # Bentuk oval untuk "NILAI"
+            Label:
+                text: "NILAI"
+                font_size: '24sp'
+                font_name: 'Font/PoetsenOne-Regular.ttf'
+                color: 0, 0, 0, 1  # Warna teks hitam
+                size_hint: None, None
+                size: 170, 100
+                canvas.before:
+                    Color:
+                        rgba: 0.9, 0.9, 0.9, 1  # Warna abu-abu muda untuk latar belakang
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [40, 0, 0, 40]  # Setengah bulat di kiri
+
+            # Bentuk persegi panjang bulat untuk "100"
+            Label:
+                id: score_label
+                text: "100"  # Skor bisa diubah sesuai nilai akhir
+                font_size: '36sp'
+                font_name: 'Font/PoetsenOne-Regular.ttf'
+                color: 1, 1, 1, 1  # Warna teks putih
+                size_hint: None, None
+                size: 100, 100
+                pos_hint: {'right': 1}
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1  # Warna hitam untuk latar belakang
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [0, 40, 40, 0]  # Setengah bulat di kanan
+
+        # Button Back dan Home di bawah
+        BoxLayout:
+            size_hint: None, None
+            size: 250, 110
+            pos_hint: {'center_x': 0.5, 'center_y': 0.2}  # Letakkan tombol di bawah tengah
+
+            Button:
+                size_hint: None, None
+                size: 110, 110
+                background_normal: 'Icon/back1.png'  # Ikon back
+                on_press: root.go_to_permainan()  # Navigasi ke permainan
+
+            Button:
+                size_hint: None, None
+                size: 110, 110
+                background_normal: 'Icon/home.png'  # Ikon home
+                on_press: root.go_to_layar()  # Navigasi ke layar utama

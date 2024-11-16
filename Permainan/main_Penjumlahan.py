@@ -18,22 +18,20 @@ from kivy.graphics import Color, Rectangle, Line
 
 
 class CustomPopup(Popup):
-    def __init__(self, title, message, **kwargs):  # Perbaiki __init__ ke __init__
+    def __init__(self, title, message, **kwargs):
         super().__init__(**kwargs)
         self.title = title
         self.size_hint = (None, None)
         self.size = (300, 150)
 
-        with self.canvas.before:
-            Color(0, 1, 1, 1)  # Biru
-            self.rect = Rectangle(size=self.size, pos=self.pos)
-
-            Color(0, 0, 0, 1)  # Hitam
-            self.line = Line(
-                rectangle=(self.x, self.y, self.width, self.height), width=1.5
-            )
-
-        self.bind(size=self._update_rect, pos=self._update_rect)
+        # Bagian ini dihapus untuk menghilangkan garis tepi (outline)
+        # with self.canvas.before:
+        #     Color(0, 0, 0, 1)  # Hitam untuk garis tepi
+        #     self.line = Line(
+        #         rectangle=(self.x, self.y, self.width, self.height), width=1.5
+        #     )
+        #
+        # self.bind(size=self._update_rect, pos=self._update_rect)
 
         self.content = BoxLayout(orientation="vertical", padding=10, spacing=10)
 
@@ -44,10 +42,9 @@ class CustomPopup(Popup):
 
         Clock.schedule_once(lambda dt: self.dismiss(), 2)
 
-    def _update_rect(self, *args):
-        self.rect.pos = self.pos
-        self.rect.size = self.size
-        self.line.rectangle = (self.x, self.y, self.width, self.height)
+    # Bagian ini dihapus karena sudah tidak perlu update outline
+    # def _update_rect(self, *args):
+    #     self.line.rectangle = (self.x, self.y, self.width, self.height)
 
 
 class PenjumlahanScreen(Screen):
@@ -118,10 +115,10 @@ class PenjumlahanScreen(Screen):
             self.ids.soal_label.text = (
                 f" {self.angka1}   +   {self.angka2}   =   {jawaban}"
             )
-            self.show_popup("Jawaban Benar!", "Selamat, jawaban Anda benar!")
+            self.show_popup("Hasil", "Selamat, jawaban benar!")
             Clock.schedule_once(lambda dt: self.generate_question(), 1.5)
         else:
-            self.show_popup("Jawaban Salah!", "Coba lagi!")
+            self.show_popup("Hasil", "Jawaban salah, coba lagi!")
 
     def show_popup(self, title, message):
         popup = CustomPopup(title=title, message=message)

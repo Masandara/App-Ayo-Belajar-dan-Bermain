@@ -15,136 +15,104 @@
         # Circular button with arrow-left for navigation
         FloatLayout:
             size_hint: None, None
-            size: 1200, 185  # You can adjust the size here
+            size: 1200, 185  # Adjust the size here if needed
             pos_hint: {'center_x': 0.5, 'top': 1.14}
 
-        FloatLayout:
+        Button:
             size_hint: None, None
-            size: 60, 60
-            pos_hint: {'x': 0.03, 'top': 0.96}
-
-            # Circle with dashed stroke
-            canvas.before:
-                Color:
-                    rgba: 0.502, 0.502, 0.502, 1.0  # Gray fill
-                Ellipse:
-                    pos: self.pos
-                    size: self.size
-                Color:
-                    rgba: 0, 0, 0, 1  # Black stroke
-                Line:
-                    width: 1.5
-                    circle: (self.center_x, self.center_y, 30.5)
-                    dash_length: 2
-                    dash_offset: 1
-
-            # Arrow image inside the circle
-            Image:
-                source: 'Image/arrow-left.png'
-                size_hint: None, None
-                size: 35, 35
-                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-
-            # Transparent button to detect touch and navigate back
-            Button:
-                background_color: 0, 0, 0, 0
-                size_hint: None, None
-                size: 60, 60
-                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-                on_press: root.go_to_permainan()  # Navigate back to MempelajariScreen
+            size: 110, 110  # Ukuran ikon lebih besar
+            pos_hint: {'x': 0.01, 'top': 0.98}  # Pojok kiri atas dengan sedikit margin
+            background_normal: 'Icon/back1.png'  # Ikon kembali
+            on_press: root.go_to_permainan()
 
         # Alfabet label
         Label:
             text: 'TEBAK WARNA'
             font_size: '32sp'
             font_name: 'Font/Eracake.ttf'
-            color: 1.0, 1.0, 1.0, 1.0 # 1.0, 0.647, 0.0, 1.0 Orange
+            color: 1.0, 1.0, 1.0, 1.0
             size_hint: None, None
             size: self.texture_size
             pos_hint: {'center_x': 0.5, 'top': 0.87}
-            outline_color: 0.0, 0.0, 0.0, 1.0  # Warna stroke
+            outline_color: 0.0, 0.0, 0.0, 1.0  # Outline color for text
             outline_width: 3
 
-        # Question label: "Huruf apakah di bawah ini"
+        # Question label
         Label:
             id: question_label
-            # text: 'BIRU'
             font_size: '35sp'
             font_name: "Font/PoetsenOne-Regular.ttf"
             color: 1.0, 1.0, 1.0, 1.0
             size_hint: None, None
             size: self.texture_size
             pos_hint: {'center_x': 0.5, 'top': 0.7}
-            outline_color: 0.0, 0.0, 0.0, 1.0  # Warna stroke
+            outline_color: 0.0, 0.0, 0.0, 1.0  # Outline color for text
             outline_width: 3
 
-        # GridLayout for letter buttons
+        # Answer buttons with specific colors
         FloatLayout:
             size_hint: 0.6, 0.3
             pos_hint: {'center_x': 0.5, 'center_y': 0.35}
 
             RoundedButtonWithStroke:
                 id: answer_button_1
+                text: 'Hitam'
                 font_size: '28sp'
                 size_hint: 0.4, 0.4
                 pos_hint: {'x': 0.05, 'top': 1}
                 on_press: root.check_answer(self.text)
-                background_color: 0.0, 0.0, 1.0, 1.0  # Light blue button
-                color: 1, 1, 1, 1
+                color: 1, 1, 1, 1  # White text color for contrast
                 canvas.before:
                     Color:
-                        rgba: 0.502, 0.502, 0.502, 1.0 # 0.2, 0.6, 0.86, 1  # Warna latar belakang tombol
+                        rgba: 0.0, 0.0, 1.0, 1.0  # Blue background
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
                         radius: [25]
-
                     Color:
-                        rgba: 0, 0, 0, 1  # Warna cyan untuk stroke
+                        rgba: 0, 0, 0, 1  # Black border
                     Line:
                         width: 1.5
                         rounded_rectangle: (self.x, self.y, self.width, self.height, 25)
 
             RoundedButtonWithStroke:
                 id: answer_button_2
+                text: 'Kuning'
                 font_size: '28sp'
                 size_hint: 0.4, 0.4
                 pos_hint: {'right': 0.95, 'top': 1}
                 on_press: root.check_answer(self.text)
-                background_color: 0.0, 0.0, 1.0, 1.0  # Light blue button
-                color: 1, 1, 1, 1
+                color: 1, 1, 1, 1  # White text color for contrast
                 canvas.before:
                     Color:
-                        rgba: 0.502, 0.502, 0.502, 1.0 # 0.2, 0.6, 0.86, 1  # Warna latar belakang tombol
+                        rgba: 0.0, 1.0, 0.0, 1.0  # Green background
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
                         radius: [25]
-
                     Color:
-                        rgba: 0, 0, 0, 1  # Warna cyan untuk stroke
+                        rgba: 0, 0, 0, 1  # Black border
                     Line:
                         width: 1.5
                         rounded_rectangle: (self.x, self.y, self.width, self.height, 25)
 
             RoundedButtonWithStroke:
                 id: answer_button_3
+                text: 'Ungu'
                 font_size: '28sp'
                 size_hint: 0.4, 0.4
                 pos_hint: {'center_x': 0.5, 'y': 0}
                 on_press: root.check_answer(self.text)
-                background_color: 0.0, 0.0, 1.0, 1.0  # Light blue button
-                color: 1, 1, 1, 1
+                color: 1, 1, 1, 1  # White text color for contrast
                 canvas.before:
                     Color:
-                        rgba: 0.502, 0.502, 0.502, 1.0 # 0.2, 0.6, 0.86, 1  # Warna latar belakang tombol
+                        rgba: 1.0, 0.0, 0.0, 1.0  # Red background
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
                         radius: [25]
-
                     Color:
-                        rgba: 0, 0, 0, 1  # Warna cyan untuk stroke
+                        rgba: 0, 0, 0, 1  # Black border
                     Line:
                         width: 1.5
                         rounded_rectangle: (self.x, self.y, self.width, self.height, 25)
