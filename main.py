@@ -20,6 +20,7 @@ from Mempelajari.Mengenalbs.main_Sayur import SayurScreen
 from Permainan.main_Tebakwarna import TebakWarnaScreen
 from Permainan.main_Cocokgambar import MencocokkanGambarScreen
 from Permainan.main_Penjumlahan import PenjumlahanScreen
+from Permainan.main_Cocokgambar import ScoreScreen
 import pyrebase
 from profil import ProfilScreen
 
@@ -87,7 +88,7 @@ class LoginScreen(Screen):
         layout.add_widget(popup_label)
         layout.add_widget(close_button)
         popup = Popup(
-            title="Error", content=layout, size_hint=(None, None), size=(300, 200)
+            title="Pesan Error", content=layout, size_hint=(None, None), size=(400, 200)
         )
         close_button.bind(on_press=popup.dismiss)
         popup.open()
@@ -141,7 +142,7 @@ class RegisterScreen(Screen):
         layout.add_widget(popup_label)
         layout.add_widget(close_button)
         popup = Popup(
-            title="Error", content=layout, size_hint=(None, None), size=(300, 200)
+            title="Pesan Error", content=layout, size_hint=(None, None), size=(300, 200)
         )
         close_button.bind(on_press=popup.dismiss)
         popup.open()
@@ -332,7 +333,6 @@ class PermainanScreen(Screen):  # Menambahkan PermainanScreen
 class AyoBelajarApp(App):
     def build(self):
         sm = ScreenManager()
-        sm.add_widget(BuahScreen(name="buah"))
 
         sm.add_widget(LoginScreen(name="login"))
         sm.add_widget(RegisterScreen(name="register"))
@@ -343,10 +343,13 @@ class AyoBelajarApp(App):
         sm.add_widget(PermainanScreen(name="permainan"))
         sm.add_widget(AlfabetScreen(name="alfabet"))
         sm.add_widget(MengenalBSScreen(name="mengenalbs"))
+        sm.add_widget(BuahScreen(name="buah"))
         sm.add_widget(SayurScreen(name="sayur"))
+        sm.add_widget(MencocokkanGambarScreen(name="mencocokkangambar"))
         sm.add_widget(MenyusunSKScreen(name="menyusunsk"))
         sm.add_widget(TebakWarnaScreen(name="tebakwarna"))
-        sm.add_widget(MencocokkanGambarScreen(name="mencocokkangambar"))
+
+        sm.add_widget(ScoreScreen(name="score_screen"))
         sm.add_widget(PenjumlahanScreen(name="penjumlahan"))
 
         return sm
