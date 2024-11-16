@@ -3,9 +3,8 @@
         # Full-screen background image
         Image:
             source: 'bg/bg3.png'
-            allow_stretch: True
-            keep_ratio: False
-            size_hint: 1, 1  # Cover the full screen
+            size_hint: 1, 1
+            size: self.size
 
         Button:
             size_hint: None, None
@@ -90,20 +89,20 @@
                     id: age_button
                     text: "Tambahkan Umur" if root.ids.age_label.text == "Umur: -" else "Edit Umur"
                     font_size: '16sp'
-                    size_hint_x: 0.8  # Sama dengan tombol Edit Nama dan Password
+                    size_hint_x: 0.4  # Sama dengan tombol Edit Nama dan Password
                     background_color: (0.2, 0.6, 0.8, 1)
                     color: (1, 1, 1, 1)
                     on_press: root.add_or_edit_age()
-                # Button:
-                #     id: delete_age_button
-                #     text: "Hapus Umur"
-                #     font_size: '16sp'
-                #     size_hint_x: 0.4  # Sama dengan tombol lainnya
-                #     background_color: (1, 0.5, 0.5, 1)
-                #     color: (1, 1, 1, 1)
-                #     on_press: root.delete_age()
-                #     opacity: 0 if root.ids.age_label.text == "Umur: -" else 1
-                #     disabled: root.ids.age_label.text == "Umur: -"
+                Button:
+                    id: delete_age_button
+                    text: "Hapus Umur"
+                    font_size: '16sp'
+                    size_hint_x: 0.38 # Sama dengan tombol lainnya
+                    background_color: (1, 0.5, 0.5, 1)
+                    color: (1, 1, 1, 1)
+                    on_press: root.delete_age()
+                    opacity: 0 if root.ids.age_label.text == "Umur: -" else 1
+                    disabled: root.ids.age_label.text == "Umur: -"
 
             BoxLayout:
                 spacing: 10
@@ -120,17 +119,17 @@
                     id: hobby_button
                     text: "Tambahkan Hobi" if root.ids.hobby_label.text == "Hobi: -" else "Edit Hobi"
                     font_size: '16sp'
-                    size_hint_x: 0.8  # Sama dengan tombol lainnya
+                    size_hint_x: 0.4  # Sama dengan tombol lainnya
                     background_color: (0.2, 0.6, 0.8, 1)
                     color: (1, 1, 1, 1)
                     on_press: root.add_or_edit_hobby()
-                # Button:
-                #     id: delete_hobby_button
-                #     text: "Hapus Hobi"
-                #     font_size: '16sp'
-                #     size_hint_x: 0.4  # Sama dengan tombol lainnya
-                #     background_color: (1, 0.5, 0.5, 1)
-                #     color: (1, 1, 1, 1)
-                #     on_press: root.delete_hobby()
-                #     opacity: 0 if root.ids.hobby_label.text == "Hobi: -" else 1
-                #     disabled: root.ids.hobby_label.text == "Hobi: -"
+                Button:
+                    id: delete_hobby_button
+                    text: "Hapus Hobi"
+                    font_size: '16sp'
+                    size_hint_x: 0.38  # Sama dengan tombol lainnya
+                    background_color: (1, 0.5, 0.5, 1)
+                    color: (1, 1, 1, 1)
+                    on_press: root.delete_hobby()
+                    opacity: 0 if root.ids.hobby_label.text == "Hobi: -" else 1
+                    disabled: root.ids.hobby_label.text == "Hobi: -"
