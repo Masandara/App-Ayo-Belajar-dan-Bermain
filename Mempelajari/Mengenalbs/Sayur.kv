@@ -17,20 +17,6 @@
             size_hint: None, None
             size: 1200, 185  # You can adjust the size here
             pos_hint: {'center_x': 0.5, 'top': 1.14}  # Adjust position
-            # canvas.before:
-            #     # Menggambar bayangan
-            #     Color:
-            #         rgba: 0.0, 0.0, 0.0, 0.25  # Warna bayangan (hitam transparan)
-            #     Ellipse:
-            #         pos: self.x + 1, self.y - 3  # Offset bayangan
-            #         size: self.size
-
-            #     # Menggambar latar belakang
-            #     Color:
-            #         rgba: 0.0, 1.0, 1.0, 1.0  # Cyan color (adjust if needed)
-            #     Ellipse:
-            #         pos: self.pos
-            #         size: self.size
 
         # Tombol kembali
         Button:
@@ -39,6 +25,17 @@
             pos_hint: {'x': 0.01, 'top': 0.98}  # Pojok kiri atas dengan sedikit margin
             background_normal: 'Icon/back1.png'  # Ikon kembali
             on_press: root.go_to_mengenalbs()
+
+        Label:
+            text: 'MENGENAL SAYURAN'
+            font_size: '32sp'
+            font_name: 'Font/Eracake.ttf'
+            color: 1.0, 1.0, 1.0, 1.0 # 1.0, 0.647, 0.0, 1.0 Orange
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'center_x': 0.5, 'top': 0.875}
+            outline_color: 0.0, 0.0, 0.0, 1.0  # Warna stroke
+            outline_width: 3
 
         # Label utama
         Label:

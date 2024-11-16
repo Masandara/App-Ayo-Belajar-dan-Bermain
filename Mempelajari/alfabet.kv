@@ -17,20 +17,6 @@
             size_hint: None, None
             size: 1200, 185  # You can adjust the size here
             pos_hint: {'center_x': 0.5, 'top': 1.14}  # Adjust position
-            # canvas.before:
-            #     # Menggambar bayangan
-            #     Color:
-            #         rgba: 0.0, 0.0, 0.0, 0.25  # Warna bayangan (hitam transparan)
-            #     Ellipse:
-            #         pos: self.x + 1, self.y - 3  # Offset bayangan
-            #         size: self.size
-
-            #     # Menggambar latar belakang
-            #     Color:
-            #         rgba: 0.0, 1.0, 1.0, 1.0  # Cyan color (adjust if needed)
-            #     Ellipse:
-            #         pos: self.pos
-            #         size: self.size
 
         Button:
             size_hint: None, None
@@ -40,16 +26,16 @@
             on_press: root.go_to_mempelajari()  # Navigate back to MempelajariScreen
 
         # Alfabet label
-        # Label:
-        #     text: 'ALFABET'
-        #     font_size: '40sp'
-        #     font_name: 'Font/Eracake.ttf'
-        #     color: 1.0, 1.0, 1.0, 1.0 # 1.0, 0.647, 0.0, 1.0 Orange
-        #     size_hint: None, None
-        #     size: self.texture_size
-        #     pos_hint: {'center_x': 0.5, 'top': 0.965}
-        #     outline_color: 0.0, 0.0, 0.0, 1.0  # Warna stroke
-        #     outline_width: 3
+        Label:
+            text: 'ALFABET'
+            font_size: '32sp'
+            font_name: 'Font/Eracake.ttf'
+            color: 1.0, 1.0, 1.0, 1.0 # 1.0, 0.647, 0.0, 1.0 Orange
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'center_x': 0.5, 'top': 0.875}
+            outline_color: 0.0, 0.0, 0.0, 1.0  # Warna stroke
+            outline_width: 3
 
         # Question label: "Huruf apakah di bawah ini"
         Label:
@@ -90,12 +76,11 @@
             RoundedButtonWithStroke:
                 text: root.opsi_jawaban[0] if len(root.opsi_jawaban) > 0 else ''
                 on_release: app.root.get_screen('alfabet').periksa_jawaban(self.text)
-                background_color: 0.0, 0.0, 1.0, 1.0  # Light blue button
                 font_size: '32sp'
                 color: 0, 0, 0, 1
                 canvas.before:
                     Color:
-                        rgba: 1.0, 0.647, 0.0, 1.0 # 0.2, 0.6, 0.86, 1  # Warna latar belakang tombol
+                        rgba: 1.0, 0.647, 0.0, 1.0
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
@@ -110,12 +95,11 @@
             RoundedButtonWithStroke:
                 text: root.opsi_jawaban[1] if len(root.opsi_jawaban) > 1 else ''
                 on_release: app.root.get_screen('alfabet').periksa_jawaban(self.text)
-                background_color: 1, 0, 0, 1  # Red button
                 font_size: '32sp'
                 color: 0, 0, 0, 1
                 canvas.before:
                     Color:
-                        rgba: 0.502, 0.502, 0.502, 1.0 # 0.2, 0.6, 0.86, 1  # Warna latar belakang tombol
+                        rgba: 0.753, 0.753, 0.753, 1.0
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
@@ -130,12 +114,11 @@
             RoundedButtonWithStroke:
                 text: root.opsi_jawaban[2] if len(root.opsi_jawaban) > 2 else ''
                 on_release: app.root.get_screen('alfabet').periksa_jawaban(self.text)
-                background_color: 0.5, 1, 0, 1  # Green button
                 font_size: '32sp'
                 color: 0, 0, 0, 1
                 canvas.before:
                     Color:
-                        rgba: 0.502, 0.502, 0.502, 1.0 # 0.2, 0.6, 0.86, 1  # Warna latar belakang tombol
+                        rgba: 1.0, 0.0, 1.0, 1.0
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
@@ -166,12 +149,11 @@
             RoundedButtonWithStroke:
                 text: root.opsi_jawaban[3] if len(root.opsi_jawaban) > 3 else ''
                 on_release: app.root.get_screen('alfabet').periksa_jawaban(self.text)
-                background_color: 0, 0.5, 1, 1  # Light blue button
                 font_size: '32sp'
                 color: 0, 0, 0, 1
                 canvas.before:
                     Color:
-                        rgba: 0.502, 0.502, 0.502, 1.0 # 0.2, 0.6, 0.86, 1  # Warna latar belakang tombol
+                        rgba: 0.0, 1.0, 1.0, 1.0
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
@@ -192,12 +174,11 @@
             RoundedButtonWithStroke:
                 text: root.opsi_jawaban[4] if len(root.opsi_jawaban) > 4 else ''
                 on_release: app.root.get_screen('alfabet').periksa_jawaban(self.text)
-                background_color: 0.5, 1, 0, 1
                 font_size: '32sp'
                 color: 0, 0, 0, 1
                 canvas.before:
                     Color:
-                        rgba: 0.502, 0.502, 0.502, 1.0 # 0.2, 0.6, 0.86, 1  # Warna latar belakang tombol
+                        rgba: 0.988, 0.561, 0.329, 1.0
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size
