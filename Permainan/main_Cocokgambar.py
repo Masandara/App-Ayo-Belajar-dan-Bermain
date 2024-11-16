@@ -218,7 +218,7 @@ class ScoreScreen(Screen):
 
     def on_enter(self):
         # Menampilkan skor akhir pada Label saat layar ini ditampilkan
-        self.ids.score_label.text = f"Skor Akhir Anda: {self.final_score}"
+        self.ids.score_label.text = f"{self.final_score}"
 
     def go_to_permainan(self):
         # Navigate back to MempelajariScreen with a fade transition

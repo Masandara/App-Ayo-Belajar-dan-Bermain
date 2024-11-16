@@ -17,20 +17,6 @@
             size_hint: None, None
             size: 1200, 185  # You can adjust the size here
             pos_hint: {'center_x': 0.5, 'top': 1.14}  # Adjust position
-            # canvas.before:
-            #     # Menggambar bayangan
-            #     Color:
-            #         rgba: 0.0, 0.0, 0.0, 0.25  # Warna bayangan (hitam transparan)
-            #     Ellipse:
-            #         pos: self.x + 1, self.y - 3  # Offset bayangan
-            #         size: self.size
-
-            #     # Menggambar latar belakang
-            #     Color:
-            #         rgba: 0.0, 1.0, 1.0, 1.0  # Cyan color (adjust if needed)
-            #     Ellipse:
-            #         pos: self.pos
-            #         size: self.size
 
         Button:
             size_hint: None, None
@@ -180,13 +166,10 @@
 
 <ScoreScreen>:
     FloatLayout:
-        # Background image (sesuai dengan permintaan untuk Bg3)
         Image:
             source: 'Bg/Bg3.png'
-            allow_stretch: True
-            keep_ratio: False
             size_hint: (1, 1)
-            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            size: self.size
 
         BoxLayout:
             orientation: 'vertical'
@@ -206,10 +189,12 @@
         Label:
             text: "SELAMAT"
             font_size: '48sp'
-            font_name: 'Font/PoetsenOne-Regular.ttf'
+            font_name: 'Font/Eracake.ttf'
             color: 0, 0, 0, 1  # Warna teks hitam
             size_hint: None, None
             pos_hint: {'center_x': 0.5, 'top': 0.85}
+            outline_color: 0.0, 0.0, 0.0, 1.0  # Warna stroke
+            outline_width: 1.5
 
         Label:
             text: "Kamu Telah Menyelesaikan Permainan Ini"
@@ -223,47 +208,64 @@
         FloatLayout:
             size_hint: None, None
             size: 350, 100
-            pos_hint: {'center_x': 0.7, 'center_y': 0.7}  # Skor di tengah
+            pos_hint: {'center_x': 0.48, 'top': 0.7}  # Skor di tengah
 
             # Bentuk oval untuk "NILAI"
             Label:
-                text: "NILAI"
-                font_size: '24sp'
-                font_name: 'Font/PoetsenOne-Regular.ttf'
-                color: 0, 0, 0, 1  # Warna teks hitam
                 size_hint: None, None
-                size: 170, 100
+                pos_hint: {'center_x': 0.2, 'top': 0.2}
                 canvas.before:
                     Color:
                         rgba: 0.9, 0.9, 0.9, 1  # Warna abu-abu muda untuk latar belakang
                     RoundedRectangle:
                         pos: self.pos
-                        size: self.size
+                        size: 190, 70
                         radius: [40, 0, 0, 40]  # Setengah bulat di kiri
+                    Color:
+                        rgba: 0, 0, 0, 1  # Warna cyan untuk stroke
+                    Line:
+                        width: 1.5
+                        rounded_rectangle: (self.x, self.y, 190, 70, 40, 0, 0, 40)
+            Label:
+                text: "NILAI"
+                font_size: '38sp'
+                font_name: 'Font/PoetsenOne-Regular.ttf'
+                color: 0, 0, 0, 1  # Warna teks hitam
+                size_hint: None, None
+                pos_hint: {'center_x': 0.3, 'top': 0.07}
 
             # Bentuk persegi panjang bulat untuk "100"
             Label:
-                id: score_label
-                text: "100"  # Skor bisa diubah sesuai nilai akhir
-                font_size: '36sp'
-                font_name: 'Font/PoetsenOne-Regular.ttf'
-                color: 1, 1, 1, 1  # Warna teks putih
                 size_hint: None, None
                 size: 100, 100
-                pos_hint: {'right': 1}
+                pos_hint: {'center_x': 0.7, 'top': 0.2}
                 canvas.before:
                     Color:
                         rgba: 0, 0, 0, 1  # Warna hitam untuk latar belakang
                     RoundedRectangle:
                         pos: self.pos
-                        size: self.size
+                        size: 180, 70
                         radius: [0, 40, 40, 0]  # Setengah bulat di kanan
+                    Color:
+                        rgba: 0, 0, 0, 1  # Warna cyan untuk stroke
+                    Line:
+                        width: 1.5
+                        rounded_rectangle: (self.x, self.y, 180, 70, 0, 40, 40, 0)
+            Label:
+                id: score_label
+                text: ""  # Skor bisa diubah sesuai nilai akhir
+                font_size: '38sp'
+                font_name: 'Font/PoetsenOne-Regular.ttf'
+                color: 1, 1, 1, 1  # Warna teks putih
+                pos_hint: {'center_x': 0.8, 'top': 0.07}
 
         # Button Back dan Home di bawah
         BoxLayout:
             size_hint: None, None
             size: 250, 110
-            pos_hint: {'center_x': 0.5, 'center_y': 0.2}  # Letakkan tombol di bawah tengah
+            pos_hint: {'center_x': 0.5, 'top': 0.2}  # Letakkan tombol di bawah tengah
+            spacing: 20  # Tambahkan jarak antar tombol
+            orientation: 'horizontal'  # Pastikan orientasi horizontal
 
             Button:
                 size_hint: None, None
