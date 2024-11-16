@@ -76,13 +76,13 @@ class ProfilScreen(Screen):
             "Ubah Password", "Masukkan password baru", "password", is_password=True
         )
 
-    # def delete_age(self):
-    #     self.show_delete_confirmation("age", "Apakah Anda yakin ingin menghapus umur?")
+    def delete_age(self):
+        self.show_delete_confirmation("age", "Apakah Anda yakin ingin menghapus umur?")
 
-    # def delete_hobby(self):
-    #     self.show_delete_confirmation(
-    #         "hobby", "Apakah Anda yakin ingin menghapus hobi?"
-    #     )
+    def delete_hobby(self):
+        self.show_delete_confirmation(
+            "hobby", "Apakah Anda yakin ingin menghapus hobi?"
+        )
 
     def show_delete_confirmation(self, field, message):
         layout = BoxLayout(orientation="vertical", padding=10, spacing=10)
